@@ -50,97 +50,106 @@ img{display:block;width:100%;object-fit:cover}
 .btn-map-apple:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.3)}
 
 /* ── NAVBAR ── */
-#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:14px 36px;display:flex;align-items:center;justify-content:space-between;transition:var(--t);gap:14px}
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:14px 36px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;transition:var(--t)}
 #navbar.scrolled{background:rgba(30,0,75,.97);backdrop-filter:blur(18px);padding:10px 36px;box-shadow:0 4px 32px rgba(0,0,0,.38)}
-.nav-logo img{height:52px;width:auto;display:block;filter:drop-shadow(0 3px 8px rgba(0,0,0,.3))}
-.nav-links{display:flex;align-items:center;gap:26px}
+.nav-logo img{height:54px;width:auto;display:block;filter:drop-shadow(0 3px 8px rgba(0,0,0,.3))}
+.nav-links{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap}
 .nav-links a{color:rgba(255,255,255,.82);font-size:.85rem;font-weight:500;transition:color .3s;position:relative;white-space:nowrap}
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .3s;border-radius:2px;transform-origin:left}
 .nav-links a:hover{color:var(--gold)}
 .nav-links a:hover::after{transform:scaleX(1)}
-.nav-btns{display:flex;gap:8px;align-items:center;flex-shrink:0}
+.nav-right{display:flex;gap:8px;align-items:center;justify-content:flex-end;flex-shrink:0}
 .nav-user{display:none;align-items:center;gap:10px;color:rgba(255,255,255,.88);font-size:.82rem}
 .nav-user.show{display:flex}
-.nav-user span{max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.hamburger{display:none;color:#fff;font-size:1.5rem;cursor:pointer;background:none;border:none;min-width:44px;min-height:44px;align-items:center;justify-content:center;flex-shrink:0;z-index:1001}
+.nav-user span{max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hamburger{display:none;color:#fff;font-size:1.4rem;cursor:pointer;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.25);border-radius:10px;width:42px;height:42px;align-items:center;justify-content:center;flex-shrink:0;transition:var(--t)}
+.hamburger:hover{background:var(--gold);color:var(--purple-deep);border-color:var(--gold)}
 
 /* ── DRAWER ── */
 .drawer-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:998;backdrop-filter:blur(4px)}
 .drawer-overlay.open{display:block}
-.nav-drawer{position:fixed;top:0;right:0;bottom:0;width:300px;max-width:88vw;background:var(--purple-deep);z-index:999;padding:72px 28px 40px;transform:translateX(110%);transition:transform .42s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;gap:2px;overflow-y:auto}
+.nav-drawer{position:fixed;top:0;right:0;bottom:0;width:290px;max-width:86vw;background:var(--purple-deep);z-index:999;padding:0 0 30px;transform:translateX(110%);transition:transform .42s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;overflow-y:auto}
 .nav-drawer.open{transform:translateX(0)}
-.nav-drawer a{display:flex;align-items:center;gap:11px;color:rgba(255,255,255,.82);font-size:.95rem;font-weight:500;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.07);transition:color .3s}
-.nav-drawer a:hover{color:var(--gold)}
-.nav-drawer a i{color:var(--gold);width:18px;text-align:center;flex-shrink:0}
-.drawer-ctas{display:flex;flex-direction:column;gap:10px;margin-top:20px}
-.drawer-auth{display:flex;gap:8px;margin-top:12px}
-.drawer-close{position:absolute;top:16px;right:18px;color:#fff;font-size:1.5rem;cursor:pointer;background:none;border:none;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
-.drawer-user{display:none;margin-top:10px;padding:14px 0;border-top:1px solid rgba(255,255,255,.1)}
-.drawer-user p{color:rgba(255,255,255,.6);font-size:.8rem;margin-bottom:10px;display:flex;align-items:center;gap:7px}
+.drawer-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.18);flex-shrink:0}
+.drawer-header img{height:40px;width:auto;object-fit:contain;filter:brightness(1.1)}
+.drawer-close{color:#fff;font-size:1.3rem;cursor:pointer;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.18);border-radius:9px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;transition:var(--t);flex-shrink:0}
+.drawer-close:hover{background:var(--gold);color:var(--purple-deep);border-color:var(--gold)}
+.drawer-nav{display:flex;flex-direction:column;padding:10px 0;flex:1}
+.drawer-nav a{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,.82);font-size:.92rem;font-weight:500;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,.05);transition:all .3s;text-decoration:none}
+.drawer-nav a:hover{color:var(--gold);background:rgba(255,255,255,.05);padding-left:26px}
+.drawer-nav a i{color:var(--gold);width:18px;text-align:center;flex-shrink:0;font-size:.9rem}
+.drawer-bottom{padding:16px 20px;border-top:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:9px}
+.drawer-auth-btns{display:flex;gap:8px}
+.drawer-auth-btns .btn{flex:1;font-size:.78rem;padding:9px 10px;min-height:38px}
+.drawer-user-info{display:none;margin-bottom:8px}
+.drawer-user-info p{color:rgba(255,255,255,.6);font-size:.8rem;display:flex;align-items:center;gap:7px;margin-bottom:8px;padding:8px 0}
+.drawer-user-info p i{color:var(--gold)}
+.drawer-user-info span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:200px}
+.drawer-cta-btns{display:flex;flex-direction:column;gap:8px}
+.drawer-cta-btns .btn{font-size:.82rem;padding:11px 16px;justify-content:center;min-height:42px}
 
-/* ── HERO SLIDER ── */
-.hero{position:relative;height:100vh;min-height:640px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+/* ── HERO ── */
+.hero{position:relative;height:100vh;min-height:600px;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .hero-slides{position:absolute;inset:0;z-index:0}
 .hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;background-size:cover;background-position:center;background-repeat:no-repeat}
 .hero-slide.active{opacity:1}
 .hero-slide:nth-child(1){background-image:url('https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=1800&q=85')}
 .hero-slide:nth-child(2){background-image:url('https://images.unsplash.com/photo-1567337710282-00832b415979?w=1800&q=85')}
 .hero-slide:nth-child(3){background-image:url('https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=1800&q=85')}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,0,40,.62) 0%,rgba(15,0,40,.38) 50%,rgba(15,0,40,.75) 100%);z-index:1}
-.hero-content{position:relative;z-index:2;text-align:center;padding:0 20px;max-width:760px;animation:heroIn 1s ease both}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,0,40,.65) 0%,rgba(15,0,40,.4) 50%,rgba(15,0,40,.78) 100%);z-index:1}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 20px;max-width:800px;animation:heroIn 1s ease both}
 @keyframes heroIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-.hero-logo-img{width:min(280px,60vw);margin:0 auto 28px;filter:drop-shadow(0 6px 24px rgba(0,0,0,.5))}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,4.2rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:12px;text-shadow:0 4px 28px rgba(0,0,0,.45)}
-.hero h1 span{color:var(--gold)}
-.hero-sub{color:rgba(255,255,255,.88);font-size:clamp(.9rem,2.2vw,1.08rem);line-height:1.85;margin:0 0 36px;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+.hero-logo-img{width:min(240px,52vw);margin:0 auto 20px;filter:drop-shadow(0 6px 24px rgba(0,0,0,.5))}
+.hero-restaurant-label{font-family:'Poppins',sans-serif;font-size:clamp(.75rem,2.2vw,.95rem);font-weight:500;color:rgba(255,255,255,.92);letter-spacing:5px;text-transform:uppercase;margin-bottom:6px;text-shadow:0 2px 10px rgba(0,0,0,.4)}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,6.5vw,4.5rem);font-weight:900;line-height:1.1;margin-bottom:20px;text-shadow:0 4px 28px rgba(0,0,0,.5)}
+.hero-title .gold{color:var(--gold)}
+.hero-sub{color:rgba(255,255,255,.85);font-size:clamp(.88rem,2vw,1.05rem);line-height:1.85;margin:0 0 34px;text-shadow:0 2px 12px rgba(0,0,0,.5);max-width:600px;margin-left:auto;margin-right:auto}
 .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-/* slider dots */
-.hero-dots{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:10px}
+.hero-dots{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:10px}
 .hero-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:var(--t);border:none}
 .hero-dot.active{background:var(--gold);transform:scale(1.3)}
-/* slider arrows */
-.hero-arrow{position:absolute;top:50%;z-index:3;transform:translateY(-50%);background:rgba(255,255,255,.15);color:#fff;border:2px solid rgba(255,255,255,.4);width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:var(--t);backdrop-filter:blur(6px);font-size:1rem}
+.hero-arrow{position:absolute;top:50%;z-index:3;transform:translateY(-50%);background:rgba(255,255,255,.14);color:#fff;border:2px solid rgba(255,255,255,.35);width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:var(--t);backdrop-filter:blur(6px);font-size:1rem}
 .hero-arrow:hover{background:var(--gold);color:var(--purple-deep);border-color:var(--gold)}
 .hero-arrow.left{left:22px}
 .hero-arrow.right{right:22px}
 
 /* ── TICKER ── */
-.ticker{background:linear-gradient(90deg,var(--purple-deep),var(--purple),var(--purple-mid),var(--purple),var(--purple-deep));padding:12px 0;overflow:hidden}
-.ticker-track{display:flex;animation:tickerScroll 34s linear infinite;white-space:nowrap;will-change:transform}
+.ticker{background:linear-gradient(90deg,var(--purple-deep),var(--purple),var(--purple-mid),var(--purple),var(--purple-deep));padding:11px 0;overflow:hidden}
+.ticker-track{display:flex;animation:tickerScroll 20s linear infinite;white-space:nowrap;will-change:transform}
 .ticker-track:hover{animation-play-state:paused}
-.ticker-item{display:inline-flex;align-items:center;gap:9px;padding:0 34px;color:rgba(255,255,255,.82);font-size:.78rem;font-weight:500}
+.ticker-item{display:inline-flex;align-items:center;gap:9px;padding:0 28px;color:rgba(255,255,255,.85);font-size:.78rem;font-weight:500}
 .ticker-item i{color:var(--gold)}
-.ticker-dot{color:rgba(255,255,255,.25);padding:0 4px}
+.ticker-dot{color:rgba(255,255,255,.3);padding:0 4px}
+.ticker-coupon{background:rgba(245,200,66,.18);border:1px solid rgba(245,200,66,.4);border-radius:20px;padding:3px 14px 3px 10px;display:inline-flex;align-items:center;gap:7px;font-weight:700;color:var(--gold)!important;font-size:.78rem}
+.ticker-coupon i{color:var(--gold)}
 @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* ── ABOUT ── */
-.about{background:var(--cream)}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.about-visual{position:relative}
-.about-imgs{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:14px}
-.about-imgs .ai{border-radius:18px;overflow:hidden;box-shadow:0 12px 36px rgba(0,0,0,.15)}
-.about-imgs .ai img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-.about-imgs .ai:hover img{transform:scale(1.05)}
-.about-imgs .ai-big{grid-column:1/2;grid-row:1/3;height:380px}
-.about-imgs .ai-sm1{height:180px}
-.about-imgs .ai-sm2{height:180px}
-.about-badge-wrap{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--purple-deep);padding:12px 22px;border-radius:50px;text-align:center;box-shadow:0 8px 26px rgba(245,200,66,.42);white-space:nowrap;animation:badgePulse 3s ease-in-out infinite}
-@keyframes badgePulse{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.04)}}
-.about-badge-wrap span{font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase}
-.about-badge-wrap strong{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;display:inline;margin-left:6px}
+.about{background:var(--cream);overflow:hidden}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+/* photo mosaic */
+.about-visual{position:relative;border-radius:22px;overflow:hidden}
+.about-mosaic{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:240px 240px;gap:10px}
+.am-item{border-radius:16px;overflow:hidden;position:relative}
+.am-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;display:block}
+.am-item:hover img{transform:scale(1.06)}
+.am-big{grid-column:1/2;grid-row:1/3}
+.am-s1{grid-column:2/3;grid-row:1/2}
+.am-s2{grid-column:2/3;grid-row:2/3}
+.about-text{padding:10px 0}
 .about-text .sec-label{color:var(--purple)}
-.about-text .sec-title{color:var(--purple-deep)}
-.about-text p{color:var(--text-light);line-height:1.9;margin-bottom:14px;font-size:.95rem}
-.about-feats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0 28px}
-.af{display:flex;align-items:flex-start;gap:11px;background:#fff;padding:14px;border-radius:13px;border:1.5px solid var(--border);transition:var(--t)}
+.about-text .sec-title{color:var(--purple-deep);font-size:clamp(1.65rem,3.5vw,2.4rem)}
+.about-text p{color:var(--text-light);line-height:1.9;margin-bottom:14px;font-size:.94rem}
+.about-feats{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:20px 0 24px}
+.af{display:flex;align-items:flex-start;gap:11px;background:#fff;padding:13px;border-radius:13px;border:1.5px solid var(--border);transition:var(--t)}
 .af:hover{border-color:var(--purple);box-shadow:0 8px 24px var(--shadow);transform:translateY(-3px)}
-.af-icon{width:36px;height:36px;flex-shrink:0;background:linear-gradient(135deg,var(--purple),var(--purple-mid));border-radius:9px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.84rem}
-.af strong{display:block;font-size:.82rem;color:var(--purple-deep);font-weight:600;margin-bottom:2px}
-.af span{font-size:.74rem;color:var(--text-light)}
-.about-stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:28px}
-.ast{text-align:center;padding:16px 8px;background:#fff;border-radius:13px;border:1.5px solid var(--border)}
-.ast strong{display:block;font-family:'Playfair Display',serif;font-size:1.85rem;color:var(--purple);font-weight:700}
-.ast span{font-size:.7rem;color:var(--text-light);font-weight:600;letter-spacing:1px;text-transform:uppercase}
+.af-icon{width:34px;height:34px;flex-shrink:0;background:linear-gradient(135deg,var(--purple),var(--purple-mid));border-radius:9px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.82rem}
+.af strong{display:block;font-size:.81rem;color:var(--purple-deep);font-weight:600;margin-bottom:2px}
+.af span{font-size:.73rem;color:var(--text-light)}
+.about-awards{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.award-pill{display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--border);border-radius:50px;padding:9px 16px;box-shadow:0 3px 12px rgba(0,0,0,.06);transition:var(--t);font-size:.77rem;font-weight:600;color:var(--purple-deep)}
+.award-pill:hover{border-color:var(--purple);transform:translateY(-2px);box-shadow:0 8px 22px var(--shadow)}
+.award-pill i{color:var(--gold);font-size:.9rem}
 
 /* ── SPECIALS ── */
 .specials{background:linear-gradient(135deg,var(--purple-deep),var(--purple),var(--purple-mid));padding:72px 0;position:relative;overflow:hidden}
@@ -156,7 +165,7 @@ img{display:block;width:100%;object-fit:cover}
 /* ── MENU ── */
 .menu{background:linear-gradient(180deg,var(--purple-deep) 0%,#160040 100%)}
 .menu-tabs{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:36px}
-.tab-btn{padding:10px 20px;border-radius:50px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-size:.82rem;font-weight:600;cursor:pointer;border:1.5px solid rgba(255,255,255,.12);transition:var(--t);font-family:'Poppins',sans-serif;white-space:nowrap;min-height:42px;min-width:44px}
+.tab-btn{padding:10px 20px;border-radius:50px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-size:.82rem;font-weight:600;cursor:pointer;border:1.5px solid rgba(255,255,255,.12);transition:var(--t);font-family:'Poppins',sans-serif;white-space:nowrap;min-height:42px}
 .tab-btn:hover,.tab-btn.active{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--purple-deep);border-color:transparent;box-shadow:0 6px 20px rgba(245,200,66,.4)}
 .menu-grid{display:none;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:22px}
 .menu-grid.active{display:grid}
@@ -213,48 +222,63 @@ img{display:block;width:100%;object-fit:cover}
 
 /* ── RESERVATION ── */
 .reservation{background:#fff}
-.res-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:start}
+.res-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:60px;align-items:start}
 .res-info .sec-label{color:var(--purple)}
 .res-info .sec-title{color:var(--purple-deep)}
-.res-info>p{color:var(--text-light);line-height:1.9;margin-bottom:28px;font-size:.95rem}
-.res-details{display:flex;flex-direction:column;gap:18px;margin-bottom:26px}
-.rd{display:flex;align-items:flex-start;gap:14px}
+.res-info>p{color:var(--text-light);line-height:1.9;margin-bottom:26px;font-size:.94rem}
+.res-details{display:flex;flex-direction:column;gap:16px;margin-bottom:24px}
+.rd{display:flex;align-items:flex-start;gap:13px}
 .rd-icon{width:44px;height:44px;flex-shrink:0;background:linear-gradient(135deg,var(--purple),var(--purple-mid));border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.95rem;box-shadow:0 6px 18px var(--shadow)}
 .rd-text strong{display:block;font-size:.7rem;font-weight:700;color:var(--purple);letter-spacing:2px;text-transform:uppercase;margin-bottom:2px}
 .rd-text span{font-size:.88rem;color:var(--text);line-height:1.65}
-.map-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
-.res-form-card{background:var(--cream);border-radius:26px;padding:38px;box-shadow:0 22px 68px var(--shadow);border:1.5px solid var(--border)}
-.res-form-card h3{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--purple-deep);text-align:center;margin-bottom:4px}
-.res-form-card .f-sub{text-align:center;color:var(--text-light);font-size:.83rem;margin-bottom:24px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:13px}
-.fg{margin-bottom:14px}
+.map-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.res-form-card{background:var(--cream);border-radius:26px;padding:36px;box-shadow:0 22px 68px var(--shadow);border:1.5px solid var(--border)}
+.res-form-card h3{font-family:'Playfair Display',serif;font-size:1.55rem;color:var(--purple-deep);text-align:center;margin-bottom:4px}
+.res-form-card .f-sub{text-align:center;color:var(--text-light);font-size:.82rem;margin-bottom:22px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fg{margin-bottom:13px}
 .fg label{display:block;font-size:.7rem;font-weight:700;color:var(--purple-deep);letter-spacing:2px;text-transform:uppercase;margin-bottom:5px}
 .fg input,.fg select,.fg textarea{width:100%;padding:11px 15px;border:2px solid var(--border);border-radius:10px;font-size:.88rem;color:var(--text);background:#fff;transition:var(--t);font-family:'Poppins',sans-serif}
 .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--purple);box-shadow:0 0 0 4px rgba(76,0,176,.08);outline:none}
-.fg textarea{height:80px;resize:vertical}
-/* Custom time picker */
+.fg textarea{height:78px;resize:vertical}
 .time-picker-wrap{position:relative}
 .time-display{width:100%;padding:11px 15px;border:2px solid var(--border);border-radius:10px;font-size:.88rem;color:var(--text);background:#fff;cursor:pointer;transition:var(--t);display:flex;align-items:center;justify-content:space-between;font-family:'Poppins',sans-serif;user-select:none}
-.time-display:focus,.time-display.open{border-color:var(--purple);box-shadow:0 0 0 4px rgba(76,0,176,.08);outline:none}
-.time-dropdown{position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border:2px solid var(--border);border-radius:14px;box-shadow:0 16px 48px rgba(0,0,0,.14);z-index:200;display:none;padding:16px;animation:dropDown .22s ease}
-.time-dropdown.open{display:block}
+.time-display.open{border-color:var(--purple);box-shadow:0 0 0 4px rgba(76,0,176,.08)}
+.time-dropdown{position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border:2px solid var(--border);border-radius:14px;box-shadow:0 16px 48px rgba(0,0,0,.14);z-index:200;display:none;padding:16px}
+.time-dropdown.open{display:block;animation:dropDown .22s ease}
 @keyframes dropDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 .time-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
 .time-col-label{font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--purple);text-align:center;margin-bottom:8px}
-.time-scroll{max-height:160px;overflow-y:auto;display:flex;flex-direction:column;gap:3px;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.time-scroll{max-height:150px;overflow-y:auto;display:flex;flex-direction:column;gap:3px;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
 .time-opt{padding:8px 10px;border-radius:8px;font-size:.85rem;cursor:pointer;text-align:center;transition:var(--t);color:var(--text);font-family:'Poppins',sans-serif}
 .time-opt:hover{background:var(--purple-light);color:var(--purple)}
 .time-opt.selected{background:linear-gradient(135deg,var(--purple),var(--purple-mid));color:#fff;font-weight:600}
 .time-confirm{width:100%;margin-top:12px;padding:10px;background:linear-gradient(135deg,var(--purple),var(--purple-mid));color:#fff;border:none;border-radius:9px;font-family:'Poppins',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer;transition:var(--t)}
 .time-confirm:hover{filter:brightness(1.1)}
-.f-submit{width:100%;padding:15px;background:linear-gradient(135deg,var(--purple),var(--purple-mid));color:#fff;border-radius:12px;font-size:.95rem;font-weight:700;cursor:pointer;transition:var(--t);display:flex;align-items:center;justify-content:center;gap:9px;font-family:'Poppins',sans-serif;border:none;white-space:nowrap}
+.f-submit{width:100%;padding:15px;background:linear-gradient(135deg,var(--purple),var(--purple-mid));color:#fff;border-radius:12px;font-size:.94rem;font-weight:700;cursor:pointer;transition:var(--t);display:flex;align-items:center;justify-content:center;gap:9px;font-family:'Poppins',sans-serif;border:none}
 .f-submit:hover{transform:translateY(-2px);box-shadow:0 14px 36px var(--shadow);filter:brightness(1.1)}
 
-/* ── TESTIMONIALS / SWIPER ── */
+/* ── RESERVATION CONFIRM POPUP ── */
+.res-confirm-modal{display:none;position:fixed;inset:0;z-index:9500;background:rgba(0,0,0,.76);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px}
+.res-confirm-modal.open{display:flex}
+.res-confirm-box{background:#fff;border-radius:26px;padding:44px 36px;max-width:480px;width:100%;text-align:center;animation:modalPop .36s cubic-bezier(.4,0,.2,1);position:relative}
+@keyframes modalPop{from{opacity:0;transform:scale(.9) translateY(24px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.rc-icon{width:82px;height:82px;margin:0 auto 20px;background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.2rem;color:#fff;box-shadow:0 12px 36px rgba(34,197,94,.35);animation:iconPop .5s .1s cubic-bezier(.4,0,.2,1) both}
+@keyframes iconPop{from{transform:scale(0)}to{transform:scale(1)}}
+.rc-title{font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--purple-deep);margin-bottom:12px}
+.rc-msg{font-size:.9rem;color:var(--text-light);line-height:1.85;margin-bottom:16px}
+.rc-notice{background:var(--purple-light);border:1.5px solid var(--border);border-radius:13px;padding:14px 18px;font-size:.82rem;color:var(--purple-deep);line-height:1.8;margin-bottom:22px;text-align:left}
+.rc-notice p{margin-bottom:8px;display:flex;gap:8px}
+.rc-notice p:last-child{margin-bottom:0}
+.rc-notice i{color:var(--gold);margin-top:2px;flex-shrink:0}
+.rc-close{padding:13px 36px;background:linear-gradient(135deg,var(--purple),var(--purple-mid));color:#fff;border:none;border-radius:50px;font-family:'Poppins',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;transition:var(--t)}
+.rc-close:hover{transform:translateY(-2px);box-shadow:0 10px 28px var(--shadow)}
+
+/* ── TESTIMONIALS ── */
 .testimonials{background:linear-gradient(160deg,var(--purple-deep),#1e0060);overflow:hidden}
-.swiper{width:100%;padding-bottom:52px!important}
+.swiper{width:100%;padding-bottom:60px!important}
 .swiper-slide{height:auto}
-.t-card{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.1);border-radius:22px;padding:30px;height:100%;box-sizing:border-box;transition:var(--t)}
+.t-card{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.1);border-radius:22px;padding:28px;height:100%;box-sizing:border-box;transition:var(--t)}
 .t-card:hover{background:rgba(255,255,255,.1);border-color:rgba(245,200,66,.3)}
 .t-card.featured{background:rgba(245,200,66,.08);border-color:rgba(245,200,66,.35)}
 .t-stars{color:var(--gold);font-size:1rem;margin-bottom:12px;letter-spacing:2px}
@@ -264,10 +288,14 @@ img{display:block;width:100%;object-fit:cover}
 .t-author img{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2.5px solid var(--gold);flex-shrink:0}
 .t-author strong{display:block;color:#fff;font-size:.87rem}
 .t-author span{font-size:.73rem;color:rgba(255,255,255,.42)}
+/* arrows below slides */
+.swiper-button-next,.swiper-button-prev{color:var(--gold)!important;width:42px!important;height:42px!important;background:rgba(255,255,255,.1);border-radius:50%;backdrop-filter:blur(6px);top:auto!important;bottom:4px!important}
+.swiper-button-next::after,.swiper-button-prev::after{font-size:.85rem!important;font-weight:900}
+.swiper-button-prev{left:calc(50% - 52px)!important}
+.swiper-button-next{right:auto!important;left:calc(50% + 10px)!important}
+.swiper-pagination{bottom:48px!important}
 .swiper-pagination-bullet{background:rgba(255,255,255,.4)!important;opacity:1!important}
 .swiper-pagination-bullet-active{background:var(--gold)!important}
-.swiper-button-next,.swiper-button-prev{color:var(--gold)!important;width:40px!important;height:40px!important;background:rgba(255,255,255,.08);border-radius:50%;backdrop-filter:blur(6px)}
-.swiper-button-next::after,.swiper-button-prev::after{font-size:.9rem!important;font-weight:900}
 
 /* ── WHY ── */
 .why{background:var(--cream)}
@@ -278,8 +306,9 @@ img{display:block;width:100%;object-fit:cover}
 .why-card:hover{transform:translateY(-8px);box-shadow:0 22px 56px var(--shadow);border-color:transparent}
 .why-icon{width:66px;height:66px;margin:0 auto 16px;background:linear-gradient(135deg,var(--purple-light),var(--border));border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:1.75rem;color:var(--purple);transition:var(--t);position:relative;z-index:1}
 .why-card:hover .why-icon{background:rgba(255,255,255,.15);color:var(--gold)}
-.why-card h3{font-size:1rem;color:var(--purple-deep);margin-bottom:9px;position:relative;z-index:1;transition:color .4s}
-.why-card p{font-size:.82rem;color:var(--text-light);line-height:1.75;position:relative;z-index:1;transition:color .4s}
+.why-card h3,.why-card p{position:relative;z-index:1;transition:color .4s}
+.why-card h3{font-size:1rem;color:var(--purple-deep);margin-bottom:9px}
+.why-card p{font-size:.82rem;color:var(--text-light);line-height:1.75}
 .why-card:hover h3{color:rgba(255,255,255,.95)}
 .why-card:hover p{color:rgba(255,255,255,.7)}
 
@@ -301,21 +330,19 @@ img{display:block;width:100%;object-fit:cover}
 
 /* ── CONTACT ── */
 .contact{background:#fff}
-.contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:50px;align-items:start}
-.contact-info h3{font-family:'Playfair Display',serif;font-size:1.38rem;color:var(--purple-deep);margin-bottom:18px}
-.c-items{display:flex;flex-direction:column;gap:17px;margin-bottom:26px}
+.contact-top-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start;margin-bottom:36px}
+.contact-form-card{background:var(--cream);border-radius:22px;padding:32px;border:1.5px solid var(--border);box-shadow:0 12px 40px var(--shadow)}
+.contact-form-card h4{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--purple-deep);margin-bottom:20px;text-align:center}
+.c-items{display:flex;flex-direction:column;gap:16px;margin-bottom:24px}
 .c-item{display:flex;align-items:flex-start;gap:13px}
 .c-ico{width:42px;height:42px;flex-shrink:0;background:linear-gradient(135deg,var(--purple),var(--purple-mid));border-radius:11px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.9rem;box-shadow:0 5px 16px var(--shadow)}
 .c-txt strong{display:block;font-size:.7rem;font-weight:700;color:var(--purple);letter-spacing:2px;text-transform:uppercase;margin-bottom:2px}
 .c-txt span{font-size:.87rem;color:var(--text);line-height:1.65}
-.map-wrap{border-radius:22px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.12);height:360px;margin-bottom:18px}
+.map-wrap{border-radius:22px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.12);height:420px}
 .map-wrap iframe{width:100%;height:100%;border:0}
-/* Contact form */
-.contact-form-card{background:var(--cream);border-radius:22px;padding:32px;border:1.5px solid var(--border);box-shadow:0 12px 40px var(--shadow)}
-.contact-form-card h4{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--purple-deep);margin-bottom:20px;text-align:center}
 
 /* ── NEWSLETTER ── */
-.newsletter{background:linear-gradient(135deg,var(--purple),var(--purple-mid));padding:68px 0;position:relative;overflow:hidden}
+.newsletter{background:linear-gradient(135deg,var(--purple),var(--purple-mid));padding:66px 0;position:relative;overflow:hidden}
 .newsletter::before{content:'';position:absolute;width:480px;height:480px;border-radius:50%;background:rgba(255,255,255,.04);top:-200px;right:-140px;pointer-events:none}
 .nl-inner{display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap;position:relative;z-index:1}
 .nl-text h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);color:#fff;margin-bottom:7px}
@@ -330,8 +357,8 @@ img{display:block;width:100%;object-fit:cover}
 /* ── FOOTER ── */
 .footer{background:var(--purple-deep);padding:68px 0 0}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1.2fr 1.5fr;gap:44px;padding-bottom:46px}
-.f-brand .f-logo{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.f-logo img{height:44px;width:auto;filter:brightness(1.1) drop-shadow(0 2px 6px rgba(0,0,0,.3))}
+.f-brand .f-logo{margin-bottom:14px}
+.f-logo img{height:52px;width:auto;filter:brightness(1.1) drop-shadow(0 2px 6px rgba(0,0,0,.3))}
 .f-brand p{color:rgba(255,255,255,.45);font-size:.83rem;line-height:1.88;margin-bottom:20px}
 .socials{display:flex;gap:9px}
 .socials a{width:37px;height:37px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);font-size:.87rem;transition:var(--t)}
@@ -353,33 +380,22 @@ img{display:block;width:100%;object-fit:cover}
 .f-bottom-links a{color:rgba(255,255,255,.28);font-size:.72rem;transition:color .3s}
 .f-bottom-links a:hover{color:var(--gold)}
 
-/* ── MODALS ── */
+/* ── AUTH MODAL ── */
 .modal-backdrop{display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px}
 .modal-backdrop.open{display:flex}
-.modal-box{background:#fff;border-radius:26px;padding:38px;max-width:510px;width:100%;position:relative;animation:modalPop .36s cubic-bezier(.4,0,.2,1);max-height:92vh;overflow-y:auto}
-@keyframes modalPop{from{opacity:0;transform:scale(.9) translateY(24px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.auth-modal-box{background:linear-gradient(160deg,#fff 70%,var(--purple-light) 100%);border-radius:26px;padding:38px;max-width:420px;width:100%;position:relative;animation:modalPop .36s cubic-bezier(.4,0,.2,1);max-height:92vh;overflow-y:auto;box-shadow:0 28px 76px rgba(76,0,176,.22)}
 .modal-close{position:absolute;top:14px;right:16px;width:34px;height:34px;border-radius:50%;background:var(--purple-light);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--purple);font-size:1rem;transition:var(--t)}
 .modal-close:hover{background:var(--purple);color:#fff}
-.modal-head{text-align:center;margin-bottom:24px}
-.modal-icon{width:60px;height:60px;margin:0 auto 13px;background:linear-gradient(135deg,var(--purple),var(--purple-mid));border-radius:16px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.6rem;box-shadow:0 10px 28px var(--shadow)}
-.modal-head h3{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--purple-deep);margin-bottom:4px}
-.modal-head p{font-size:.82rem;color:var(--text-light)}
-.modal-tabs{display:flex;gap:7px;margin-bottom:18px}
-.modal-tab{flex:1;padding:10px;border-radius:10px;background:var(--cream);border:1.5px solid var(--border);font-size:.8rem;font-weight:600;cursor:pointer;color:var(--text);transition:var(--t);font-family:'Poppins',sans-serif;white-space:nowrap}
-.modal-tab.active,.modal-tab:hover{background:var(--purple);color:#fff;border-color:var(--purple)}
-.modal-section{display:none}
-.modal-section.active{display:block}
-
-/* ── AUTH MODAL ── */
-.auth-modal-box{background:linear-gradient(160deg,#fff 70%,var(--purple-light) 100%);border-radius:26px;padding:38px;max-width:420px;width:100%;position:relative;animation:modalPop .36s cubic-bezier(.4,0,.2,1);max-height:92vh;overflow-y:auto;box-shadow:0 28px 76px rgba(76,0,176,.22)}
 .auth-head{text-align:center;margin-bottom:22px}
-.auth-logo{width:72px;height:auto;margin:0 auto 12px;display:block}
-.auth-head h3{font-family:'Playfair Display',serif;font-size:1.65rem;color:var(--purple-deep);margin-bottom:4px}
+.auth-logo{height:58px;width:auto;margin:0 auto 12px;display:block;object-fit:contain}
+.auth-head h3{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--purple-deep);margin-bottom:4px}
 .auth-head p{font-size:.81rem;color:var(--text-light)}
 .auth-tabs{display:flex;background:var(--purple-light);border-radius:12px;padding:4px;gap:4px;margin-bottom:20px}
 .auth-tab{flex:1;padding:10px;border-radius:9px;background:transparent;border:none;font-size:.85rem;font-weight:600;cursor:pointer;color:var(--purple);transition:var(--t);font-family:'Poppins',sans-serif}
 .auth-tab.active{background:#fff;box-shadow:0 4px 14px rgba(76,0,176,.15);color:var(--purple-deep)}
-.forgot-link{display:block;text-align:right;font-size:.78rem;color:var(--purple);font-weight:600;margin-top:-6px;margin-bottom:14px;cursor:pointer;background:none;border:none;font-family:'Poppins',sans-serif;width:100%}
+.modal-section{display:none}
+.modal-section.active{display:block}
+.forgot-link{display:block;text-align:right;font-size:.78rem;color:var(--purple);font-weight:600;margin-top:-4px;margin-bottom:14px;cursor:pointer;background:none;border:none;font-family:'Poppins',sans-serif;width:100%}
 .forgot-link:hover{text-decoration:underline}
 
 /* ── TOAST ── */
@@ -389,52 +405,52 @@ img{display:block;width:100%;object-fit:cover}
 .toast.error{background:linear-gradient(135deg,#c0392b,#e74c3c)}
 .toast.error i{color:#fff}
 
-/* ── BACK TO TOP ── */
+/* ── BTT + LANG ── */
 .btt{position:fixed;bottom:22px;left:22px;z-index:900;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--purple-mid));color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;box-shadow:0 8px 24px var(--shadow);opacity:0;transform:translateY(12px);transition:var(--t);pointer-events:none}
 .btt.show{opacity:1;transform:translateY(0);pointer-events:all}
 .btt:hover{background:var(--gold);color:var(--purple-deep);transform:translateY(-3px)}
-
-/* ── LANGUAGE SWITCHER ── */
-.lang-switcher{position:fixed;bottom:22px;right:22px;z-index:9000;display:flex;align-items:center;background:rgba(255,255,255,.96);border-radius:50px;box-shadow:0 6px 28px rgba(0,0,0,.16);border:1.5px solid var(--border);overflow:hidden;backdrop-filter:blur(10px)}
+.lang-switcher{position:fixed;bottom:22px;right:22px;z-index:9000;display:flex;align-items:center;background:rgba(255,255,255,.96);border-radius:50px;box-shadow:0 6px 28px rgba(0,0,0,.16);border:1.5px solid var(--border);overflow:hidden}
 .lang-btn{padding:9px 15px;font-size:.8rem;font-weight:700;cursor:pointer;border:none;background:transparent;color:var(--text);transition:var(--t);display:flex;align-items:center;gap:5px;font-family:'Poppins',sans-serif;white-space:nowrap;min-height:38px}
 .lang-btn.active{background:linear-gradient(135deg,var(--purple),var(--purple-mid));color:#fff}
 .lang-btn:not(.active):hover{background:var(--purple-light)}
 
-/* ── RESPONSIVE ── */
+/* ══════════════ RESPONSIVE ══════════════ */
 @media(max-width:1024px){
-  #navbar{padding:13px 20px}
-  #navbar.scrolled{padding:10px 20px}
-  .about-grid,.res-grid,.contact-grid{grid-template-columns:1fr}
-  .about-visual{display:none}
+  #navbar{padding:12px 18px}
+  #navbar.scrolled{padding:9px 18px}
+  .about-grid{grid-template-columns:1fr}
+  .about-mosaic{grid-template-rows:200px 200px}
   .specials-grid{grid-template-columns:1fr 1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
   .gallery-grid{grid-template-columns:1fr 1fr}
   .g1,.g4,.g7,.g8{grid-column:auto;grid-row:auto;height:210px}
   .g2,.g3,.g5,.g6{height:210px}
   .order-cards{grid-template-columns:1fr 1fr}
-  .o-card:last-child{grid-column:1/-1;max-width:340px;margin:0 auto;width:100%}
+  .o-card:last-child{grid-column:1/-1;max-width:360px;margin:0 auto;width:100%}
   .chefs-grid{grid-template-columns:1fr 1fr}
   .why-grid{grid-template-columns:1fr 1fr}
+  .contact-top-grid{grid-template-columns:1fr}
+  .res-grid{grid-template-columns:1fr}
 }
 @media(max-width:768px){
-  .section{padding:58px 0}
-  .nav-links,.nav-btns{display:none!important}
-  .nav-user{display:none!important}
+  .section{padding:56px 0}
+  .nav-links,.nav-right{display:none!important}
   .hamburger{display:flex!important}
-  #navbar{padding:12px 16px}
-  #navbar.scrolled{padding:9px 16px}
-  .hero-logo-img{width:min(220px,55vw)}
-  .hero-btns{gap:10px}
-  .hero-btns .btn{font-size:.84rem;padding:12px 22px}
+  #navbar{grid-template-columns:auto 1fr auto;padding:10px 16px;gap:10px}
+  #navbar.scrolled{padding:8px 16px}
+  .hero-logo-img{width:min(180px,48vw)}
+  .hero-btns{flex-direction:column;align-items:center}
+  .hero-btns .btn{width:100%;max-width:260px}
   .hero-arrow{display:none}
-  .menu-tabs{gap:6px;padding:0 4px}
-  .tab-btn{padding:9px 14px;font-size:.78rem;min-height:40px}
+  .menu-tabs{gap:5px}
+  .tab-btn{padding:8px 12px;font-size:.78rem;min-height:40px}
   .menu-grid{grid-template-columns:1fr!important}
-  .t-grid,.chefs-grid,.why-grid{grid-template-columns:1fr}
+  .chefs-grid,.why-grid{grid-template-columns:1fr}
   .order-cards{grid-template-columns:1fr}
   .o-card:last-child{grid-column:auto;max-width:100%}
   .specials-grid{grid-template-columns:1fr 1fr}
-  .res-form-card{padding:24px 16px}
+  .res-grid{grid-template-columns:1fr}
+  .res-form-card{padding:20px 14px}
   .form-row{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column;text-align:center}
@@ -442,33 +458,43 @@ img{display:block;width:100%;object-fit:cover}
   .nl-inner{flex-direction:column;text-align:center}
   .nl-form{max-width:100%;width:100%}
   .map-wrap{height:260px}
-  .modal-box,.auth-modal-box{padding:24px 16px}
+  .auth-modal-box{padding:24px 16px}
+  .res-confirm-box  {padding:30px 18px}
+  .contact-top-grid{grid-template-columns:1fr;gap:24px}
+  .about-mosaic{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:180px 180px;gap:8px}
+  .am-big{grid-column:1/2;grid-row:1/3}
   .lang-switcher{bottom:14px;right:14px}
   .btt{bottom:14px;left:14px}
   .toast{bottom:68px;right:14px;left:14px;max-width:none}
-  .contact-grid{grid-template-columns:1fr}
+  .swiper-button-prev{left:calc(50% - 50px)!important}
+  .swiper-button-next{left:calc(50% + 8px)!important}
 }
 @media(max-width:480px){
   .container{padding:0 14px}
-  .hero-logo-img{width:min(180px,50vw)}
-  .menu-grid{grid-template-columns:1fr!important}
-  .menu-tabs{gap:5px}
-  .tab-btn{padding:8px 12px;font-size:.75rem}
+  .hero-logo-img{width:min(155px,44vw)}
+  .hero-restaurant-label{font-size:.7rem;letter-spacing:3px}
+  .hero-title{font-size:clamp(1.7rem,8vw,2.6rem)}
+  .hero-btns .btn{font-size:.82rem;padding:11px 20px}
+  .menu-tabs{gap:4px}
+  .tab-btn{padding:7px 10px;font-size:.74rem}
   .gallery-grid{grid-template-columns:1fr}
-  .g1,.g2,.g3,.g4,.g5,.g6,.g7,.g8{height:195px;grid-column:auto!important;grid-row:auto!important}
+  .g1,.g2,.g3,.g4,.g5,.g6,.g7,.g8{height:185px;grid-column:auto!important;grid-row:auto!important}
   .specials-grid{grid-template-columns:1fr}
   .about-feats{grid-template-columns:1fr}
-  .about-stats-row{grid-template-columns:1fr 1fr}
+  .about-mosaic{grid-template-columns:1fr;grid-template-rows:200px 140px 140px}
+  .am-big{grid-column:1/2;grid-row:1/2}
+  .am-s1{grid-column:1/2;grid-row:2/3}
+  .am-s2{grid-column:1/2;grid-row:3/4}
   .nl-form{flex-direction:column}
   .map-btns{flex-direction:column}
   .why-grid{grid-template-columns:1fr}
-  .hero-btns{flex-direction:column;align-items:center}
-  .hero-btns .btn{width:100%;max-width:280px}
-  .time-cols{grid-template-columns:1fr 1fr 1fr}
+  .about-awards{flex-direction:column}
+  .res-confirm-box{padding:26px 14px}
 }
 @media(max-width:360px){
-  .tab-btn{padding:7px 10px;font-size:.72rem}
-  .hero-logo-img{width:150px}
+  .tab-btn{padding:6px 8px;font-size:.7rem}
+  .hero-logo-img{width:135px}
+  .drawer-nav a{font-size:.86rem;padding:11px 16px}
 }
 </style>
 </head>
@@ -477,7 +503,7 @@ img{display:block;width:100%;object-fit:cover}
 <!-- ═══════════════════ NAVBAR ═══════════════════ -->
 <nav id="navbar">
   <a href="#home" class="nav-logo">
-    <img src="https://i.ibb.co/8nxGJQkF/Chat-GPT-Image-Apr-7-2025-04-54-16-PM.png" alt="Mughal Indian Cuisine Logo"/>
+    <img src="https://davidbantu1999.github.io/mughal-restaurant/logo.png" alt="Mughal Indian Cuisine"/>
   </a>
   <ul class="nav-links">
     <li><a href="#home" data-en="Home" data-fi="Etusivu">Home</a></li>
@@ -487,39 +513,51 @@ img{display:block;width:100%;object-fit:cover}
     <li><a href="#chefs" data-en="Our Chefs" data-fi="Kokkimme">Our Chefs</a></li>
     <li><a href="#contact" data-en="Contact" data-fi="Yhteystiedot">Contact</a></li>
   </ul>
-  <div class="nav-btns" id="navBtns">
-    <button class="btn btn-outline-white btn-sm" onclick="openAuthModal('login')"><i class="fas fa-user"></i> <span data-en="Login" data-fi="Kirjaudu">Login</span></button>
-    <button class="btn btn-gold btn-sm" onclick="openAuthModal('signup')"><i class="fas fa-user-plus"></i> <span data-en="Sign Up" data-fi="Rekisteröidy">Sign Up</span></button>
-  </div>
-  <div class="nav-user" id="navUser">
-    <i class="fas fa-user-circle" style="color:var(--gold);font-size:1.2rem;flex-shrink:0"></i>
-    <span id="navUserEmail"></span>
-    <button class="btn btn-outline-white btn-sm" onclick="logoutUser()"><i class="fas fa-sign-out-alt"></i> <span data-en="Logout" data-fi="Kirjaudu ulos">Logout</span></button>
+  <div class="nav-right" id="navRight">
+    <div class="nav-user" id="navUser">
+      <i class="fas fa-user-circle" style="color:var(--gold);font-size:1.2rem;flex-shrink:0"></i>
+      <span id="navUserEmail"></span>
+      <button class="btn btn-outline-white btn-sm" onclick="logoutUser()"><i class="fas fa-sign-out-alt"></i> <span data-en="Logout" data-fi="Kirjaudu ulos">Logout</span></button>
+    </div>
+    <div id="navBtns" style="display:flex;gap:8px">
+      <button class="btn btn-outline-white btn-sm" onclick="openAuthModal('login')"><i class="fas fa-user"></i> <span data-en="Login" data-fi="Kirjaudu">Login</span></button>
+      <button class="btn btn-gold btn-sm" onclick="openAuthModal('signup')"><i class="fas fa-user-plus"></i> <span data-en="Sign Up" data-fi="Rekisteröidy">Sign Up</span></button>
+    </div>
   </div>
   <button class="hamburger" id="hamburger" aria-label="Open menu"><i class="fas fa-bars"></i></button>
 </nav>
 
-<!-- DRAWER -->
+<!-- ═══════════════════ DRAWER (slides from right) ═══════════════════ -->
 <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
 <div class="nav-drawer" id="navDrawer">
-  <button class="drawer-close" onclick="closeDrawer()"><i class="fas fa-times"></i></button>
-  <a href="#home" onclick="closeDrawer()"><i class="fas fa-home"></i><span data-en="Home" data-fi="Etusivu">Home</span></a>
-  <a href="#about" onclick="closeDrawer()"><i class="fas fa-info-circle"></i><span data-en="About" data-fi="Tietoa">About</span></a>
-  <a href="#menu" onclick="closeDrawer()"><i class="fas fa-utensils"></i><span data-en="Menu" data-fi="Ruokalista">Menu</span></a>
-  <a href="#gallery" onclick="closeDrawer()"><i class="fas fa-images"></i><span data-en="Gallery" data-fi="Galleria">Gallery</span></a>
-  <a href="#chefs" onclick="closeDrawer()"><i class="fas fa-user-tie"></i><span data-en="Our Chefs" data-fi="Kokkimme">Our Chefs</span></a>
-  <a href="#contact" onclick="closeDrawer()"><i class="fas fa-map-marker-alt"></i><span data-en="Contact" data-fi="Yhteystiedot">Contact</span></a>
-  <a href="#reservation" onclick="closeDrawer()"><i class="fas fa-calendar-alt"></i><span data-en="Reservations" data-fi="Varaukset">Reservations</span></a>
-  <div class="drawer-auth" id="drawerAuth">
-    <button class="btn btn-outline-white btn-sm" style="flex:1" onclick="closeDrawer();openAuthModal('login')"><i class="fas fa-user"></i> <span data-en="Login" data-fi="Kirjaudu">Login</span></button>
-    <button class="btn btn-gold btn-sm" style="flex:1" onclick="closeDrawer();openAuthModal('signup')"><i class="fas fa-user-plus"></i> <span data-en="Sign Up" data-fi="Rekisteröidy">Sign Up</span></button>
+  <div class="drawer-header">
+    <img src="https://davidbantu1999.github.io/mughal-restaurant/logo.png" alt="Mughal"/>
+    <button class="drawer-close" onclick="closeDrawer()"><i class="fas fa-times"></i></button>
   </div>
-  <div class="drawer-user" id="drawerUser">
-    <p><i class="fas fa-user-circle" style="color:var(--gold)"></i><span id="drawerUserEmail"></span></p>
-    <button class="btn btn-outline-white btn-sm" style="width:100%" onclick="closeDrawer();logoutUser()"><i class="fas fa-sign-out-alt"></i> <span data-en="Logout" data-fi="Kirjaudu ulos">Logout</span></button>
+  <div class="drawer-nav">
+    <a href="#home" onclick="scrollToSection(event,'#home')"><i class="fas fa-home"></i><span data-en="Home" data-fi="Etusivu">Home</span></a>
+    <a href="#about" onclick="scrollToSection(event,'#about')"><i class="fas fa-info-circle"></i><span data-en="About" data-fi="Tietoa">About</span></a>
+    <a href="#menu" onclick="scrollToSection(event,'#menu')"><i class="fas fa-utensils"></i><span data-en="Menu" data-fi="Ruokalista">Menu</span></a>
+    <a href="#gallery" onclick="scrollToSection(event,'#gallery')"><i class="fas fa-images"></i><span data-en="Gallery" data-fi="Galleria">Gallery</span></a>
+    <a href="#chefs" onclick="scrollToSection(event,'#chefs')"><i class="fas fa-user-tie"></i><span data-en="Our Chefs" data-fi="Kokkimme">Our Chefs</span></a>
+    <a href="#reservation" onclick="scrollToSection(event,'#reservation')"><i class="fas fa-calendar-alt"></i><span data-en="Reservations" data-fi="Varaukset">Reservations</span></a>
+    <a href="#contact" onclick="scrollToSection(event,'#contact')"><i class="fas fa-map-marker-alt"></i><span data-en="Contact" data-fi="Yhteystiedot">Contact</span></a>
   </div>
-  <div class="drawer-ctas">
-    <a href="#reservation" class="btn btn-gold" onclick="closeDrawer()"><i class="fas fa-calendar-alt"></i> <span data-en="Reserve a Table" data-fi="Varaa pöytä">Reserve a Table</span></a>
+  <div class="drawer-bottom">
+    <div class="drawer-user-info" id="drawerUserInfo">
+      <p><i class="fas fa-user-circle"></i><span id="drawerUserEmail"></span></p>
+    </div>
+    <div id="drawerAuthBtns" class="drawer-auth-btns">
+      <button class="btn btn-outline-white btn-sm" onclick="closeDrawer();openAuthModal('login')"><i class="fas fa-user"></i> <span data-en="Login" data-fi="Kirjaudu">Login</span></button>
+      <button class="btn btn-gold btn-sm" onclick="closeDrawer();openAuthModal('signup')"><i class="fas fa-user-plus"></i> <span data-en="Sign Up" data-fi="Rekisteröidy">Sign Up</span></button>
+    </div>
+    <div id="drawerLogoutBtn" style="display:none">
+      <button class="btn btn-outline-white" style="width:100%;font-size:.82rem;padding:10px 16px" onclick="closeDrawer();logoutUser()"><i class="fas fa-sign-out-alt"></i> <span data-en="Logout" data-fi="Kirjaudu ulos">Logout</span></button>
+    </div>
+    <div class="drawer-cta-btns">
+      <a href="ordernow.html" class="btn btn-gold" onclick="closeDrawer()"><i class="fas fa-motorcycle"></i> <span data-en="Order Now" data-fi="Tilaa nyt">Order Now</span></a>
+      <a href="#reservation" class="btn btn-outline-white" onclick="scrollToSection(event,'#reservation')"><i class="fas fa-calendar-alt"></i> <span data-en="Table Reservation" data-fi="Pöytävaraus">Table Reservation</span></a>
+    </div>
   </div>
 </div>
 
@@ -533,16 +571,17 @@ img{display:block;width:100%;object-fit:cover}
   <div class="hero-overlay"></div>
   <button class="hero-arrow left" onclick="changeSlide(-1)" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
   <div class="hero-content">
-    <img src="https://i.ibb.co/8nxGJQkF/Chat-GPT-Image-Apr-7-2025-04-54-16-PM.png" alt="Mughal Indian Cuisine" class="hero-logo-img"/>
-    <h1 data-en="Royal Indian Cuisine" data-fi="Kuninkaallinen Intialainen Keittiö"><span data-en="Royal Indian" data-fi="Kuninkaallinen">Royal Indian</span><br/>Cuisine</h1>
-    <p class="hero-sub" data-en="Experience the grandeur of Mughal-era cooking — hand-crafted with centuries-old recipes, premium spices &amp; passionate artistry in Helsinki." data-fi="Koe Mughal-aikakauden ruoanlaiton loisto — käsityönä valmistettu satoja vuosia vanhoilla resepteillä, premium-mausteilla ja intohimoisella taiteella Helsingissä.">Experience the grandeur of Mughal-era cooking — hand-crafted with centuries-old recipes, premium spices &amp; passionate artistry in Helsinki.</p>
+    <img src="https://davidbantu1999.github.io/mughal-restaurant/logo.png" alt="Mughal Indian Cuisine" class="hero-logo-img"/>
+    <p class="hero-restaurant-label" data-en="Ravintola" data-fi="Ravintola">Ravintola</p>
+    <h1 class="hero-title"><span class="gold" data-en="Mughal Indian Cuisine" data-fi="Mughal Intialainen Keittiö">Mughal Indian Cuisine</span></h1>
+    <p class="hero-sub" data-en="Experience the grandeur of Mughal-era cooking — hand-crafted with centuries-old recipes, premium spices &amp; passionate artistry in Helsinki." data-fi="Koe Mughal-aikakauden ruoanlaiton loisto — käsityönä valmistettu satoja vuosia vanhoilla resepteillä Helsingissä.">Experience the grandeur of Mughal-era cooking — hand-crafted with centuries-old recipes, premium spices &amp; passionate artistry in Helsinki.</p>
     <div class="hero-btns">
-      <button class="btn btn-outline-white" onclick="openAuthModal('login')"><i class="fas fa-user"></i> <span data-en="Login" data-fi="Kirjaudu">Login</span></button>
-      <button class="btn btn-gold" onclick="openAuthModal('signup')"><i class="fas fa-user-plus"></i> <span data-en="Sign Up" data-fi="Rekisteröidy">Sign Up</span></button>
+      <a href="ordernow.html" class="btn btn-gold"><i class="fas fa-motorcycle"></i> <span data-en="Order Now" data-fi="Tilaa nyt">Order Now</span></a>
+      <a href="#reservation" class="btn btn-outline-white" onclick="scrollToSection(event,'#reservation')"><i class="fas fa-calendar-alt"></i> <span data-en="Table Reservation" data-fi="Pöytävaraus">Table Reservation</span></a>
     </div>
   </div>
   <button class="hero-arrow right" onclick="changeSlide(1)" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
-  <div class="hero-dots" id="heroDots">
+  <div class="hero-dots">
     <button class="hero-dot active" onclick="goToSlide(0)"></button>
     <button class="hero-dot" onclick="goToSlide(1)"></button>
     <button class="hero-dot" onclick="goToSlide(2)"></button>
@@ -553,20 +592,25 @@ img{display:block;width:100%;object-fit:cover}
 <div class="ticker">
   <div class="ticker-track">
     <span class="ticker-item"><i class="fas fa-award"></i><span data-en="Award-Winning Cuisine" data-fi="Palkittu keittiö">Award-Winning Cuisine</span></span><span class="ticker-dot">✦</span>
+    <span class="ticker-item ticker-coupon"><i class="fas fa-tag"></i><span data-en="🎉 1st Order? Use code MUGHAL20 for 20% OFF!" data-fi="🎉 1. tilaus? Käytä koodia MUGHAL20 ja saat 20% alennuksen!">🎉 1st Order? Use code MUGHAL20 for 20% OFF!</span></span><span class="ticker-dot">✦</span>
     <span class="ticker-item"><i class="fas fa-pepper-hot"></i><span data-en="Authentic Royal Spices" data-fi="Aidot kuninkaelliset mausteet">Authentic Royal Spices</span></span><span class="ticker-dot">✦</span>
     <span class="ticker-item"><i class="fas fa-truck"></i><span data-en="Fast Delivery in Helsinki" data-fi="Nopea toimitus Helsingissä">Fast Delivery in Helsinki</span></span><span class="ticker-dot">✦</span>
+    <span class="ticker-item ticker-coupon"><i class="fas fa-tag"></i><span data-en="🎉 1st Order? Use code MUGHAL20 for 20% OFF!" data-fi="🎉 1. tilaus? Käytä koodia MUGHAL20 ja saat 20% alennuksen!">🎉 1st Order? Use code MUGHAL20 for 20% OFF!</span></span><span class="ticker-dot">✦</span>
     <span class="ticker-item"><i class="fas fa-star"></i><span data-en="Rated 4.9/5 on Google" data-fi="Arvosana 4.9/5 Googlessa">Rated 4.9/5 on Google</span></span><span class="ticker-dot">✦</span>
     <span class="ticker-item"><i class="fas fa-fire"></i><span data-en="Fresh Cooked to Order" data-fi="Valmistettu tilauksesta">Fresh Cooked to Order</span></span><span class="ticker-dot">✦</span>
+    <span class="ticker-item ticker-coupon"><i class="fas fa-tag"></i><span data-en="🎉 1st Order? Use code MUGHAL20 for 20% OFF!" data-fi="🎉 1. tilaus? Käytä koodia MUGHAL20 ja saat 20% alennuksen!">🎉 1st Order? Use code MUGHAL20 for 20% OFF!</span></span><span class="ticker-dot">✦</span>
     <span class="ticker-item"><i class="fas fa-calendar-check"></i><span data-en="Easy Table Reservations" data-fi="Helppo pöytävaraus">Easy Table Reservations</span></span><span class="ticker-dot">✦</span>
-    <span class="ticker-item"><i class="fas fa-wine-glass-alt"></i><span data-en="Fine Dining Experience" data-fi="Hieno ruokailukokemus">Fine Dining Experience</span></span><span class="ticker-dot">✦</span>
     <span class="ticker-item"><i class="fas fa-leaf"></i><span data-en="Vegan &amp; Vegetarian Options" data-fi="Vegaani- ja kasvisvaihtoehtoja">Vegan &amp; Vegetarian Options</span></span><span class="ticker-dot">✦</span>
+    <!-- duplicate for seamless loop -->
     <span class="ticker-item"><i class="fas fa-award"></i><span data-en="Award-Winning Cuisine" data-fi="Palkittu keittiö">Award-Winning Cuisine</span></span><span class="ticker-dot">✦</span>
+    <span class="ticker-item ticker-coupon"><i class="fas fa-tag"></i><span data-en="🎉 1st Order? Use code MUGHAL20 for 20% OFF!" data-fi="🎉 1. tilaus? Käytä koodia MUGHAL20 ja saat 20% alennuksen!">🎉 1st Order? Use code MUGHAL20 for 20% OFF!</span></span><span class="ticker-dot">✦</span>
     <span class="ticker-item"><i class="fas fa-pepper-hot"></i><span data-en="Authentic Royal Spices" data-fi="Aidot kuninkaelliset mausteet">Authentic Royal Spices</span></span><span class="ticker-dot">✦</span>
     <span class="ticker-item"><i class="fas fa-truck"></i><span data-en="Fast Delivery in Helsinki" data-fi="Nopea toimitus Helsingissä">Fast Delivery in Helsinki</span></span><span class="ticker-dot">✦</span>
+    <span class="ticker-item ticker-coupon"><i class="fas fa-tag"></i><span data-en="🎉 1st Order? Use code MUGHAL20 for 20% OFF!" data-fi="🎉 1. tilaus? Käytä koodia MUGHAL20 ja saat 20% alennuksen!">🎉 1st Order? Use code MUGHAL20 for 20% OFF!</span></span><span class="ticker-dot">✦</span>
     <span class="ticker-item"><i class="fas fa-star"></i><span data-en="Rated 4.9/5 on Google" data-fi="Arvosana 4.9/5 Googlessa">Rated 4.9/5 on Google</span></span><span class="ticker-dot">✦</span>
     <span class="ticker-item"><i class="fas fa-fire"></i><span data-en="Fresh Cooked to Order" data-fi="Valmistettu tilauksesta">Fresh Cooked to Order</span></span><span class="ticker-dot">✦</span>
+    <span class="ticker-item ticker-coupon"><i class="fas fa-tag"></i><span data-en="🎉 1st Order? Use code MUGHAL20 for 20% OFF!" data-fi="🎉 1. tilaus? Käytä koodia MUGHAL20 ja saat 20% alennuksen!">🎉 1st Order? Use code MUGHAL20 for 20% OFF!</span></span><span class="ticker-dot">✦</span>
     <span class="ticker-item"><i class="fas fa-calendar-check"></i><span data-en="Easy Table Reservations" data-fi="Helppo pöytävaraus">Easy Table Reservations</span></span><span class="ticker-dot">✦</span>
-    <span class="ticker-item"><i class="fas fa-wine-glass-alt"></i><span data-en="Fine Dining Experience" data-fi="Hieno ruokailukokemus">Fine Dining Experience</span></span><span class="ticker-dot">✦</span>
     <span class="ticker-item"><i class="fas fa-leaf"></i><span data-en="Vegan &amp; Vegetarian Options" data-fi="Vegaani- ja kasvisvaihtoehtoja">Vegan &amp; Vegetarian Options</span></span><span class="ticker-dot">✦</span>
   </div>
 </div>
@@ -575,33 +619,36 @@ img{display:block;width:100%;object-fit:cover}
 <section id="about" class="about section">
   <div class="container about-grid">
     <div class="about-visual reveal left">
-      <div class="about-imgs">
-        <div class="ai ai-big"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=700&q=85" alt="Restaurant interior" loading="lazy"/></div>
-        <div class="ai ai-sm1"><img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400&q=80" alt="Indian food" loading="lazy"/></div>
-        <div class="ai ai-sm2"><img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400&q=80" alt="Chef at work" loading="lazy"/></div>
-      </div>
-      <div class="about-badge-wrap">
-        <span data-en="Established" data-fi="Perustettu">Established</span>
-        <strong>1998</strong>
+      <div class="about-mosaic">
+        <div class="am-item am-big">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=700&q=85" alt="Restaurant interior" loading="lazy"/>
+        </div>
+        <div class="am-item am-s1">
+          <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500&q=80" alt="Indian food" loading="lazy"/>
+        </div>
+        <div class="am-item am-s2">
+          <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=500&q=80" alt="Chef at work" loading="lazy"/>
+        </div>
       </div>
     </div>
     <div class="about-text reveal right">
       <span class="sec-label purple" data-en="Our Heritage" data-fi="Perintömme">Our Heritage</span>
       <h2 class="sec-title dark" data-en="A Legacy of Royal Mughal Flavours" data-fi="Kuninkaallisten Mughal-makujen perintö">A Legacy of Royal<br/>Mughal Flavours</h2>
-      <p data-en="Founded in 1998, Mughal Indian Restaurant has been crafting the finest royal Indian cuisine in the heart of Helsinki for over 25 years. Inspired by the magnificent Mughal Empire, every dish is a tribute to history, spice and culture." data-fi="Vuonna 1998 perustettu Mughal Indian Restaurant on valmistanut hienointa kuninkaallista intialaista ruokaa Helsingin sydämessä yli 25 vuoden ajan.">Founded in 1998, Mughal Indian Restaurant has been crafting the finest royal Indian cuisine in the heart of Helsinki for over 25 years. Inspired by the magnificent Mughal Empire, every dish is a tribute to history, spice and culture.</p>
-      <p data-en="Our master chefs bring generations of culinary wisdom — from the smoky tandoors of the Punjab to the fragrant biryanis of Hyderabad — all under one royal roof in Helsinki, Finland." data-fi="Mestarikokkimme tuovat mukanaan sukupolvien kulinaarisen viisauden — Punjabín savuisista tandooreista Hyderabadin tuoksuviin biryaneihin — kaikki yhden kuninkaallisen katon alla Helsingissä, Suomessa.">Our master chefs bring generations of culinary wisdom — from the smoky tandoors of the Punjab to the fragrant biryanis of Hyderabad — all under one royal roof in Helsinki, Finland.</p>
+      <p data-en="Founded in Helsinki, Mughal Indian Restaurant has been crafting the finest royal Indian cuisine for over 25 years. Every dish is inspired by the magnificent Mughal Empire — a tribute to history, spice and culture." data-fi="Mughal Indian Restaurant on valmistanut hienointa kuninkaallista intialaista ruokaa yli 25 vuoden ajan. Jokainen ruoka on saanut inspiraationsa Mughal-imperiumista.">Founded in Helsinki, Mughal Indian Restaurant has been crafting the finest royal Indian cuisine for over 25 years. Every dish is inspired by the magnificent Mughal Empire — a tribute to history, spice and culture.</p>
+      <p data-en="Our master chefs bring generations of culinary wisdom — from the smoky tandoors of the Punjab to the fragrant biryanis of Hyderabad — all under one royal roof in the heart of Helsinki." data-fi="Mestarikokkimme tuovat sukupolvien kulinaarisen viisauden — Punjabín savuisista tandooreista Hyderabadin tuoksuviin biryaneihin.">Our master chefs bring generations of culinary wisdom — from the smoky tandoors of the Punjab to the fragrant biryanis of Hyderabad — all under one royal roof in the heart of Helsinki.</p>
       <div class="about-feats">
-        <div class="af"><div class="af-icon"><i class="fas fa-fire-alt"></i></div><div><strong data-en="Live Tandoor Kitchen" data-fi="Elävä tandoor-keittiö">Live Tandoor Kitchen</strong><span data-en="Open clay oven cooking" data-fi="Avoin saviuunikeitto">Open clay oven cooking</span></div></div>
-        <div class="af"><div class="af-icon"><i class="fas fa-leaf"></i></div><div><strong data-en="Fresh Ingredients" data-fi="Tuoreet ainekset">Fresh Ingredients</strong><span data-en="Sourced daily &amp; locally" data-fi="Hankittu päivittäin">Sourced daily &amp; locally</span></div></div>
-        <div class="af"><div class="af-icon"><i class="fas fa-user-tie"></i></div><div><strong data-en="Master Chefs" data-fi="Mestarikokkit">Master Chefs</strong><span data-en="25+ years experience" data-fi="25+ vuoden kokemus">25+ years experience</span></div></div>
+        <div class="af"><div class="af-icon"><i class="fas fa-fire-alt"></i></div><div><strong data-en="Live Tandoor Kitchen" data-fi="Elävä tandoor-keittiö">Live Tandoor Kitchen</strong><span data-en="Open clay oven cooking" data-fi="Avoin saviuunikeittiö">Open clay oven cooking</span></div></div>
+        <div class="af"><div class="af-icon"><i class="fas fa-leaf"></i></div><div><strong data-en="Fresh Daily Ingredients" data-fi="Tuoreet päivittäiset ainekset">Fresh Daily Ingredients</strong><span data-en="Locally sourced every morning" data-fi="Paikallisesti hankittuna joka aamu">Locally sourced every morning</span></div></div>
+        <div class="af"><div class="af-icon"><i class="fas fa-user-tie"></i></div><div><strong data-en="Master Chefs" data-fi="Mestarikokkit">Master Chefs</strong><span data-en="25+ years of experience" data-fi="25+ vuoden kokemus">25+ years of experience</span></div></div>
         <div class="af"><div class="af-icon"><i class="fas fa-certificate"></i></div><div><strong data-en="Award Winning" data-fi="Palkittu">Award Winning</strong><span data-en="Best Indian Restaurant 2024" data-fi="Paras intialainen 2024">Best Indian Restaurant 2024</span></div></div>
       </div>
-      <div class="about-stats-row">
-        <div class="ast"><strong>25+</strong><span data-en="Years" data-fi="Vuotta">Years</span></div>
-        <div class="ast"><strong>80+</strong><span data-en="Dishes" data-fi="Ruokaa">Dishes</span></div>
-        <div class="ast"><strong>15K+</strong><span data-en="Guests" data-fi="Vierasta">Guests</span></div>
+      <div class="about-awards">
+        <div class="award-pill"><i class="fas fa-trophy"></i><span>🏆 Best Indian — Helsinki 2024</span></div>
+        <div class="award-pill"><i class="fas fa-star"></i><span>⭐ 4.9 / 5 Google Rating</span></div>
+        <div class="award-pill"><i class="fas fa-leaf"></i><span>🌿 Halal Certified Kitchen</span></div>
+        <div class="award-pill"><i class="fas fa-heart"></i><span>❤️ 15,000+ Happy Guests</span></div>
       </div>
-      <a href="#menu" class="btn btn-primary"><i class="fas fa-utensils"></i> <span data-en="Explore Our Menu" data-fi="Tutustu ruokalistaan">Explore Our Menu</span></a>
+      <a href="fullmenu.html" class="btn btn-primary"><i class="fas fa-utensils"></i> <span data-en="Explore Our Menu" data-fi="Tutustu ruokalistaan">Explore Our Menu</span></a>
     </div>
   </div>
 </section>
@@ -615,8 +662,8 @@ img{display:block;width:100%;object-fit:cover}
     </div>
     <div class="specials-grid">
       <div class="spec-card reveal scale"><div class="spec-icon"><i class="fas fa-fire-alt"></i></div><h3 data-en="Live Tandoor" data-fi="Elävä tandoor">Live Tandoor</h3><p data-en="Watch our chefs craft bread and kebabs live in our traditional clay tandoor oven." data-fi="Katso kokkiemme valmistavan leipää ja kebabeja savitandoorissa silmiesi edessä.">Watch our chefs craft bread and kebabs live in our traditional clay tandoor oven.</p></div>
-      <div class="spec-card reveal scale" style="transition-delay:.1s"><div class="spec-icon"><i class="fas fa-pepper-hot"></i></div><h3 data-en="Royal Spice Blends" data-fi="Kuninkaelliset mausteet">Royal Spice Blends</h3><p data-en="Every dish uses hand-ground spice blends passed down through generations of Mughal culinary tradition." data-fi="Jokainen ruoka käyttää käsin jauhettuja maustesekoituksia sukupolvien perinteestä.">Every dish uses hand-ground spice blends passed down through generations of Mughal culinary tradition.</p></div>
-      <div class="spec-card reveal scale" style="transition-delay:.2s"><div class="spec-icon"><i class="fas fa-wine-glass-alt"></i></div><h3 data-en="Fine Dining Ambiance" data-fi="Hieno ilmapiiri">Fine Dining Ambiance</h3><p data-en="Elegant interiors inspired by Mughal architecture with candlelit tables perfect for every occasion." data-fi="Tyylikkäät sisätilat Mughal-arkkitehtuurin inspiroimana kynttilänvalolla.">Elegant interiors inspired by Mughal architecture with candlelit tables perfect for every occasion.</p></div>
+      <div class="spec-card reveal scale" style="transition-delay:.1s"><div class="spec-icon"><i class="fas fa-pepper-hot"></i></div><h3 data-en="Royal Spice Blends" data-fi="Kuninkaelliset mausteet">Royal Spice Blends</h3><p data-en="Every dish uses hand-ground spice blends passed down through generations of Mughal tradition." data-fi="Jokainen ruoka käyttää käsin jauhettuja maustesekoituksia sukupolvien perinteestä.">Every dish uses hand-ground spice blends passed down through generations of Mughal tradition.</p></div>
+      <div class="spec-card reveal scale" style="transition-delay:.2s"><div class="spec-icon"><i class="fas fa-wine-glass-alt"></i></div><h3 data-en="Fine Dining Ambiance" data-fi="Hieno ilmapiiri">Fine Dining Ambiance</h3><p data-en="Elegant interiors inspired by Mughal architecture with candlelit tables for every occasion." data-fi="Tyylikkäät sisätilat Mughal-arkkitehtuurin inspiroimana kynttilänvalolla.">Elegant interiors inspired by Mughal architecture with candlelit tables for every occasion.</p></div>
       <div class="spec-card reveal scale" style="transition-delay:.3s"><div class="spec-icon"><i class="fas fa-truck"></i></div><h3 data-en="Swift Delivery" data-fi="Nopea toimitus">Swift Delivery</h3><p data-en="Hot, fresh meals delivered to your door within 35–45 minutes across Helsinki." data-fi="Kuumia, tuoreita aterioita ovellesi 35–45 minuutissa Helsingissä.">Hot, fresh meals delivered to your door within 35–45 minutes across Helsinki.</p></div>
     </div>
   </div>
@@ -631,49 +678,44 @@ img{display:block;width:100%;object-fit:cover}
       <p class="sec-sub" style="color:rgba(255,255,255,.55)" data-en="Hand-crafted dishes inspired by Mughal culinary heritage — every bite tells a story." data-fi="Käsityönä valmistettuja ruokia Mughal-perinnön inspiroimana.">Hand-crafted dishes inspired by Mughal culinary heritage — every bite tells a story.</p>
     </div>
     <div class="menu-tabs">
-      <button class="tab-btn active" data-tab="starters" data-en="Starters" data-fi="Alkuruoat">Starters</button>
-      <button class="tab-btn" data-tab="mains" data-en="Mains" data-fi="Pääruoat">Mains</button>
-      <button class="tab-btn" data-tab="breads" data-en="Breads &amp; Rice" data-fi="Leivät &amp; riisi">Breads &amp; Rice</button>
-      <button class="tab-btn" data-tab="desserts" data-en="Desserts" data-fi="Jälkiruoat">Desserts</button>
-      <button class="tab-btn" data-tab="drinks" data-en="Drinks" data-fi="Juomat">Drinks</button>
+      <button class="tab-btn active" data-tab="starters">Starters</button>
+      <button class="tab-btn" data-tab="mains">Mains</button>
+      <button class="tab-btn" data-tab="breads">Breads &amp; Rice</button>
+      <button class="tab-btn" data-tab="desserts">Desserts</button>
+      <button class="tab-btn" data-tab="drinks">Drinks</button>
     </div>
-    <!-- STARTERS -->
     <div class="menu-grid active" id="starters">
-      <div class="m-card reveal scale"><div class="m-img"><img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500&q=80" alt="Samosa" loading="lazy"/><span class="m-spice">🌶 Mild</span></div><div class="m-body"><div class="m-head"><h3 data-en="Vegetable Samosa" data-fi="Kasvissamosa">Vegetable Samosa</h3><span class="m-price">€5.95</span></div><p data-en="Crispy pastry filled with spiced potatoes &amp; peas, served with tamarind &amp; mint chutney." data-fi="Rapea leivonnainen maustettuja perunoita täynnä, tamarindi- ja minttuchutneyn kanssa.">Crispy pastry filled with spiced potatoes &amp; peas, served with tamarind &amp; mint chutney.</p><span class="m-badge veg" data-en="● Vegetarian" data-fi="● Kasvisruoka">● Vegetarian</span></div></div>
-      <div class="m-card reveal scale" style="transition-delay:.08s"><div class="m-img"><img src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=500&q=80" alt="Chicken Tikka" loading="lazy"/><span class="m-spice">🌶🌶 Medium</span></div><div class="m-body"><div class="m-head"><h3 data-en="Chicken Tikka" data-fi="Kanatikka">Chicken Tikka</h3><span class="m-price">€8.95</span></div><p data-en="Tender chicken marinated in yoghurt &amp; spices, char-grilled in our clay tandoor oven." data-fi="Pehmeä kana marinoituna jogurtissa, hiilletty saviuunissamme.">Tender chicken marinated in yoghurt &amp; spices, char-grilled in our clay tandoor oven.</p><span class="m-badge nonveg" data-en="● Non-Veg" data-fi="● Liharuoka">● Non-Veg</span></div></div>
-      <div class="m-card reveal scale" style="transition-delay:.16s"><div class="m-img"><img src="https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=500&q=80" alt="Onion Bhaji" loading="lazy"/><span class="m-spice">🌶 Mild</span></div><div class="m-body"><div class="m-head"><h3 data-en="Onion Bhaji" data-fi="Sipulibhaji">Onion Bhaji</h3><span class="m-price">€4.95</span></div><p data-en="Golden-fried onion fritters seasoned with cumin, coriander &amp; fresh green chilli." data-fi="Kultaiseksi paistetut sipulifritterit jeeralla ja korianterilla.">Golden-fried onion fritters seasoned with cumin, coriander &amp; fresh green chilli.</p><span class="m-badge veg" data-en="● Vegetarian" data-fi="● Kasvisruoka">● Vegetarian</span></div></div>
-      <div class="m-card reveal scale" style="transition-delay:.24s"><div class="m-img"><img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=500&q=80" alt="Seekh Kebab" loading="lazy"/><span class="m-spice">🌶🌶 Medium</span></div><div class="m-body"><div class="m-head"><h3 data-en="Seekh Kebab" data-fi="Seekh-kebab">Seekh Kebab</h3><span class="m-price">€9.50</span></div><p data-en="Minced lamb blended with herbs &amp; spices, skewered and grilled to smoky perfection." data-fi="Jauhettua karitsaa yrttien kanssa, vartaaseen pujotettuna ja savuisesti grillattuna.">Minced lamb blended with herbs &amp; spices, skewered and grilled to smoky perfection.</p><span class="m-badge nonveg" data-en="● Non-Veg" data-fi="● Liharuoka">● Non-Veg</span></div></div>
+      <div class="m-card reveal scale"><div class="m-img"><img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500&q=80" alt="Samosa" loading="lazy"/><span class="m-spice">🌶 Mild</span></div><div class="m-body"><div class="m-head"><h3>Vegetable Samosa</h3><span class="m-price">€5.95</span></div><p>Crispy pastry filled with spiced potatoes &amp; peas, served with tamarind &amp; mint chutney.</p><span class="m-badge veg">● Vegetarian</span></div></div>
+      <div class="m-card reveal scale" style="transition-delay:.08s"><div class="m-img"><img src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=500&q=80" alt="Chicken Tikka" loading="lazy"/><span class="m-spice">🌶🌶 Medium</span></div><div class="m-body"><div class="m-head"><h3>Chicken Tikka</h3><span class="m-price">€8.95</span></div><p>Tender chicken marinated in yoghurt &amp; spices, char-grilled in our clay tandoor oven.</p><span class="m-badge nonveg">● Non-Veg</span></div></div>
+      <div class="m-card reveal scale" style="transition-delay:.16s"><div class="m-img"><img src="https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=500&q=80" alt="Onion Bhaji" loading="lazy"/><span class="m-spice">🌶 Mild</span></div><div class="m-body"><div class="m-head"><h3>Onion Bhaji</h3><span class="m-price">€4.95</span></div><p>Golden-fried onion fritters seasoned with cumin, coriander &amp; fresh green chilli.</p><span class="m-badge veg">● Vegetarian</span></div></div>
+      <div class="m-card reveal scale" style="transition-delay:.24s"><div class="m-img"><img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=500&q=80" alt="Seekh Kebab" loading="lazy"/><span class="m-spice">🌶🌶 Medium</span></div><div class="m-body"><div class="m-head"><h3>Seekh Kebab</h3><span class="m-price">€9.50</span></div><p>Minced lamb blended with herbs &amp; spices, skewered and grilled to smoky perfection.</p><span class="m-badge nonveg">● Non-Veg</span></div></div>
     </div>
-    <!-- MAINS -->
     <div class="menu-grid" id="mains">
-      <div class="m-card reveal scale"><div class="m-img"><img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=500&q=80" alt="Butter Chicken" loading="lazy"/><span class="m-spice">🌶 Mild</span></div><div class="m-body"><div class="m-head"><h3 data-en="Butter Chicken" data-fi="Voikana">Butter Chicken</h3><span class="m-price">€14.95</span></div><p data-en="Succulent chicken in a rich, creamy tomato-butter sauce infused with aromatic spices." data-fi="Mehevä kana rikkaassa tomaatti-voikastikkeessa aromaattisilla mausteilla.">Succulent chicken in a rich, creamy tomato-butter sauce infused with aromatic spices.</p><span class="m-badge nonveg" data-en="● Non-Veg" data-fi="● Liharuoka">● Non-Veg</span></div></div>
-      <div class="m-card reveal scale" style="transition-delay:.08s"><div class="m-img"><img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&q=80" alt="Rogan Josh" loading="lazy"/><span class="m-spice">🌶🌶🌶 Hot</span></div><div class="m-body"><div class="m-head"><h3 data-en="Lamb Rogan Josh" data-fi="Karitsaa Rogan Josh">Lamb Rogan Josh</h3><span class="m-price">€16.50</span></div><p data-en="Slow-cooked tender lamb in a bold Kashmiri-spiced sauce. A true restaurant classic." data-fi="Hitaasti kypsennettyä karitsaa rohkeassa kashmirilaismaustetussa kastikkeessa.">Slow-cooked tender lamb in a bold Kashmiri-spiced sauce. A true restaurant classic.</p><span class="m-badge nonveg" data-en="● Non-Veg" data-fi="● Liharuoka">● Non-Veg</span></div></div>
-      <div class="m-card reveal scale" style="transition-delay:.16s"><div class="m-img"><img src="https://images.unsplash.com/photo-1645177628172-a94c1f96e6db?w=500&q=80" alt="Paneer Tikka Masala" loading="lazy"/><span class="m-spice">🌶🌶 Medium</span></div><div class="m-body"><div class="m-head"><h3 data-en="Paneer Tikka Masala" data-fi="Paneer Tikka Masala">Paneer Tikka Masala</h3><span class="m-price">€13.50</span></div><p data-en="Grilled Indian cottage cheese in a vibrant smoky masala gravy with bell peppers." data-fi="Grillattua intialaista juustoa eloisassa masalakastikkeessa paprikoiden kanssa.">Grilled Indian cottage cheese in a vibrant smoky masala gravy with bell peppers.</p><span class="m-badge veg" data-en="● Vegetarian" data-fi="● Kasvisruoka">● Vegetarian</span></div></div>
-      <div class="m-card reveal scale" style="transition-delay:.24s"><div class="m-img"><img src="https://images.unsplash.com/photo-1631292784640-2b24be784d5d?w=500&q=80" alt="King Prawn Masala" loading="lazy"/><span class="m-spice">🌶🌶 Medium</span></div><div class="m-body"><div class="m-head"><h3 data-en="King Prawn Masala" data-fi="Kuninkaallinen katkarapu">King Prawn Masala</h3><span class="m-price">€18.95</span></div><p data-en="Jumbo prawns cooked in a fragrant onion-tomato spice base with coastal aromatics." data-fi="Jättikatkarapuja tuoksuvassa sipuli-tomaattimaustepohjassa.">Jumbo prawns cooked in a fragrant onion-tomato spice base with coastal aromatics.</p><span class="m-badge nonveg" data-en="● Non-Veg" data-fi="● Liharuoka">● Non-Veg</span></div></div>
+      <div class="m-card reveal scale"><div class="m-img"><img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=500&q=80" alt="Butter Chicken" loading="lazy"/><span class="m-spice">🌶 Mild</span></div><div class="m-body"><div class="m-head"><h3>Butter Chicken</h3><span class="m-price">€14.95</span></div><p>Succulent chicken in a rich, creamy tomato-butter sauce infused with aromatic spices.</p><span class="m-badge nonveg">● Non-Veg</span></div></div>
+      <div class="m-card reveal scale" style="transition-delay:.08s"><div class="m-img"><img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&q=80" alt="Rogan Josh" loading="lazy"/><span class="m-spice">🌶🌶🌶 Hot</span></div><div class="m-body"><div class="m-head"><h3>Lamb Rogan Josh</h3><span class="m-price">€16.50</span></div><p>Slow-cooked tender lamb in a bold Kashmiri-spiced sauce. A true restaurant classic.</p><span class="m-badge nonveg">● Non-Veg</span></div></div>
+      <div class="m-card reveal scale" style="transition-delay:.16s"><div class="m-img"><img src="https://images.unsplash.com/photo-1645177628172-a94c1f96e6db?w=500&q=80" alt="Paneer Tikka" loading="lazy"/><span class="m-spice">🌶🌶 Medium</span></div><div class="m-body"><div class="m-head"><h3>Paneer Tikka Masala</h3><span class="m-price">€13.50</span></div><p>Grilled Indian cottage cheese in a vibrant smoky masala gravy with bell peppers.</p><span class="m-badge veg">● Vegetarian</span></div></div>
+      <div class="m-card reveal scale" style="transition-delay:.24s"><div class="m-img"><img src="https://images.unsplash.com/photo-1631292784640-2b24be784d5d?w=500&q=80" alt="King Prawn" loading="lazy"/><span class="m-spice">🌶🌶 Medium</span></div><div class="m-body"><div class="m-head"><h3>King Prawn Masala</h3><span class="m-price">€18.95</span></div><p>Jumbo prawns cooked in a fragrant onion-tomato spice base with coastal aromatics.</p><span class="m-badge nonveg">● Non-Veg</span></div></div>
     </div>
-    <!-- BREADS & RICE -->
     <div class="menu-grid" id="breads">
-      <div class="m-card reveal scale"><div class="m-img"><img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=500&q=80" alt="Garlic Naan" loading="lazy"/><span class="m-spice">No Spice</span></div><div class="m-body"><div class="m-head"><h3 data-en="Garlic Naan" data-fi="Valkosipulinaan">Garlic Naan</h3><span class="m-price">€3.50</span></div><p data-en="Soft leavened bread brushed with garlic butter, baked fresh in our clay tandoor." data-fi="Pehmeä hapanleipä valkosipulivoilla siveltynä, tuoreena tandoorissa leivottuna.">Soft leavened bread brushed with garlic butter, baked fresh in our clay tandoor.</p><span class="m-badge veg" data-en="● Vegetarian" data-fi="● Kasvisruoka">● Vegetarian</span></div></div>
-      <div class="m-card reveal scale" style="transition-delay:.08s"><div class="m-img"><img src="https://images.unsplash.com/photo-1536304993881-ff86e0c9c3b8?w=500&q=80" alt="Lamb Biryani" loading="lazy"/><span class="m-spice">🌶🌶 Medium</span></div><div class="m-body"><div class="m-head"><h3 data-en="Lamb Biryani" data-fi="Karitsa Biryani">Lamb Biryani</h3><span class="m-price">€17.95</span></div><p data-en="Fragrant basmati rice slow-cooked with tender lamb, saffron &amp; caramelised onions." data-fi="Tuoksuva basmatiriisi hitaasti kypsennettynä pehmeän karitsanlihan ja sahraamin kanssa.">Fragrant basmati rice slow-cooked with tender lamb, saffron &amp; caramelised onions.</p><span class="m-badge nonveg" data-en="● Non-Veg" data-fi="● Liharuoka">● Non-Veg</span></div></div>
-      <div class="m-card reveal scale" style="transition-delay:.16s"><div class="m-img"><img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&q=80" alt="Aloo Paratha" loading="lazy"/><span class="m-spice">🌶 Mild</span></div><div class="m-body"><div class="m-head"><h3 data-en="Aloo Paratha" data-fi="Aloo Paratha">Aloo Paratha</h3><span class="m-price">€4.50</span></div><p data-en="Whole wheat flatbread stuffed with spiced potato, served with yoghurt &amp; mango pickle." data-fi="Täysjyvävehnäinen litteäleipä maustettua perunaa täynnä, jogurtin ja mangopiklin kanssa.">Whole wheat flatbread stuffed with spiced potato, served with yoghurt &amp; mango pickle.</p><span class="m-badge veg" data-en="● Vegetarian" data-fi="● Kasvisruoka">● Vegetarian</span></div></div>
-      <div class="m-card reveal scale" style="transition-delay:.24s"><div class="m-img"><img src="https://images.unsplash.com/photo-1516684732162-798a0062be99?w=500&q=80" alt="Jeera Rice" loading="lazy"/><span class="m-spice">No Spice</span></div><div class="m-body"><div class="m-head"><h3 data-en="Jeera Rice" data-fi="Jeera-riisi">Jeera Rice</h3><span class="m-price">€4.95</span></div><p data-en="Basmati rice tempered with cumin seeds, ghee and garnished with fresh coriander." data-fi="Basmatiriisi jeeralla ja gheellä maustettuna, tuoreella korianterilla koristeltuna.">Basmati rice tempered with cumin seeds, ghee and garnished with fresh coriander.</p><span class="m-badge veg" data-en="● Vegetarian" data-fi="● Kasvisruoka">● Vegetarian</span></div></div>
+      <div class="m-card reveal scale"><div class="m-img"><img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=500&q=80" alt="Garlic Naan" loading="lazy"/><span class="m-spice">No Spice</span></div><div class="m-body"><div class="m-head"><h3>Garlic Naan</h3><span class="m-price">€3.50</span></div><p>Soft leavened bread brushed with garlic butter, baked fresh in our clay tandoor.</p><span class="m-badge veg">● Vegetarian</span></div></div>
+      <div class="m-card reveal scale" style="transition-delay:.08s"><div class="m-img"><img src="https://images.unsplash.com/photo-1536304993881-ff86e0c9c3b8?w=500&q=80" alt="Lamb Biryani" loading="lazy"/><span class="m-spice">🌶🌶 Medium</span></div><div class="m-body"><div class="m-head"><h3>Lamb Biryani</h3><span class="m-price">€17.95</span></div><p>Fragrant basmati rice slow-cooked with tender lamb, saffron &amp; caramelised onions.</p><span class="m-badge nonveg">● Non-Veg</span></div></div>
+      <div class="m-card reveal scale" style="transition-delay:.16s"><div class="m-img"><img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&q=80" alt="Aloo Paratha" loading="lazy"/><span class="m-spice">🌶 Mild</span></div><div class="m-body"><div class="m-head"><h3>Aloo Paratha</h3><span class="m-price">€4.50</span></div><p>Whole wheat flatbread stuffed with spiced potato, served with yoghurt &amp; mango pickle.</p><span class="m-badge veg">● Vegetarian</span></div></div>
+      <div class="m-card reveal scale" style="transition-delay:.24s"><div class="m-img"><img src="https://images.unsplash.com/photo-1516684732162-798a0062be99?w=500&q=80" alt="Jeera Rice" loading="lazy"/><span class="m-spice">No Spice</span></div><div class="m-body"><div class="m-head"><h3>Jeera Rice</h3><span class="m-price">€4.95</span></div><p>Basmati rice tempered with cumin seeds, ghee and garnished with fresh coriander.</p><span class="m-badge veg">● Vegetarian</span></div></div>
     </div>
-    <!-- DESSERTS -->
     <div class="menu-grid" id="desserts">
-      <div class="m-card reveal scale"><div class="m-img"><img src="https://images.unsplash.com/photo-1571167530149-c1105da4b40a?w=500&q=80" alt="Gulab Jamun" loading="lazy"/><span class="m-spice">Sweet</span></div><div class="m-body"><div class="m-head"><h3 data-en="Gulab Jamun" data-fi="Gulab Jamun">Gulab Jamun</h3><span class="m-price">€5.50</span></div><p data-en="Soft milk-solid dumplings soaked in rose-flavoured sugar syrup, served warm." data-fi="Pehmeät maitoproteiinipullat ruusunmakuisessa sokerisiirapissa, lämpimänä tarjoiltuna.">Soft milk-solid dumplings soaked in rose-flavoured sugar syrup, served warm.</p><span class="m-badge veg" data-en="● Vegetarian" data-fi="● Kasvisruoka">● Vegetarian</span></div></div>
-      <div class="m-card reveal scale" style="transition-delay:.08s"><div class="m-img"><img src="https://images.unsplash.com/photo-1604152135912-04a022e23696?w=500&q=80" alt="Mango Kulfi" loading="lazy"/><span class="m-spice">Sweet</span></div><div class="m-body"><div class="m-head"><h3 data-en="Mango Kulfi" data-fi="Mango Kulfi">Mango Kulfi</h3><span class="m-price">€5.95</span></div><p data-en="Traditional Indian ice cream made with condensed milk &amp; Alphonso mango pulp." data-fi="Perinteinen intialainen jäätelö tiivistemaidosta ja Alphonso-mangoselusta.">Traditional Indian ice cream made with condensed milk &amp; Alphonso mango pulp.</p><span class="m-badge veg" data-en="● Vegetarian" data-fi="● Kasvisruoka">● Vegetarian</span></div></div>
-      <div class="m-card reveal scale" style="transition-delay:.16s"><div class="m-img"><img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500&q=80" alt="Gajar Halwa" loading="lazy"/><span class="m-spice">Sweet</span></div><div class="m-body"><div class="m-head"><h3 data-en="Gajar Ka Halwa" data-fi="Gajar Ka Halwa">Gajar Ka Halwa</h3><span class="m-price">€5.95</span></div><p data-en="Slow-cooked carrot pudding with ghee, milk, sugar &amp; garnished with pistachios." data-fi="Hitaasti keitetty porkkanavanukas gheellä ja pistaasipähkinöillä.">Slow-cooked carrot pudding with ghee, milk, sugar &amp; garnished with pistachios.</p><span class="m-badge veg" data-en="● Vegetarian" data-fi="● Kasvisruoka">● Vegetarian</span></div></div>
-      <div class="m-card reveal scale" style="transition-delay:.24s"><div class="m-img"><img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=500&q=80" alt="Rasmalai" loading="lazy"/><span class="m-spice">Sweet</span></div><div class="m-body"><div class="m-head"><h3 data-en="Rasmalai" data-fi="Rasmalai">Rasmalai</h3><span class="m-price">€6.50</span></div><p data-en="Delicate cheese patties immersed in saffron-infused sweet cream milk with cardamom." data-fi="Herkät juustopatties sahraami-makeutetussa kermamaidossa kardamomilla.">Delicate cheese patties immersed in saffron-infused sweet cream milk with cardamom.</p><span class="m-badge veg" data-en="● Vegetarian" data-fi="● Kasvisruoka">● Vegetarian</span></div></div>
+      <div class="m-card reveal scale"><div class="m-img"><img src="https://images.unsplash.com/photo-1571167530149-c1105da4b40a?w=500&q=80" alt="Gulab Jamun" loading="lazy"/><span class="m-spice">Sweet</span></div><div class="m-body"><div class="m-head"><h3>Gulab Jamun</h3><span class="m-price">€5.50</span></div><p>Soft milk-solid dumplings soaked in rose-flavoured sugar syrup, served warm.</p><span class="m-badge veg">● Vegetarian</span></div></div>
+      <div class="m-card reveal scale" style="transition-delay:.08s"><div class="m-img"><img src="https://images.unsplash.com/photo-1604152135912-04a022e23696?w=500&q=80" alt="Mango Kulfi" loading="lazy"/><span class="m-spice">Sweet</span></div><div class="m-body"><div class="m-head"><h3>Mango Kulfi</h3><span class="m-price">€5.95</span></div><p>Traditional Indian ice cream made with condensed milk &amp; Alphonso mango pulp.</p><span class="m-badge veg">● Vegetarian</span></div></div>
+      <div class="m-card reveal scale" style="transition-delay:.16s"><div class="m-img"><img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500&q=80" alt="Gajar Halwa" loading="lazy"/><span class="m-spice">Sweet</span></div><div class="m-body"><div class="m-head"><h3>Gajar Ka Halwa</h3><span class="m-price">€5.95</span></div><p>Slow-cooked carrot pudding with ghee, milk, sugar &amp; garnished with pistachios.</p><span class="m-badge veg">● Vegetarian</span></div></div>
+      <div class="m-card reveal scale" style="transition-delay:.24s"><div class="m-img"><img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=500&q=80" alt="Rasmalai" loading="lazy"/><span class="m-spice">Sweet</span></div><div class="m-body"><div class="m-head"><h3>Rasmalai</h3><span class="m-price">€6.50</span></div><p>Delicate cheese patties in saffron-infused sweet cream milk with cardamom.</p><span class="m-badge veg">● Vegetarian</span></div></div>
     </div>
-    <!-- DRINKS -->
     <div class="menu-grid" id="drinks">
-      <div class="m-card reveal scale"><div class="m-img"><img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=500&q=80" alt="Mango Lassi" loading="lazy"/><span class="m-spice">Sweet</span></div><div class="m-body"><div class="m-head"><h3 data-en="Mango Lassi" data-fi="Mangolassi">Mango Lassi</h3><span class="m-price">€4.50</span></div><p data-en="Thick chilled yoghurt drink blended with sweet Alphonso mango. Perfectly refreshing." data-fi="Paksu viileä jogurtijuoma sekoitettuna makeaan mangoon. Täydellisen virkistävä.">Thick chilled yoghurt drink blended with sweet Alphonso mango. Perfectly refreshing.</p><span class="m-badge veg" data-en="● Vegetarian" data-fi="● Kasvisruoka">● Vegetarian</span></div></div>
-      <div class="m-card reveal scale" style="transition-delay:.08s"><div class="m-img"><img src="https://images.unsplash.com/photo-1571167366136-b57e43b12c15?w=500&q=80" alt="Masala Chai" loading="lazy"/><span class="m-spice">Spiced</span></div><div class="m-body"><div class="m-head"><h3 data-en="Masala Chai" data-fi="Masala Chai">Masala Chai</h3><span class="m-price">€3.00</span></div><p data-en="Freshly brewed spiced tea with cardamom, ginger, cinnamon &amp; whole milk." data-fi="Tuoreesti keitetty maustettu tee kardamomilla, inkiväärillä ja kanelilla.">Freshly brewed spiced tea with cardamom, ginger, cinnamon &amp; whole milk.</p><span class="m-badge veg" data-en="● Vegetarian" data-fi="● Kasvisruoka">● Vegetarian</span></div></div>
-      <div class="m-card reveal scale" style="transition-delay:.16s"><div class="m-img"><img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=500&q=80" alt="Rose Sharbat" loading="lazy"/><span class="m-spice">Sweet</span></div><div class="m-body"><div class="m-head"><h3 data-en="Rose Sharbat" data-fi="Ruususorbetti">Rose Sharbat</h3><span class="m-price">€3.50</span></div><p data-en="Refreshing chilled drink made with rose syrup, basil seeds &amp; cold milk." data-fi="Virkistävä viileä juoma ruususiirapista ja basilikansiemenistä.">Refreshing chilled drink made with rose syrup, basil seeds &amp; cold milk.</p><span class="m-badge veg" data-en="● Vegetarian" data-fi="● Kasvisruoka">● Vegetarian</span></div></div>
-      <div class="m-card reveal scale" style="transition-delay:.24s"><div class="m-img"><img src="https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?w=500&q=80" alt="Nimbu Pani" loading="lazy"/><span class="m-spice">Tangy</span></div><div class="m-body"><div class="m-head"><h3 data-en="Nimbu Pani" data-fi="Intialainen limonadi">Nimbu Pani</h3><span class="m-price">€3.00</span></div><p data-en="Classic Indian lemonade with fresh lime, rock salt, cumin &amp; mint leaves." data-fi="Klassinen intialainen limonadi tuoreella limetillä, kivennäissuolalla ja mintulla.">Classic Indian lemonade with fresh lime, rock salt, cumin &amp; mint leaves.</p><span class="m-badge veg" data-en="● Vegetarian" data-fi="● Kasvisruoka">● Vegetarian</span></div></div>
+      <div class="m-card reveal scale"><div class="m-img"><img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=500&q=80" alt="Mango Lassi" loading="lazy"/><span class="m-spice">Sweet</span></div><div class="m-body"><div class="m-head"><h3>Mango Lassi</h3><span class="m-price">€4.50</span></div><p>Thick chilled yoghurt drink blended with sweet Alphonso mango. Perfectly refreshing.</p><span class="m-badge veg">● Vegetarian</span></div></div>
+      <div class="m-card reveal scale" style="transition-delay:.08s"><div class="m-img"><img src="https://images.unsplash.com/photo-1571167366136-b57e43b12c15?w=500&q=80" alt="Masala Chai" loading="lazy"/><span class="m-spice">Spiced</span></div><div class="m-body"><div class="m-head"><h3>Masala Chai</h3><span class="m-price">€3.00</span></div><p>Freshly brewed spiced tea with cardamom, ginger, cinnamon &amp; whole milk.</p><span class="m-badge veg">● Vegetarian</span></div></div>
+      <div class="m-card reveal scale" style="transition-delay:.16s"><div class="m-img"><img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=500&q=80" alt="Rose Sharbat" loading="lazy"/><span class="m-spice">Sweet</span></div><div class="m-body"><div class="m-head"><h3>Rose Sharbat</h3><span class="m-price">€3.50</span></div><p>Refreshing chilled drink made with rose syrup, basil seeds &amp; cold milk.</p><span class="m-badge veg">● Vegetarian</span></div></div>
+      <div class="m-card reveal scale" style="transition-delay:.24s"><div class="m-img"><img src="https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?w=500&q=80" alt="Nimbu Pani" loading="lazy"/><span class="m-spice">Tangy</span></div><div class="m-body"><div class="m-head"><h3>Nimbu Pani</h3><span class="m-price">€3.00</span></div><p>Classic Indian lemonade with fresh lime, rock salt, cumin &amp; mint leaves.</p><span class="m-badge veg">● Vegetarian</span></div></div>
     </div>
     <div class="menu-cta reveal">
-      <a href="#reservation" class="btn btn-gold" style="font-size:1rem;padding:15px 36px"><i class="fas fa-calendar-alt"></i> <span data-en="Reserve a Table" data-fi="Varaa pöytä">Reserve a Table</span></a>
+      <a href="fullmenu.html" class="btn btn-gold" style="font-size:1rem;padding:15px 36px"><i class="fas fa-utensils"></i> View Full Menu</a>
     </div>
   </div>
 </section>
@@ -682,19 +724,19 @@ img{display:block;width:100%;object-fit:cover}
 <section id="gallery" class="gallery section">
   <div class="container">
     <div class="tc reveal">
-      <span class="sec-label purple" data-en="Visual Feast" data-fi="Visuaalinen juhla">Visual Feast</span>
-      <h2 class="sec-title dark" data-en="Our Gallery" data-fi="Galleriamme">Our Gallery</h2>
-      <p class="sec-sub" data-en="A glimpse into our world of flavour, ambiance and culinary artistry." data-fi="Kurkistus maailmaamme, jossa maut, tunnelma ja kulinaarinen taide kohtaavat.">A glimpse into our world of flavour, ambiance and culinary artistry.</p>
+      <span class="sec-label purple">Visual Feast</span>
+      <h2 class="sec-title dark">Our Gallery</h2>
+      <p class="sec-sub">A glimpse into our world of flavour, ambiance and culinary artistry.</p>
     </div>
     <div class="gallery-grid">
-      <div class="g-item g1 reveal left" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=700&q=85" alt="Indian Food Spread" loading="lazy"/><div class="g-overlay"><span data-en="Royal Feast" data-fi="Kuninkaallinen juhla">Royal Feast</span></div></div>
-      <div class="g-item g2 reveal" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="Restaurant Interior" loading="lazy"/><div class="g-overlay"><span data-en="Our Interior" data-fi="Sisätilat">Our Interior</span></div></div>
-      <div class="g-item g3 reveal" style="transition-delay:.1s" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=600&q=80" alt="Butter Chicken" loading="lazy"/><div class="g-overlay"><span data-en="Butter Chicken" data-fi="Voikana">Butter Chicken</span></div></div>
-      <div class="g-item g4 reveal right" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=700&q=85" alt="Chef Cooking" loading="lazy"/><div class="g-overlay"><span data-en="Our Master Chef" data-fi="Mestarikokkimme">Our Master Chef</span></div></div>
-      <div class="g-item g5 reveal" style="transition-delay:.15s" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80" alt="Samosa" loading="lazy"/><div class="g-overlay"><span data-en="Crispy Samosa" data-fi="Rapea samosa">Crispy Samosa</span></div></div>
-      <div class="g-item g6 reveal" style="transition-delay:.2s" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80" alt="Rogan Josh" loading="lazy"/><div class="g-overlay"><span data-en="Lamb Rogan Josh" data-fi="Karitsaa Rogan Josh">Lamb Rogan Josh</span></div></div>
-      <div class="g-item g7 reveal" style="transition-delay:.1s" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1536304993881-ff86e0c9c3b8?w=800&q=85" alt="Biryani" loading="lazy"/><div class="g-overlay"><span data-en="Royal Biryani" data-fi="Kuninkaallinen biryani">Royal Biryani</span></div></div>
-      <div class="g-item g8 reveal" style="transition-delay:.2s" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=800&q=85" alt="Mango Lassi" loading="lazy"/><div class="g-overlay"><span data-en="Mango Lassi" data-fi="Mangolassi">Mango Lassi</span></div></div>
+      <div class="g-item g1 reveal left" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=700&q=85" alt="Royal Feast" loading="lazy"/><div class="g-overlay"><span>Royal Feast</span></div></div>
+      <div class="g-item g2 reveal" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="Interior" loading="lazy"/><div class="g-overlay"><span>Our Interior</span></div></div>
+      <div class="g-item g3 reveal" style="transition-delay:.1s" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=600&q=80" alt="Butter Chicken" loading="lazy"/><div class="g-overlay"><span>Butter Chicken</span></div></div>
+      <div class="g-item g4 reveal right" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=700&q=85" alt="Chef" loading="lazy"/><div class="g-overlay"><span>Our Master Chef</span></div></div>
+      <div class="g-item g5 reveal" style="transition-delay:.15s" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80" alt="Samosa" loading="lazy"/><div class="g-overlay"><span>Crispy Samosa</span></div></div>
+      <div class="g-item g6 reveal" style="transition-delay:.2s" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80" alt="Rogan Josh" loading="lazy"/><div class="g-overlay"><span>Lamb Rogan Josh</span></div></div>
+      <div class="g-item g7 reveal" style="transition-delay:.1s" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1536304993881-ff86e0c9c3b8?w=800&q=85" alt="Biryani" loading="lazy"/><div class="g-overlay"><span>Royal Biryani</span></div></div>
+      <div class="g-item g8 reveal" style="transition-delay:.2s" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=800&q=85" alt="Mango Lassi" loading="lazy"/><div class="g-overlay"><span>Mango Lassi</span></div></div>
     </div>
   </div>
 </section>
@@ -707,29 +749,29 @@ img{display:block;width:100%;object-fit:cover}
 <section id="order" class="order-sec section">
   <div class="container">
     <div class="tc reveal">
-      <span class="sec-label" data-en="Delivered to Your Door" data-fi="Toimitettuna ovellesi">Delivered to Your Door</span>
-      <h2 class="sec-title" data-en="Order Online" data-fi="Tilaa verkossa">Order Online</h2>
-      <p class="sec-sub" style="color:rgba(255,255,255,.6)" data-en="Choose how you'd like your Mughal experience — delivered hot or collected fresh." data-fi="Valitse, miten haluat Mughal-kokemuksesi — toimitettuna kuumana tai noudettuna tuoreena.">Choose how you'd like your Mughal experience — delivered hot or collected fresh.</p>
+      <span class="sec-label">Delivered to Your Door</span>
+      <h2 class="sec-title">Order Online</h2>
+      <p class="sec-sub" style="color:rgba(255,255,255,.6)">Choose how you'd like your Mughal experience — delivered hot or collected fresh.</p>
     </div>
     <div class="order-cards">
       <div class="o-card reveal left">
         <div class="o-icon"><i class="fas fa-motorcycle"></i></div>
-        <h3 data-en="Home Delivery" data-fi="Kotiinkuljetus">Home Delivery</h3>
-        <p data-en="Get your favourite dishes delivered hot and fresh to your door within 35–45 minutes, 7 days a week." data-fi="Saat suosikkiruokasi toimitettuna kuumana ovellesi 35–45 minuutissa, 7 päivää viikossa.">Get your favourite dishes delivered hot and fresh to your door within 35–45 minutes, 7 days a week.</p>
-        <button class="btn btn-outline-white" onclick="openOrderModal('delivery')"><i class="fas fa-motorcycle"></i> <span data-en="Order Delivery" data-fi="Tilaa toimitus">Order Delivery</span></button>
+        <h3>Home Delivery</h3>
+        <p>Get your favourite dishes delivered hot and fresh to your door within 35–45 minutes, 7 days a week.</p>
+        <a href="ordernow.html" class="btn btn-outline-white"><i class="fas fa-motorcycle"></i> Order Delivery</a>
       </div>
       <div class="o-card popular reveal scale">
-        <div class="o-pop" data-en="⭐ Most Popular" data-fi="⭐ Suosituin">⭐ Most Popular</div>
+        <div class="o-pop">⭐ Most Popular</div>
         <div class="o-icon"><i class="fas fa-store"></i></div>
-        <h3 data-en="Click &amp; Collect" data-fi="Klikkaa &amp; nouda">Click &amp; Collect</h3>
-        <p data-en="Order online and collect your meal ready and piping hot at the restaurant — skip the queue completely." data-fi="Tilaa verkossa ja nouda ateriasi valmiina ravintolasta — ohita jono kokonaan.">Order online and collect your meal ready and piping hot at the restaurant — skip the queue completely.</p>
-        <button class="btn btn-gold" onclick="openOrderModal('collect')"><i class="fas fa-store"></i> <span data-en="Order &amp; Collect" data-fi="Tilaa &amp; nouda">Order &amp; Collect</span></button>
+        <h3>Click &amp; Collect</h3>
+        <p>Order online and collect your meal ready and piping hot at the restaurant — skip the queue completely.</p>
+        <a href="ordernow.html" class="btn btn-gold"><i class="fas fa-store"></i> Order &amp; Collect</a>
       </div>
       <div class="o-card reveal right">
         <div class="o-icon"><i class="fas fa-concierge-bell"></i></div>
-        <h3 data-en="Dine In Pre-Order" data-fi="Ennakkotilaus">Dine In Pre-Order</h3>
-        <p data-en="Reserve your table and pre-order your meal for a seamless, no-wait royal dining experience." data-fi="Varaa pöytäsi ja ennakkotilaa ateriasi saumattomaan kuninkaalliseen ruokailukokemukseen.">Reserve your table and pre-order your meal for a seamless, no-wait royal dining experience.</p>
-        <a href="#reservation" class="btn btn-outline-white"><i class="fas fa-calendar-alt"></i> <span data-en="Reserve &amp; Pre-Order" data-fi="Varaa &amp; ennakkotilaa">Reserve &amp; Pre-Order</span></a>
+        <h3>Dine In Pre-Order</h3>
+        <p>Reserve your table and pre-order your meal for a seamless, no-wait royal dining experience.</p>
+        <a href="ordernow.html" class="btn btn-outline-white"><i class="fas fa-calendar-alt"></i> Reserve &amp; Pre-Order</a>
       </div>
     </div>
   </div>
@@ -739,94 +781,85 @@ img{display:block;width:100%;object-fit:cover}
 <section id="reservation" class="reservation section">
   <div class="container res-grid">
     <div class="res-info reveal left">
-      <span class="sec-label purple" data-en="Book Your Seat" data-fi="Varaa paikkasi">Book Your Seat</span>
-      <h2 class="sec-title dark" data-en="Table Reservation" data-fi="Pöytävaraus">Table Reservation</h2>
-      <p data-en="Join us for an unforgettable royal dining experience in Helsinki. Reserve your table and we'll prepare the perfect evening for you." data-fi="Liity seuraasi unohtumattomaan kuninkaalliseen ruokailukokemukseen Helsingissä.">Join us for an unforgettable royal dining experience in Helsinki. Reserve your table and we'll prepare the perfect evening for you.</p>
+      <span class="sec-label purple">Book Your Seat</span>
+      <h2 class="sec-title dark">Table Reservation</h2>
+      <p>Join us for an unforgettable royal dining experience. Reserve your table and we'll prepare the perfect evening for you.</p>
       <div class="res-details">
-        <div class="rd"><div class="rd-icon"><i class="fas fa-map-marker-alt"></i></div><div class="rd-text"><strong data-en="Address" data-fi="Osoite">Address</strong><span>Aallonhalkoja 3, 00540<br/>Helsinki, Finland</span></div></div>
-        <div class="rd"><div class="rd-icon"><i class="fas fa-clock"></i></div><div class="rd-text"><strong data-en="Opening Hours" data-fi="Aukioloajat">Opening Hours</strong><span data-en="Every day: 10:30 – 22:30" data-fi="Joka päivä: 10:30 – 22:30">Every day: 10:30 – 22:30</span></div></div>
-        <div class="rd"><div class="rd-icon"><i class="fas fa-phone"></i></div><div class="rd-text"><strong data-en="Phone" data-fi="Puhelin">Phone</strong><span>+358 40 123 4567</span></div></div>
-        <div class="rd"><div class="rd-icon"><i class="fas fa-envelope"></i></div><div class="rd-text"><strong data-en="Email" data-fi="Sähköposti">Email</strong><span>info@mughalrestaurant.fi</span></div></div>
+        <div class="rd"><div class="rd-icon"><i class="fas fa-map-marker-alt"></i></div><div class="rd-text"><strong>Address</strong><span>Aallonhalkoja 3, 00540<br/>Helsinki, Finland</span></div></div>
+        <div class="rd"><div class="rd-icon"><i class="fas fa-clock"></i></div><div class="rd-text"><strong>Opening Hours</strong><span>Every day: 10:30 – 22:30</span></div></div>
+        <div class="rd"><div class="rd-icon"><i class="fas fa-phone"></i></div><div class="rd-text"><strong>Phone</strong><span>+358 40 123 4567</span></div></div>
+        <div class="rd"><div class="rd-icon"><i class="fas fa-envelope"></i></div><div class="rd-text"><strong>Email</strong><span>info@mughalrestaurant.fi</span></div></div>
       </div>
       <div class="map-btns">
-        <a href="https://www.google.com/maps/search/?api=1&query=Aallonhalkoja+3,+00540+Helsinki,+Finland" target="_blank" class="btn btn-map-google btn-sm"><i class="fab fa-google"></i> <span data-en="Google Maps" data-fi="Google Maps">Google Maps</span></a>
-        <a href="https://maps.apple.com/?q=Aallonhalkoja+3,+00540+Helsinki+Finland" target="_blank" class="btn btn-map-apple btn-sm"><i class="fab fa-apple"></i> <span data-en="Apple Maps" data-fi="Apple Maps">Apple Maps</span></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Aallonhalkoja+3,+00540+Helsinki,+Finland" target="_blank" class="btn btn-map-google btn-sm"><i class="fab fa-google"></i> Google Maps</a>
+        <a href="https://maps.apple.com/?q=Aallonhalkoja+3,+00540+Helsinki+Finland" target="_blank" class="btn btn-map-apple btn-sm"><i class="fab fa-apple"></i> Apple Maps</a>
       </div>
     </div>
     <div class="res-form-card reveal right">
-      <h3 data-en="Book a Table" data-fi="Varaa pöytä">Book a Table</h3>
-      <p class="f-sub" data-en="We'll confirm your reservation within 30 minutes." data-fi="Vahvistamme varauksesi 30 minuutin kuluessa.">We'll confirm your reservation within 30 minutes.</p>
+      <h3>Book a Table</h3>
+      <p class="f-sub">We'll confirm your reservation within 30 minutes.</p>
       <form id="reservationForm" onsubmit="submitReservation(event)">
         <div class="form-row">
-          <div class="fg"><label data-en="Full Name *" data-fi="Koko nimi *">Full Name *</label><input type="text" id="resName" placeholder="Matti Virtanen" required/></div>
-          <div class="fg"><label data-en="Phone Number *" data-fi="Puhelinnumero *">Phone Number *</label><input type="tel" id="resPhone" placeholder="+358 40 123 4567" required/></div>
+          <div class="fg"><label>Full Name *</label><input type="text" id="resName" placeholder="Matti Virtanen" required/></div>
+          <div class="fg"><label>Phone Number *</label><input type="tel" id="resPhone" placeholder="+358 40 123 4567" required/></div>
         </div>
         <div class="form-row">
-          <div class="fg"><label data-en="Date *" data-fi="Päivämäärä *">Date *</label><input type="date" id="resDate" required/></div>
+          <div class="fg"><label>Date *</label><input type="date" id="resDate" required/></div>
           <div class="fg">
-            <label data-en="Time *" data-fi="Aika *">Time *</label>
+            <label>Time *</label>
             <div class="time-picker-wrap">
-              <div class="time-display" id="timeDisplay" tabindex="0" onclick="toggleTimePicker()" data-en="Select time" data-fi="Valitse aika">
+              <div class="time-display" id="timeDisplay" tabindex="0" onclick="toggleTimePicker()">
                 <span id="timeDisplayText">Select time</span>
-                <i class="fas fa-clock" style="color:var(--purple);font-size:.85rem"></i>
+                <i class="fas fa-clock" style="color:var(--purple);font-size:.85rem;flex-shrink:0"></i>
               </div>
               <div class="time-dropdown" id="timeDropdown">
                 <div class="time-cols">
-                  <div>
-                    <div class="time-col-label" data-en="Hour" data-fi="Tunti">Hour</div>
-                    <div class="time-scroll" id="hourScroll"></div>
-                  </div>
-                  <div>
-                    <div class="time-col-label" data-en="Min" data-fi="Min">Min</div>
-                    <div class="time-scroll" id="minScroll"></div>
-                  </div>
-                  <div>
-                    <div class="time-col-label">AM/PM</div>
-                    <div class="time-scroll" id="ampmScroll"></div>
-                  </div>
+                  <div><div class="time-col-label">Hour</div><div class="time-scroll" id="hourScroll"></div></div>
+                  <div><div class="time-col-label">Min</div><div class="time-scroll" id="minScroll"></div></div>
+                  <div><div class="time-col-label">AM/PM</div><div class="time-scroll" id="ampmScroll"></div></div>
                 </div>
-                <button type="button" class="time-confirm" onclick="confirmTime()" data-en="Confirm Time" data-fi="Vahvista aika">Confirm Time</button>
+                <button type="button" class="time-confirm" onclick="confirmTime()">Confirm Time</button>
               </div>
             </div>
             <input type="hidden" id="resTime" required/>
           </div>
         </div>
-        <div class="fg">
-          <label data-en="Number of People *" data-fi="Henkilöiden määrä *">Number of People *</label>
-          <select id="resGuests" required>
-            <option value="" data-en="Select guests" data-fi="Valitse vieraat">Select guests</option>
-            <option value="1">1 Person</option>
-            <option value="2">2 People</option>
-            <option value="3">3 People</option>
-            <option value="4">4 People</option>
-            <option value="5">5 People</option>
-            <option value="6">6 People</option>
-            <option value="7+">7+ People (Call Us)</option>
-          </select>
-        </div>
-        <div class="fg"><label data-en="Note (optional)" data-fi="Huomio (valinnainen)">Note (optional)</label><textarea id="resNote" placeholder="Any dietary requirements, allergies or special requests..."></textarea></div>
-        <button type="submit" class="f-submit"><i class="fas fa-calendar-check"></i> <span data-en="Confirm Reservation" data-fi="Vahvista varaus">Confirm Reservation</span></button>
+        <div class="fg"><label>Number of People *</label><input type="number" id="resGuests" min="1" max="50" placeholder="e.g. 4" required/></div>
+        <div class="fg"><label>Note (optional)</label><textarea id="resNote" placeholder="Dietary requirements, allergies, special requests..."></textarea></div>
+        <button type="submit" class="f-submit"><i class="fas fa-calendar-check"></i> Confirm Reservation</button>
       </form>
     </div>
-    </div>
+  </div>
 </section>
 
-<!-- ═══════════════════ TESTIMONIALS (SWIPER) ═══════════════════ -->
+<!-- ═══════════════════ RESERVATION CONFIRM POPUP ═══════════════════ -->
+<div class="res-confirm-modal" id="resConfirmModal">
+  <div class="res-confirm-box">
+    <div class="rc-icon"><i class="fas fa-check"></i></div>
+    <h2 class="rc-title">Reservation Confirmed! 🎉</h2>
+    <p class="rc-msg">Your table has been successfully reserved. You will receive an email confirmation shortly. We look forward to welcoming you to Mughal!</p>
+    <div class="rc-notice">
+      <p><i class="fas fa-clock"></i><span><strong>Please be on time.</strong> Arriving late may affect your seating arrangement. We hold tables for 15 minutes after your booking time.</span></p>
+      <p><i class="fas fa-phone-alt"></i><span><strong>Need to cancel or change?</strong> Please contact us as soon as possible by phone call, email, or send us a message through the website. We appreciate early notice.</span></p>
+    </div>
+    <button class="rc-close" onclick="closeResConfirm()">Got it, Thank you! 👍</button>
+  </div>
+</div><!-- ═══════════════════ TESTIMONIALS ═══════════════════ -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 <section class="testimonials section">
   <div class="container">
     <div class="tc reveal">
-      <span class="sec-label" data-en="What Our Guests Say" data-fi="Mitä vieraamamme sanovat">What Our Guests Say</span>
-      <h2 class="sec-title" data-en="Customer Reviews" data-fi="Asiakasarvostelut">Customer Reviews</h2>
+      <span class="sec-label">What Our Guests Say</span>
+      <h2 class="sec-title">Customer Reviews</h2>
     </div>
     <div class="swiper reviewSwiper" style="margin-top:40px">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><div class="t-card featured"><div class="t-stars">★★★★★</div><p class="t-text" data-en="Absolutely the best Indian restaurant in Helsinki! The Lamb Biryani was divine and service was impeccable. Will definitely return!" data-fi="Ehdottomasti paras intialainen ravintola Helsingissä! Karitsa Biryani oli jumalallinen ja palvelu moitteetonta.">Absolutely the best Indian restaurant in Helsinki! The Lamb Biryani was divine and service was impeccable. Will definitely return!</p><div class="t-author"><img src="https://i.pravatar.cc/60?img=12" alt="Sarah"/><div><strong>Sarah Thompson</strong><span>Helsinki</span></div></div></div></div>
-        <div class="swiper-slide"><div class="t-card"><div class="t-stars">★★★★★</div><p class="t-text" data-en="The Butter Chicken here is life-changing. Elegant atmosphere, perfect for date nights. The garlic naan is the best I've ever tasted!" data-fi="Voikana täällä on elämää muuttavaa. Tyylikäs ilmapiiri, täydellinen treffi-iltoihin. Paras valkosipulinaan mitä olen maistanut!">The Butter Chicken here is life-changing. Elegant atmosphere, perfect for date nights. The garlic naan is the best I've ever tasted!</p><div class="t-author"><img src="https://i.pravatar.cc/60?img=33" alt="James"/><div><strong>James Patel</strong><span>Helsinki</span></div></div></div></div>
-        <div class="swiper-slide"><div class="t-card"><div class="t-stars">★★★★★</div><p class="t-text" data-en="We celebrated our anniversary here — absolutely magical! Staff went above and beyond. The Seekh Kebabs were outstanding!" data-fi="Vietimme vuosipäivämme täällä — täysin maaginen! Henkilökunta ylitti odotukset. Seekh Kebabit olivat upeita!">We celebrated our anniversary here — absolutely magical! Staff went above and beyond. The Seekh Kebabs were outstanding!</p><div class="t-author"><img src="https://i.pravatar.cc/60?img=47" alt="Emma"/><div><strong>Emma &amp; David</strong><span>Espoo</span></div></div></div></div>
-        <div class="swiper-slide"><div class="t-card"><div class="t-stars">★★★★★</div><p class="t-text" data-en="Visited for a business dinner — everyone was impressed. Authentic flavours, beautiful presentation and outstanding hospitality." data-fi="Vierailimme liikeaterian merkeissä — kaikki olivat vaikuttuneita. Aidot maut, kaunis esittely ja erinomainen vieraanvaraisuus.">Visited for a business dinner — everyone was impressed. Authentic flavours, beautiful presentation and outstanding hospitality.</p><div class="t-author"><img src="https://i.pravatar.cc/60?img=68" alt="Michael"/><div><strong>Michael Berg</strong><span>Helsinki</span></div></div></div></div>
-        <div class="swiper-slide"><div class="t-card"><div class="t-stars">★★★★★</div><p class="t-text" data-en="The Paneer Tikka Masala was absolutely incredible. As a vegetarian I always struggle to find good options but Mughal exceeded all expectations!" data-fi="Paneer Tikka Masala oli aivan uskomaton. Kasvissyöjänä minun on aina vaikea löytää hyviä vaihtoehtoja, mutta Mughal ylitti kaikki odotukset!">The Paneer Tikka Masala was absolutely incredible. As a vegetarian I always struggle to find good options but Mughal exceeded all expectations!</p><div class="t-author"><img src="https://i.pravatar.cc/60?img=25" alt="Aisha"/><div><strong>Aisha Korhonen</strong><span>Vantaa</span></div></div></div></div>
-        <div class="swiper-slide"><div class="t-card"><div class="t-stars">★★★★★</div><p class="t-text" data-en="Amazing food, warm atmosphere and very reasonable prices for the quality. The mango lassi alone is worth the visit. Highly recommend!" data-fi="Hämmästyttävää ruokaa, lämmin ilmapiiri ja erittäin kohtuulliset hinnat laadulle. Mangolassi yksinään on käynnin arvoinen. Suosittelen lämpimästi!">Amazing food, warm atmosphere and very reasonable prices for the quality. The mango lassi alone is worth the visit. Highly recommend!</p><div class="t-author"><img src="https://i.pravatar.cc/60?img=56" alt="Tuomas"/><div><strong>Tuomas Mäkinen</strong><span>Helsinki</span></div></div></div></div>
+        <div class="swiper-slide"><div class="t-card featured"><div class="t-stars">★★★★★</div><p class="t-text">Absolutely the best Indian restaurant in Helsinki! The Lamb Biryani was divine and the service was impeccable. Will definitely return!</p><div class="t-author"><img src="https://i.pravatar.cc/60?img=12" alt="Sarah"/><div><strong>Sarah Thompson</strong><span>Helsinki</span></div></div></div></div>
+        <div class="swiper-slide"><div class="t-card"><div class="t-stars">★★★★★</div><p class="t-text">The Butter Chicken here is life-changing. Elegant atmosphere, perfect for date nights. The garlic naan is the best I've ever tasted!</p><div class="t-author"><img src="https://i.pravatar.cc/60?img=33" alt="James"/><div><strong>James Patel</strong><span>Helsinki</span></div></div></div></div>
+        <div class="swiper-slide"><div class="t-card"><div class="t-stars">★★★★★</div><p class="t-text">We celebrated our anniversary here — absolutely magical! Staff went above and beyond. The Seekh Kebabs were outstanding!</p><div class="t-author"><img src="https://i.pravatar.cc/60?img=47" alt="Emma"/><div><strong>Emma &amp; David</strong><span>Espoo</span></div></div></div></div>
+        <div class="swiper-slide"><div class="t-card"><div class="t-stars">★★★★★</div><p class="t-text">Visited for a business dinner — everyone was impressed. Authentic flavours, beautiful presentation and outstanding hospitality.</p><div class="t-author"><img src="https://i.pravatar.cc/60?img=68" alt="Michael"/><div><strong>Michael Berg</strong><span>Helsinki</span></div></div></div></div>
+        <div class="swiper-slide"><div class="t-card"><div class="t-stars">★★★★★</div><p class="t-text">The Paneer Tikka Masala was absolutely incredible. As a vegetarian I always struggle but Mughal exceeded all my expectations!</p><div class="t-author"><img src="https://i.pravatar.cc/60?img=25" alt="Aisha"/><div><strong>Aisha Korhonen</strong><span>Vantaa</span></div></div></div></div>
+        <div class="swiper-slide"><div class="t-card"><div class="t-stars">★★★★★</div><p class="t-text">Amazing food, warm atmosphere and very reasonable prices. The mango lassi alone is worth the visit. Highly recommend!</p><div class="t-author"><img src="https://i.pravatar.cc/60?img=56" alt="Tuomas"/><div><strong>Tuomas Mäkinen</strong><span>Helsinki</span></div></div></div></div>
       </div>
       <div class="swiper-pagination"></div>
       <div class="swiper-button-prev"></div>
@@ -839,17 +872,17 @@ img{display:block;width:100%;object-fit:cover}
 <section class="why section">
   <div class="container">
     <div class="tc reveal">
-      <span class="sec-label purple" data-en="Our Promise" data-fi="Lupauksemme">Our Promise</span>
-      <h2 class="sec-title dark" data-en="Why Choose Mughal?" data-fi="Miksi valita Mughal?">Why Choose Mughal?</h2>
-      <p class="sec-sub" data-en="We don't just serve food — we craft experiences rooted in Mughal heritage and modern hospitality." data-fi="Emme vain tarjoile ruokaa — luomme kokemuksia Mughalin perinnöstä.">We don't just serve food — we craft experiences rooted in Mughal heritage and modern hospitality.</p>
+      <span class="sec-label purple">Our Promise</span>
+      <h2 class="sec-title dark">Why Choose Mughal?</h2>
+      <p class="sec-sub">We don't just serve food — we craft experiences rooted in Mughal heritage and modern hospitality.</p>
     </div>
     <div class="why-grid">
-      <div class="why-card reveal scale"><div class="why-icon"><i class="fas fa-medal"></i></div><h3 data-en="Award-Winning Quality" data-fi="Palkittu laatu">Award-Winning Quality</h3><p data-en="Winner of Helsinki's Best Indian Restaurant for 5 consecutive years." data-fi="Helsingin paras intialainen ravintola 5 peräkkäisenä vuotena.">Winner of Helsinki's Best Indian Restaurant for 5 consecutive years.</p></div>
-      <div class="why-card reveal scale" style="transition-delay:.1s"><div class="why-icon"><i class="fas fa-leaf"></i></div><h3 data-en="Fresh &amp; Local" data-fi="Tuoretta &amp; paikallista">Fresh &amp; Local</h3><p data-en="We source produce fresh every morning from local Finnish suppliers." data-fi="Hankimme tuotteet tuoreina joka aamu paikallisilta suomalaisilta toimittajilta.">We source produce fresh every morning from local Finnish suppliers.</p></div>
-      <div class="why-card reveal scale" style="transition-delay:.2s"><div class="why-icon"><i class="fas fa-heart"></i></div><h3 data-en="Cooked with Passion" data-fi="Valmistettu intohimolla">Cooked with Passion</h3><p data-en="Every recipe is prepared with deep passion and unwavering attention to detail." data-fi="Jokainen resepti valmistetaan syvällä intohimolla ja horjumattomalla huomiolla.">Every recipe is prepared with deep passion and unwavering attention to detail.</p></div>
-      <div class="why-card reveal scale" style="transition-delay:.05s"><div class="why-icon"><i class="fas fa-shield-alt"></i></div><h3 data-en="Allergy Aware" data-fi="Allergiätietoinen">Allergy Aware</h3><p data-en="We cater for all dietary needs including vegan, gluten-free and halal." data-fi="Palvelemme kaikkia ruokavaliotarpeita: vegaani, gluteeniton ja halal.">We cater for all dietary needs including vegan, gluten-free and halal.</p></div>
-      <div class="why-card reveal scale" style="transition-delay:.15s"><div class="why-icon"><i class="fas fa-clock"></i></div><h3 data-en="Open Daily 10:30–22:30" data-fi="Avoinna 10:30–22:30">Open Daily 10:30–22:30</h3><p data-en="Open every single day so you can enjoy Mughal cuisine whenever the craving strikes." data-fi="Avoinna joka päivä, jotta voit nauttia Mughal-ruoasta aina kun himo iskee.">Open every single day so you can enjoy Mughal cuisine whenever the craving strikes.</p></div>
-      <div class="why-card reveal scale" style="transition-delay:.25s"><div class="why-icon"><i class="fas fa-users"></i></div><h3 data-en="Perfect for Groups" data-fi="Täydellinen ryhmille">Perfect for Groups</h3><p data-en="We offer bespoke group menus and private dining arrangements for any occasion." data-fi="Tarjoamme räätälöityjä ryhmämenuja ja yksityisiä ruokailujärjestelyjä.">We offer bespoke group menus and private dining arrangements for any occasion.</p></div>
+      <div class="why-card reveal scale"><div class="why-icon"><i class="fas fa-medal"></i></div><h3>Award-Winning Quality</h3><p>Winner of Helsinki's Best Indian Restaurant for 5 consecutive years.</p></div>
+      <div class="why-card reveal scale" style="transition-delay:.1s"><div class="why-icon"><i class="fas fa-leaf"></i></div><h3>Fresh &amp; Local</h3><p>We source produce fresh every morning from local Finnish suppliers.</p></div>
+      <div class="why-card reveal scale" style="transition-delay:.2s"><div class="why-icon"><i class="fas fa-heart"></i></div><h3>Cooked with Passion</h3><p>Every recipe is prepared with deep passion and unwavering attention to detail.</p></div>
+      <div class="why-card reveal scale" style="transition-delay:.05s"><div class="why-icon"><i class="fas fa-shield-alt"></i></div><h3>Allergy Aware</h3><p>We cater for all dietary needs including vegan, gluten-free and halal.</p></div>
+      <div class="why-card reveal scale" style="transition-delay:.15s"><div class="why-icon"><i class="fas fa-clock"></i></div><h3>Open Daily 10:30–22:30</h3><p>Open every single day so you can enjoy Mughal cuisine whenever the craving strikes.</p></div>
+      <div class="why-card reveal scale" style="transition-delay:.25s"><div class="why-icon"><i class="fas fa-users"></i></div><h3>Perfect for Groups</h3><p>We offer bespoke group menus and private dining arrangements for any occasion.</p></div>
     </div>
   </div>
 </section>
@@ -858,24 +891,48 @@ img{display:block;width:100%;object-fit:cover}
 <section id="chefs" class="chefs section">
   <div class="container">
     <div class="tc reveal">
-      <span class="sec-label" data-en="The Artists Behind Every Dish" data-fi="Taiteilijat jokaisen ruoan takana">The Artists Behind Every Dish</span>
-      <h2 class="sec-title" data-en="Meet Our Master Chefs" data-fi="Tapaa mestarikokkit">Meet Our Master Chefs</h2>
+      <span class="sec-label">The Artists Behind Every Dish</span>
+      <h2 class="sec-title">Meet Our Master Chefs</h2>
     </div>
     <div class="chefs-grid">
       <div class="chef-card reveal left">
-        <div class="chef-img-wrap"><img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=600&q=80" alt="Arjun Kapoor" loading="lazy"/><span class="chef-badge" data-en="Head Chef" data-fi="Pääkokki">Head Chef</span></div>
-        <h3>Arjun Kapoor</h3><p data-en="28 years of royal Mughal cuisine mastery" data-fi="28 vuotta kuninkaallista keittiömestariutta">28 years of royal Mughal cuisine mastery</p>
-        <div class="chef-socials"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a></div>
+        <div class="chef-img-wrap">
+          <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=600&q=80" alt="Arjun Kapoor" loading="lazy"/>
+          <span class="chef-badge">Head Chef</span>
+        </div>
+        <h3>Arjun Kapoor</h3>
+        <p>28 years of royal Mughal cuisine mastery</p>
+        <div class="chef-socials">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
       </div>
       <div class="chef-card reveal scale">
-        <div class="chef-img-wrap"><img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=600&q=80" alt="Priya Sharma" loading="lazy"/><span class="chef-badge" data-en="Sous Chef" data-fi="Apulaispääkokki">Sous Chef</span></div>
-        <h3>Priya Sharma</h3><p data-en="Specialist in vegetarian &amp; tandoor cuisine" data-fi="Kasvis- ja tandoor-keittiön asiantuntija">Specialist in vegetarian &amp; tandoor cuisine</p>
-        <div class="chef-socials"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a></div>
+        <div class="chef-img-wrap">
+          <img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=600&q=80" alt="Priya Sharma" loading="lazy"/>
+          <span class="chef-badge">Sous Chef</span>
+        </div>
+        <h3>Priya Sharma</h3>
+        <p>Specialist in vegetarian &amp; tandoor cuisine</p>
+        <div class="chef-socials">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
       </div>
       <div class="chef-card reveal right">
-        <div class="chef-img-wrap"><img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&q=80" alt="Rohan Mehta" loading="lazy"/><span class="chef-badge" data-en="Dessert Chef" data-fi="Jälkiruokakokki">Dessert Chef</span></div>
-        <h3>Rohan Mehta</h3><p data-en="Expert in traditional Indian sweets &amp; desserts" data-fi="Perinteisten intialaisten makeisten asiantuntija">Expert in traditional Indian sweets &amp; desserts</p>
-        <div class="chef-socials"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a></div>
+        <div class="chef-img-wrap">
+          <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&q=80" alt="Rohan Mehta" loading="lazy"/>
+          <span class="chef-badge">Dessert Chef</span>
+        </div>
+        <h3>Rohan Mehta</h3>
+        <p>Expert in traditional Indian sweets &amp; desserts</p>
+        <div class="chef-socials">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
       </div>
     </div>
   </div>
@@ -885,33 +942,42 @@ img{display:block;width:100%;object-fit:cover}
 <section id="contact" class="contact section">
   <div class="container">
     <div class="tc reveal">
-      <span class="sec-label purple" data-en="Get in Touch" data-fi="Ota yhteyttä">Get in Touch</span>
-      <h2 class="sec-title dark" data-en="Find &amp; Contact Us" data-fi="Löydä &amp; ota yhteyttä">Find &amp; Contact Us</h2>
-      <p class="sec-sub" data-en="We'd love to hear from you. Visit us, call us, or send us a message." data-fi="Haluaisimme kuulla sinusta. Vieraile, soita tai lähetä viesti.">We'd love to hear from you. Visit us, call us, or send us a message.</p>
+      <span class="sec-label purple">Get in Touch</span>
+      <h2 class="sec-title dark">Find &amp; Contact Us</h2>
+      <p class="sec-sub">We'd love to hear from you. Visit us, call us, or send us a message.</p>
     </div>
-    <div class="contact-grid">
+    <!-- Info + Form side by side -->
+    <div class="contact-top-grid">
       <div class="reveal left">
         <div class="c-items">
-          <div class="c-item"><div class="c-ico"><i class="fas fa-map-marker-alt"></i></div><div class="c-txt"><strong data-en="Address" data-fi="Osoite">Address</strong><span>Aallonhalkoja 3, 00540<br/>Helsinki, Finland</span></div></div>
-          <div class="c-item"><div class="c-ico"><i class="fas fa-phone"></i></div><div class="c-txt"><strong data-en="Phone" data-fi="Puhelin">Phone</strong><span>+358 40 123 4567</span></div></div>
-          <div class="c-item"><div class="c-ico"><i class="fas fa-envelope"></i></div><div class="c-txt"><strong data-en="Email" data-fi="Sähköposti">Email</strong><span>info@mughalrestaurant.fi</span></div></div>
-          <div class="c-item"><div class="c-ico"><i class="fas fa-clock"></i></div><div class="c-txt"><strong data-en="Hours" data-fi="Aukioloajat">Hours</strong><span data-en="Every day: 10:30 – 22:30" data-fi="Joka päivä: 10:30 – 22:30">Every day: 10:30 – 22:30</span></div></div>
+          <div class="c-item"><div class="c-ico"><i class="fas fa-map-marker-alt"></i></div><div class="c-txt"><strong>Address</strong><span>Aallonhalkoja 3, 00540<br/>Helsinki, Finland</span></div></div>
+          <div class="c-item"><div class="c-ico"><i class="fas fa-phone"></i></div><div class="c-txt"><strong>Phone</strong><span>+358 40 123 4567</span></div></div>
+          <div class="c-item"><div class="c-ico"><i class="fas fa-envelope"></i></div><div class="c-txt"><strong>Email</strong><span>info@mughalrestaurant.fi</span></div></div>
+          <div class="c-item"><div class="c-ico"><i class="fas fa-clock"></i></div><div class="c-txt"><strong>Hours</strong><span>Every day: 10:30 – 22:30</span></div></div>
         </div>
-        <div class="map-btns" style="margin-bottom:22px">
+        <div class="map-btns">
           <a href="https://www.google.com/maps/search/?api=1&query=Aallonhalkoja+3,+00540+Helsinki,+Finland" target="_blank" class="btn btn-map-google btn-sm"><i class="fab fa-google"></i> Google Maps</a>
           <a href="https://maps.apple.com/?q=Aallonhalkoja+3,+00540+Helsinki+Finland" target="_blank" class="btn btn-map-apple btn-sm"><i class="fab fa-apple"></i> Apple Maps</a>
         </div>
-        <div class="map-wrap"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1984.5!2d24.9551!3d60.1867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46920bc8b7b23a5b%3A0x5cd1b3a0dc0f1e1!2sAallonhalkoja+3%2C+00540+Helsinki!5e0!3m2!1sen!2sfi!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mughal Helsinki"></iframe></div>
       </div>
       <div class="contact-form-card reveal right">
-        <h4 data-en="Send Us a Message" data-fi="Lähetä meille viesti">Send Us a Message</h4>
+        <h4>Send Us a Message</h4>
         <form onsubmit="submitContact(event)">
-          <div class="fg"><label data-en="Your Name *" data-fi="Nimesi *">Your Name *</label><input type="text" id="cName" placeholder="Matti Virtanen" required/></div>
-          <div class="fg"><label data-en="Phone or Email *" data-fi="Puhelin tai sähköposti *">Phone or Email *</label><input type="text" id="cContact" placeholder="+358 40 123 4567 or email@example.com" required/></div>
-          <div class="fg"><label data-en="Message *" data-fi="Viesti *">Message *</label><textarea id="cMessage" style="height:120px;width:100%;padding:11px 15px;border:2px solid var(--border);border-radius:10px;font-family:'Poppins',sans-serif;font-size:.88rem;resize:vertical" placeholder="Write your message here..." required></textarea></div>
-          <button type="submit" class="f-submit"><i class="fas fa-paper-plane"></i> <span data-en="Send Message" data-fi="Lähetä viesti">Send Message</span></button>
+          <div class="fg"><label>Your Name *</label><input type="text" id="cName" placeholder="Matti Virtanen" required/></div>
+          <div class="fg"><label>Phone or Email *</label><input type="text" id="cContact" placeholder="+358 40 123 4567 or email@example.com" required/></div>
+          <div class="fg"><label>Message *</label>
+            <textarea id="cMessage" style="height:110px;width:100%;padding:11px 15px;border:2px solid var(--border);border-radius:10px;font-family:'Poppins',sans-serif;font-size:.88rem;resize:vertical;transition:var(--t);color:var(--text)" placeholder="Write your message here..." required></textarea>
+          </div>
+          <button type="submit" class="f-submit"><i class="fas fa-paper-plane"></i> Send Message</button>
         </form>
       </div>
+    </div>
+    <!-- Full-width satellite map below -->
+    <div class="map-wrap reveal" style="margin-top:10px">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1984.5!2d24.9551!3d60.1867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46920bc8b7b23a5b%3A0x5cd1b3a0dc0f1e1!2sAallonhalkoja+3%2C+00540+Helsinki!5e1!3m2!1sen!2sfi!4v1700000000000"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mughal Helsinki Satellite">
+      </iframe>
     </div>
   </div>
 </section>
@@ -921,12 +987,12 @@ img{display:block;width:100%;object-fit:cover}
   <div class="container">
     <div class="nl-inner">
       <div class="nl-text reveal left">
-        <h2 data-en="Get Exclusive Offers &amp; Updates" data-fi="Saa eksklusiiviset tarjoukset">Get Exclusive Offers &amp; Updates</h2>
-        <p data-en="Subscribe and be the first to know about special events, seasonal menus and exclusive discounts." data-fi="Tilaa ja ole ensimmäinen tietämään erikoistapahtumista, kausimenusta ja alennuksista.">Subscribe and be the first to know about special events, seasonal menus and exclusive discounts.</p>
+        <h2>Get Exclusive Offers &amp; Updates</h2>
+        <p>Subscribe and be the first to know about special events, seasonal menus and exclusive discounts.</p>
       </div>
       <form class="nl-form reveal right" onsubmit="subscribeNewsletter(event)">
         <input type="email" id="nlEmail" placeholder="Enter your email address..." required/>
-        <button type="submit"><i class="fas fa-paper-plane"></i> <span data-en="Subscribe" data-fi="Tilaa">Subscribe</span></button>
+        <button type="submit"><i class="fas fa-paper-plane"></i> Subscribe</button>
       </form>
     </div>
   </div>
@@ -936,8 +1002,8 @@ img{display:block;width:100%;object-fit:cover}
 <footer class="footer">
   <div class="container footer-grid">
     <div class="f-brand">
-      <div class="f-logo"><img src="https://i.ibb.co/8nxGJQkF/Chat-GPT-Image-Apr-7-2025-04-54-16-PM.png" alt="Mughal Logo"/></div>
-      <p data-en="Experience the rich heritage of Mughal cuisine — where every dish tells a story of royalty, flavour and tradition." data-fi="Koe Mughal-keittiön rikas perintö — jossa jokainen ruokalaji kertoo tarinan kuninkaallisesta arvokkuudesta.">Experience the rich heritage of Mughal cuisine — where every dish tells a story of royalty, flavour and tradition.</p>
+      <div class="f-logo"><img src="https://davidbantu1999.github.io/mughal-restaurant/logo.png" alt="Mughal Logo"/></div>
+      <p>Experience the rich heritage of Mughal cuisine — where every dish tells a story of royalty, flavour and tradition.</p>
       <div class="socials">
         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -947,109 +1013,84 @@ img{display:block;width:100%;object-fit:cover}
       </div>
     </div>
     <div class="f-col">
-      <h4 data-en="Quick Links" data-fi="Pikalinkit">Quick Links</h4>
+      <h4>Quick Links</h4>
       <ul>
-        <li><a href="#home"><i class="fas fa-chevron-right"></i><span data-en="Home" data-fi="Etusivu">Home</span></a></li>
-        <li><a href="#about"><i class="fas fa-chevron-right"></i><span data-en="About Us" data-fi="Tietoa meistä">About Us</span></a></li>
-        <li><a href="#menu"><i class="fas fa-chevron-right"></i><span data-en="Our Menu" data-fi="Ruokalista">Our Menu</span></a></li>
-        <li><a href="#gallery"><i class="fas fa-chevron-right"></i><span data-en="Gallery" data-fi="Galleria">Gallery</span></a></li>
-        <li><a href="#chefs"><i class="fas fa-chevron-right"></i><span data-en="Our Chefs" data-fi="Kokkimme">Our Chefs</span></a></li>
-        <li><a href="#reservation"><i class="fas fa-chevron-right"></i><span data-en="Reservations" data-fi="Varaukset">Reservations</span></a></li>
-        <li><a href="#contact"><i class="fas fa-chevron-right"></i><span data-en="Contact" data-fi="Yhteystiedot">Contact</span></a></li>
+        <li><a href="#home"><i class="fas fa-chevron-right"></i>Home</a></li>
+        <li><a href="#about"><i class="fas fa-chevron-right"></i>About Us</a></li>
+        <li><a href="#menu"><i class="fas fa-chevron-right"></i>Our Menu</a></li>
+        <li><a href="#gallery"><i class="fas fa-chevron-right"></i>Gallery</a></li>
+        <li><a href="#chefs"><i class="fas fa-chevron-right"></i>Our Chefs</a></li>
+        <li><a href="#reservation"><i class="fas fa-chevron-right"></i>Reservations</a></li>
+        <li><a href="#contact"><i class="fas fa-chevron-right"></i>Contact</a></li>
       </ul>
     </div>
     <div class="f-col">
-      <h4 data-en="Opening Hours" data-fi="Aukioloajat">Opening Hours</h4>
+      <h4>Opening Hours</h4>
       <ul class="f-hours">
-        <li><span class="day" data-en="Monday" data-fi="Maanantai">Monday</span><span>10:30–22:30</span></li>
-        <li><span class="day" data-en="Tuesday" data-fi="Tiistai">Tuesday</span><span>10:30–22:30</span></li>
-        <li><span class="day" data-en="Wednesday" data-fi="Keskiviikko">Wednesday</span><span>10:30–22:30</span></li>
-        <li><span class="day" data-en="Thursday" data-fi="Torstai">Thursday</span><span>10:30–22:30</span></li>
-        <li><span class="day" data-en="Friday" data-fi="Perjantai">Friday</span><span>10:30–22:30</span></li>
-        <li><span class="day" data-en="Saturday" data-fi="Lauantai">Saturday</span><span>10:30–22:30</span></li>
-        <li><span class="day" data-en="Sunday" data-fi="Sunnuntai">Sunday</span><span>10:30–22:30</span></li>
+        <li><span class="day">Monday</span><span>10:30–22:30</span></li>
+        <li><span class="day">Tuesday</span><span>10:30–22:30</span></li>
+        <li><span class="day">Wednesday</span><span>10:30–22:30</span></li>
+        <li><span class="day">Thursday</span><span>10:30–22:30</span></li>
+        <li><span class="day">Friday</span><span>10:30–22:30</span></li>
+        <li><span class="day">Saturday</span><span>10:30–22:30</span></li>
+        <li><span class="day">Sunday</span><span>10:30–22:30</span></li>
       </ul>
     </div>
     <div class="f-col">
-      <h4 data-en="Contact Us" data-fi="Ota yhteyttä">Contact Us</h4>
+      <h4>Contact Us</h4>
       <div class="f-contact-items">
         <p><i class="fas fa-map-marker-alt"></i>Aallonhalkoja 3, 00540 Helsinki, Finland</p>
         <p><i class="fas fa-phone"></i>+358 40 123 4567</p>
         <p><i class="fas fa-envelope"></i>info@mughalrestaurant.fi</p>
-        <p><i class="fas fa-clock"></i><span data-en="Open daily 10:30–22:30" data-fi="Avoinna päivittäin 10:30–22:30">Open daily 10:30–22:30</span></p>
+        <p><i class="fas fa-clock"></i>Open daily 10:30–22:30</p>
       </div>
       <div class="f-ctas">
-        <a href="#reservation" class="btn btn-gold btn-sm"><i class="fas fa-calendar-alt"></i> <span data-en="Reserve a Table" data-fi="Varaa pöytä">Reserve a Table</span></a>
+        <a href="ordernow.html" class="btn btn-gold btn-sm"><i class="fas fa-motorcycle"></i> Order Now</a>
+        <a href="#reservation" class="btn btn-outline-white btn-sm" style="border-color:rgba(255,255,255,.3)" onclick="scrollToSection(event,'#reservation')"><i class="fas fa-calendar-alt"></i> Reserve a Table</a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <p data-en="© 2026 Mughal Indian Restaurant Helsinki. All Rights Reserved." data-fi="© 2026 Mughal Intialainen Ravintola Helsinki. Kaikki oikeudet pidätetään.">© 2026 Mughal Indian Restaurant Helsinki. All Rights Reserved.</p>
+    <p>© 2026 Mughal Indian Restaurant Helsinki. All Rights Reserved.</p>
     <div class="f-bottom-links">
-      <a href="#" data-en="Privacy Policy" data-fi="Tietosuoja">Privacy Policy</a>
-      <a href="#" data-en="Terms" data-fi="Ehdot">Terms</a>
-      <a href="#" data-en="Allergen Info" data-fi="Allergeenit">Allergen Info</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms</a>
+      <a href="#">Allergen Info</a>
     </div>
   </div>
 </footer>
-
-<!-- ═══════════════════ ORDER MODAL ═══════════════════ -->
-<div class="modal-backdrop" id="orderModal">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeOrderModal()"><i class="fas fa-times"></i></button>
-    <div class="modal-head">
-      <div class="modal-icon" id="modalIcon"><i class="fas fa-motorcycle"></i></div>
-      <h3 id="modalTitle">Order for Delivery</h3>
-      <p id="modalSubtitle">Delivered hot to your door in 35–45 minutes.</p>
-    </div>
-    <div class="modal-tabs">
-      <button class="modal-tab active" onclick="switchModalTab('delivery',this)"><i class="fas fa-motorcycle"></i> <span data-en="Delivery" data-fi="Toimitus">Delivery</span></button>
-      <button class="modal-tab" onclick="switchModalTab('collect',this)"><i class="fas fa-store"></i> <span data-en="Collect" data-fi="Nouto">Collect</span></button>
-    </div>
-    <form onsubmit="placeOrder(event)">
-      <div class="fg"><label data-en="Full Name" data-fi="Koko nimi">Full Name</label><input type="text" id="orderName" placeholder="Your full name" required/></div>
-      <div class="fg"><label data-en="Phone Number" data-fi="Puhelinnumero">Phone Number</label><input type="tel" id="orderPhone" placeholder="+358 40 123 4567" required/></div>
-      <div class="fg" id="addressField"><label data-en="Delivery Address" data-fi="Toimitusosoite">Delivery Address</label><input type="text" id="orderAddress" placeholder="Your full delivery address"/></div>
-      <div class="fg"><label data-en="Your Order" data-fi="Tilauksesi">Your Order</label><textarea id="orderDetails" style="height:90px;width:100%;padding:11px 15px;border:2px solid var(--border);border-radius:10px;font-family:'Poppins',sans-serif;font-size:.88rem;resize:vertical" placeholder="e.g. 2x Butter Chicken, 1x Garlic Naan..." required></textarea></div>
-      <div class="fg"><label data-en="Special Instructions" data-fi="Erityisohjeet">Special Instructions</label><textarea id="orderSpecial" style="height:66px;width:100%;padding:11px 15px;border:2px solid var(--border);border-radius:10px;font-family:'Poppins',sans-serif;font-size:.88rem;resize:vertical" placeholder="Allergies, spice level..."></textarea></div>
-      <button type="submit" class="f-submit" style="margin-top:6px"><i class="fas fa-check-circle"></i> <span data-en="Place Order" data-fi="Tee tilaus">Place Order</span></button>
-    </form>
-  </div>
-</div>
 
 <!-- ═══════════════════ AUTH MODAL ═══════════════════ -->
 <div class="modal-backdrop" id="authModal">
   <div class="auth-modal-box">
     <button class="modal-close" onclick="closeAuthModal()"><i class="fas fa-times"></i></button>
     <div class="auth-head">
-      <img src="https://i.ibb.co/8nxGJQkF/Chat-GPT-Image-Apr-7-2025-04-54-16-PM.png" alt="Mughal Logo" class="auth-logo"/>
-      <h3 data-en="Welcome to Mughal" data-fi="Tervetuloa Mughaliin">Welcome to Mughal</h3>
-      <p data-en="Sign in or create your account" data-fi="Kirjaudu sisään tai luo tili">Sign in or create your account</p>
+      <img src="https://davidbantu1999.github.io/mughal-restaurant/logo.png" alt="Mughal Logo" class="auth-logo"/>
+      <h3>Welcome to Mughal</h3>
+      <p>Sign in or create your account</p>
     </div>
     <div class="auth-tabs">
-      <button class="auth-tab active" id="loginTab" onclick="switchAuthTab('login')"><span data-en="Login" data-fi="Kirjaudu">Login</span></button>
-      <button class="auth-tab" id="signupTab" onclick="switchAuthTab('signup')"><span data-en="Sign Up" data-fi="Rekisteröidy">Sign Up</span></button>
+      <button class="auth-tab active" id="loginTab" onclick="switchAuthTab('login')">Login</button>
+      <button class="auth-tab" id="signupTab" onclick="switchAuthTab('signup')">Sign Up</button>
     </div>
-    <!-- LOGIN -->
     <div class="modal-section active" id="loginSection">
       <form onsubmit="loginUser(event)">
-        <div class="fg"><label data-en="Email Address" data-fi="Sähköpostiosoite">Email Address</label><input type="email" id="loginEmail" placeholder="your@email.com" required/></div>
-        <div class="fg"><label data-en="Password" data-fi="Salasana">Password</label><input type="password" id="loginPassword" placeholder="••••••••" required/></div>
-        <button type="button" class="forgot-link" onclick="forgotPassword()" data-en="Forgot password?" data-fi="Unohditko salasanasi?">Forgot password?</button>
-        <button type="submit" class="f-submit"><i class="fas fa-sign-in-alt"></i> <span data-en="Login" data-fi="Kirjaudu sisään">Login</span></button>
+        <div class="fg"><label>Email Address</label><input type="email" id="loginEmail" placeholder="your@email.com" required/></div>
+        <div class="fg"><label>Password</label><input type="password" id="loginPassword" placeholder="••••••••" required/></div>
+        <button type="button" class="forgot-link" onclick="forgotPassword()">Forgot password?</button>
+        <button type="submit" class="f-submit"><i class="fas fa-sign-in-alt"></i> Login</button>
       </form>
-      <p style="text-align:center;margin-top:14px;font-size:.82rem;color:var(--text-light)"><span data-en="Don't have an account?" data-fi="Ei tiliä?">Don't have an account?</span> <a href="#" onclick="switchAuthTab('signup');return false;" style="color:var(--purple);font-weight:600" data-en="Sign Up" data-fi="Rekisteröidy">Sign Up</a></p>
+      <p style="text-align:center;margin-top:14px;font-size:.82rem;color:var(--text-light)">Don't have an account? <a href="#" onclick="switchAuthTab('signup');return false;" style="color:var(--purple);font-weight:600">Sign Up</a></p>
     </div>
-    <!-- SIGNUP -->
     <div class="modal-section" id="signupSection">
       <form onsubmit="signupUser(event)">
-        <div class="fg"><label data-en="Full Name" data-fi="Koko nimi">Full Name</label><input type="text" id="signupName" placeholder="Matti Virtanen" required/></div>
-        <div class="fg"><label data-en="Email Address" data-fi="Sähköpostiosoite">Email Address</label><input type="email" id="signupEmail" placeholder="your@email.com" required/></div>
-        <div class="fg"><label data-en="Password" data-fi="Salasana">Password</label><input type="password" id="signupPassword" placeholder="Min. 6 characters" required/></div>
-        <div class="fg"><label data-en="Confirm Password" data-fi="Vahvista salasana">Confirm Password</label><input type="password" id="signupConfirm" placeholder="Repeat password" required/></div>
-        <button type="submit" class="f-submit"><i class="fas fa-user-plus"></i> <span data-en="Create Account" data-fi="Luo tili">Create Account</span></button>
+        <div class="fg"><label>Full Name</label><input type="text" id="signupName" placeholder="Matti Virtanen" required/></div>
+        <div class="fg"><label>Email Address</label><input type="email" id="signupEmail" placeholder="your@email.com" required/></div>
+        <div class="fg"><label>Password</label><input type="password" id="signupPassword" placeholder="Min. 6 characters" required/></div>
+        <div class="fg"><label>Confirm Password</label><input type="password" id="signupConfirm" placeholder="Repeat password" required/></div>
+        <button type="submit" class="f-submit"><i class="fas fa-user-plus"></i> Create Account</button>
       </form>
-      <p style="text-align:center;margin-top:14px;font-size:.82rem;color:var(--text-light)"><span data-en="Already have an account?" data-fi="Onko sinulla jo tili?">Already have an account?</span> <a href="#" onclick="switchAuthTab('login');return false;" style="color:var(--purple);font-weight:600" data-en="Login" data-fi="Kirjaudu">Login</a></p>
+      <p style="text-align:center;margin-top:14px;font-size:.82rem;color:var(--text-light)">Already have an account? <a href="#" onclick="switchAuthTab('login');return false;" style="color:var(--purple);font-weight:600">Login</a></p>
     </div>
   </div>
 </div>
@@ -1080,12 +1121,14 @@ firebase.initializeApp({
   messagingSenderId:"123933913893",
   appId:"1:123933913893:web:c1f57caf4dc2a5440ba0cc"
 });
-const db = firebase.database();
-const auth = firebase.auth();
+const db=firebase.database();
+const auth=firebase.auth();
 
-/* ── SWIPER ── */
+/* ── SWIPER (reviews below arrows) ── */
 new Swiper('.reviewSwiper',{
-  slidesPerView:1, spaceBetween:22, loop:true,
+  slidesPerView:1,
+  spaceBetween:22,
+  loop:true,
   autoplay:{delay:4500,disableOnInteraction:false},
   pagination:{el:'.swiper-pagination',clickable:true},
   navigation:{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev'},
@@ -1102,12 +1145,11 @@ function setLang(lang){
     const val=el.getAttribute('data-'+lang);
     if(val===null)return;
     if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){el.placeholder=val;}
-    else if(el.tagName==='OPTION'){el.textContent=val;}
     else{el.textContent=val;}
   });
-  // update time display placeholder
   const td=document.getElementById('timeDisplayText');
-  if(td&&!document.getElementById('resTime').value)td.textContent=lang==='fi'?'Valitse aika':'Select time';
+  if(td&&!document.getElementById('resTime').value)
+    td.textContent=lang==='fi'?'Valitse aika':'Select time';
 }
 
 /* ── NAVBAR SCROLL ── */
@@ -1116,7 +1158,7 @@ window.addEventListener('scroll',()=>{
   document.getElementById('btt').classList.toggle('show',window.scrollY>400);
 });
 
-/* ── DRAWER ── */
+/* ── HAMBURGER / DRAWER ── */
 document.getElementById('hamburger').addEventListener('click',()=>{
   document.getElementById('navDrawer').classList.add('open');
   document.getElementById('drawerOverlay').classList.add('open');
@@ -1128,11 +1170,40 @@ function closeDrawer(){
   document.body.style.overflow='';
 }
 
+/* ── SMOOTH SCROLL TO SECTION (closes drawer too) ── */
+function scrollToSection(e,selector){
+  e.preventDefault();
+  closeDrawer();
+  setTimeout(()=>{
+    const el=document.querySelector(selector);
+    if(el){
+      const offset=el.getBoundingClientRect().top+window.scrollY-72;
+      window.scrollTo({top:offset,behavior:'smooth'});
+    }
+  },300);
+}
+
+/* ── ALL reservation links ── */
+document.addEventListener('click',function(e){
+  const a=e.target.closest('a[href="#reservation"]');
+  if(a&&!a.hasAttribute('data-no-scroll')){
+    e.preventDefault();
+    closeDrawer();
+    setTimeout(()=>{
+      const el=document.getElementById('reservation');
+      if(el){
+        const offset=el.getBoundingClientRect().top+window.scrollY-72;
+        window.scrollTo({top:offset,behavior:'smooth'});
+      }
+    },300);
+  }
+});
+
 /* ── HERO SLIDER ── */
 let currentSlide=0;
 const slides=document.querySelectorAll('.hero-slide');
 const dots=document.querySelectorAll('.hero-dot');
-let sliderTimer=setInterval(()=>changeSlide(1),5000);
+let sliderTimer=setInterval(()=>changeSlide(1),5200);
 function goToSlide(n){
   slides[currentSlide].classList.remove('active');
   dots[currentSlide].classList.remove('active');
@@ -1143,7 +1214,7 @@ function goToSlide(n){
 function changeSlide(dir){
   clearInterval(sliderTimer);
   goToSlide(currentSlide+dir);
-  sliderTimer=setInterval(()=>changeSlide(1),5000);
+  sliderTimer=setInterval(()=>changeSlide(1),5200);
 }
 
 /* ── MENU TABS ── */
@@ -1153,13 +1224,21 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
     document.querySelectorAll('.menu-grid').forEach(g=>g.classList.remove('active'));
     btn.classList.add('active');
     const t=document.getElementById(btn.dataset.tab);
-    if(t){t.classList.add('active');t.querySelectorAll('.reveal').forEach(el=>{el.classList.remove('visible');setTimeout(()=>el.classList.add('visible'),60);});}
+    if(t){
+      t.classList.add('active');
+      t.querySelectorAll('.reveal').forEach(el=>{
+        el.classList.remove('visible');
+        setTimeout(()=>el.classList.add('visible'),60);
+      });
+    }
   });
 });
 
 /* ── SCROLL REVEAL ── */
 const ro=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);}});
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);}
+  });
 },{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
@@ -1175,7 +1254,7 @@ function closeLightbox(){
 }
 
 /* ── TIME PICKER ── */
-let selHour='10', selMin='00', selAmPm='PM';
+let selHour='10',selMin='00',selAmPm='PM';
 (function buildTimePicker(){
   const hs=document.getElementById('hourScroll');
   const ms=document.getElementById('minScroll');
@@ -1184,30 +1263,39 @@ let selHour='10', selMin='00', selAmPm='PM';
     const d=document.createElement('div');
     d.className='time-opt'+(h===10?' selected':'');
     d.textContent=String(h).padStart(2,'0');
-    d.onclick=function(){hs.querySelectorAll('.time-opt').forEach(x=>x.classList.remove('selected'));this.classList.add('selected');selHour=this.textContent;};
+    d.onclick=function(){
+      hs.querySelectorAll('.time-opt').forEach(x=>x.classList.remove('selected'));
+      this.classList.add('selected');selHour=this.textContent;
+    };
     hs.appendChild(d);
   }
   ['00','15','30','45'].forEach(m=>{
     const d=document.createElement('div');
     d.className='time-opt'+(m==='00'?' selected':'');
     d.textContent=m;
-    d.onclick=function(){ms.querySelectorAll('.time-opt').forEach(x=>x.classList.remove('selected'));this.classList.add('selected');selMin=this.textContent;};
+    d.onclick=function(){
+      ms.querySelectorAll('.time-opt').forEach(x=>x.classList.remove('selected'));
+      this.classList.add('selected');selMin=this.textContent;
+    };
     ms.appendChild(d);
   });
   ['AM','PM'].forEach(p=>{
     const d=document.createElement('div');
     d.className='time-opt'+(p==='PM'?' selected':'');
     d.textContent=p;
-    d.onclick=function(){as.querySelectorAll('.time-opt').forEach(x=>x.classList.remove('selected'));this.classList.add('selected');selAmPm=this.textContent;};
+    d.onclick=function(){
+      as.querySelectorAll('.time-opt').forEach(x=>x.classList.remove('selected'));
+      this.classList.add('selected');selAmPm=this.textContent;
+    };
     as.appendChild(d);
   });
 })();
+
 function toggleTimePicker(){
   const dd=document.getElementById('timeDropdown');
   const disp=document.getElementById('timeDisplay');
-  const isOpen=dd.classList.contains('open');
-  dd.classList.toggle('open',!isOpen);
-  disp.classList.toggle('open',!isOpen);
+  dd.classList.toggle('open');
+  disp.classList.toggle('open');
 }
 function confirmTime(){
   const val=selHour+':'+selMin+' '+selAmPm;
@@ -1224,27 +1312,6 @@ document.addEventListener('click',function(e){
   }
 });
 
-/* ── RESERVATION → FIREBASE ── */
-function submitReservation(e){
-  e.preventDefault();
-  const time=document.getElementById('resTime').value;
-  if(!time){showToast(currentLang==='en'?'❌ Please select a time.':'❌ Valitse aika.',true);return;}
-  db.ref('reservations').push({
-    name:document.getElementById('resName').value.trim(),
-    phone:document.getElementById('resPhone').value.trim(),
-    date:document.getElementById('resDate').value,
-    time:time,
-    guests:document.getElementById('resGuests').value,
-    note:document.getElementById('resNote').value.trim(),
-    timestamp:Date.now()
-  }).then(()=>{
-    showToast(currentLang==='en'?'🎊 Reservation confirmed! We\'ll call to confirm.':'🎊 Varaus vahvistettu! Soitamme vahvistaaksemme.');
-    e.target.reset();
-    document.getElementById('timeDisplayText').textContent=currentLang==='en'?'Select time':'Valitse aika';
-    document.getElementById('resTime').value='';
-  }).catch(err=>showToast('❌ '+err.message,true));
-}
-
 /* ── SET MIN DATE ── */
 (function(){
   const di=document.getElementById('resDate');
@@ -1253,65 +1320,53 @@ function submitReservation(e){
   di.min=t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'-'+String(t.getDate()).padStart(2,'0');
 })();
 
-/* ── ORDER MODAL ── */
-let currentOrderType='delivery';
-function openOrderModal(type){
-  currentOrderType=type||'delivery';
-  document.getElementById('orderModal').classList.add('open');
-  document.body.style.overflow='hidden';
-  updateModalForType(currentOrderType);
-  document.querySelectorAll('.modal-tab').forEach((t,i)=>t.classList.toggle('active',(i===0&&currentOrderType==='delivery')||(i===1&&currentOrderType==='collect')));
-}
-function closeOrderModal(){document.getElementById('orderModal').classList.remove('open');document.body.style.overflow='';}
-function switchModalTab(type,btn){
-  currentOrderType=type;
-  document.querySelectorAll('.modal-tab').forEach(t=>t.classList.remove('active'));
-  btn.classList.add('active');
-  updateModalForType(type);
-}
-function updateModalForType(type){
-  const af=document.getElementById('addressField');
-  const isEN=currentLang==='en';
-  if(type==='delivery'){
-    af.style.display='block';
-    document.getElementById('modalIcon').innerHTML='<i class="fas fa-motorcycle"></i>';
-    document.getElementById('modalTitle').textContent=isEN?'Order for Delivery':'Tilaa toimitus';
-    document.getElementById('modalSubtitle').textContent=isEN?'Delivered hot to your door in 35–45 minutes.':'Toimitettuna kuumana ovellesi 35–45 minuutissa.';
-  } else {
-    af.style.display='none';
-    document.getElementById('modalIcon').innerHTML='<i class="fas fa-store"></i>';
-    document.getElementById('modalTitle').textContent=isEN?'Click & Collect':'Tilaa ja nouda';
-    document.getElementById('modalSubtitle').textContent=isEN?'Ready for collection in 20–25 minutes.':'Valmis noutoon 20–25 minuutissa.';
-  }
-}
-document.getElementById('orderModal').addEventListener('click',function(e){if(e.target===this)closeOrderModal();});
-
-/* ── PLACE ORDER → FIREBASE ── */
-function placeOrder(e){
+/* ── RESERVATION → FIREBASE + POPUP ── */
+function submitReservation(e){
   e.preventDefault();
-  db.ref('orders').push({
-    name:document.getElementById('orderName').value.trim(),
-    phone:document.getElementById('orderPhone').value.trim(),
-    address:currentOrderType==='delivery'?document.getElementById('orderAddress').value.trim():'',
-    orderDetails:document.getElementById('orderDetails').value.trim(),
-    specialInstructions:document.getElementById('orderSpecial').value.trim(),
-    type:currentOrderType,timestamp:Date.now()
+  const time=document.getElementById('resTime').value;
+  if(!time){showToast('❌ Please select a time.',true);return;}
+  const guests=document.getElementById('resGuests').value;
+  if(!guests||isNaN(guests)||Number(guests)<1){showToast('❌ Please enter a valid number of people.',true);return;}
+  db.ref('reservations').push({
+    name:document.getElementById('resName').value.trim(),
+    phone:document.getElementById('resPhone').value.trim(),
+    date:document.getElementById('resDate').value,
+    time:time,
+    guests:guests,
+    note:document.getElementById('resNote').value.trim(),
+    timestamp:Date.now()
   }).then(()=>{
-    closeOrderModal();
-    showToast(currentLang==='en'?'🎉 Order placed! We\'ll call to confirm.':'🎉 Tilaus tehty! Soitamme vahvistaaksemme.');
+    e.target.reset();
+    document.getElementById('timeDisplayText').textContent='Select time';
+    document.getElementById('resTime').value='';
+    openResConfirm();
+  }).catch(err=>showToast('❌ '+err.message,true));
+}
+function openResConfirm(){
+  document.getElementById('resConfirmModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeResConfirm(){
+  document.getElementById('resConfirmModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('resConfirmModal').addEventListener('click',function(e){
+  if(e.target===this)closeResConfirm();
+});
+
+/* ── NEWSLETTER ── */
+function subscribeNewsletter(e){
+  e.preventDefault();
+  db.ref('newsletter').push({
+    email:document.getElementById('nlEmail').value.trim(),
+    timestamp:Date.now()
+  }).then(()=>{
+    showToast('✅ Subscribed! Welcome to the Mughal family.');
     e.target.reset();
   }).catch(err=>showToast('❌ '+err.message,true));
 }
 
-/* ── NEWSLETTER → FIREBASE ── */
-function subscribeNewsletter(e){
-  e.preventDefault();
-  db.ref('newsletter').push({email:document.getElementById('nlEmail').value.trim(),timestamp:Date.now()})
-  .then(()=>{showToast(currentLang==='en'?'✅ Subscribed! Welcome to the Mughal family.':'✅ Tilattu! Tervetuloa Mughal-perheeseen.');e.target.reset();})
-  .catch(err=>showToast('❌ '+err.message,true));
-}
-
-/* ── CONTACT → FIREBASE ── */
+/* ── CONTACT ── */
 function submitContact(e){
   e.preventDefault();
   db.ref('contacts').push({
@@ -1319,68 +1374,98 @@ function submitContact(e){
     contact:document.getElementById('cContact').value.trim(),
     message:document.getElementById('cMessage').value.trim(),
     timestamp:Date.now()
-  }).then(()=>{showToast(currentLang==='en'?'✅ Message sent! We\'ll reply soon.':'✅ Viesti lähetetty! Vastaamme pian.');e.target.reset();})
-  .catch(err=>showToast('❌ '+err.message,true));
+  }).then(()=>{
+    showToast("✅ Message sent! We'll reply soon.");
+    e.target.reset();
+  }).catch(err=>showToast('❌ '+err.message,true));
 }
 
 /* ── AUTH MODAL ── */
-function openAuthModal(tab){document.getElementById('authModal').classList.add('open');document.body.style.overflow='hidden';switchAuthTab(tab||'login');}
-function closeAuthModal(){document.getElementById('authModal').classList.remove('open');document.body.style.overflow='';}
+function openAuthModal(tab){
+  document.getElementById('authModal').classList.add('open');
+  document.body.style.overflow='hidden';
+  switchAuthTab(tab||'login');
+}
+function closeAuthModal(){
+  document.getElementById('authModal').classList.remove('open');
+  document.body.style.overflow='';
+}
 function switchAuthTab(tab){
   document.getElementById('loginTab').classList.toggle('active',tab==='login');
   document.getElementById('signupTab').classList.toggle('active',tab==='signup');
   document.getElementById('loginSection').classList.toggle('active',tab==='login');
   document.getElementById('signupSection').classList.toggle('active',tab==='signup');
 }
-document.getElementById('authModal').addEventListener('click',function(e){if(e.target===this)closeAuthModal();});
+document.getElementById('authModal').addEventListener('click',function(e){
+  if(e.target===this)closeAuthModal();
+});
 
 /* ── LOGIN ── */
 function loginUser(e){
   e.preventDefault();
-  auth.signInWithEmailAndPassword(document.getElementById('loginEmail').value.trim(),document.getElementById('loginPassword').value)
-  .then(()=>{closeAuthModal();showToast(currentLang==='en'?'👋 Welcome back!':'👋 Tervetuloa takaisin!');e.target.reset();})
-  .catch(err=>showToast('❌ '+err.message,true));
+  auth.signInWithEmailAndPassword(
+    document.getElementById('loginEmail').value.trim(),
+    document.getElementById('loginPassword').value
+  ).then(()=>{
+    closeAuthModal();
+    showToast('👋 Welcome back!');
+    e.target.reset();
+  }).catch(err=>showToast('❌ '+err.message,true));
 }
 
 /* ── FORGOT PASSWORD ── */
 function forgotPassword(){
   const email=document.getElementById('loginEmail').value.trim();
-  if(!email){showToast(currentLang==='en'?'❌ Enter your email first.':'❌ Syötä ensin sähköpostisi.',true);return;}
+  if(!email){showToast('❌ Enter your email address first.',true);return;}
   auth.sendPasswordResetEmail(email)
-  .then(()=>showToast(currentLang==='en'?'📧 Password reset email sent!':'📧 Salasanan palautuslinkki lähetetty!'))
-  .catch(err=>showToast('❌ '+err.message,true));
+    .then(()=>showToast('📧 Password reset email sent!'))
+    .catch(err=>showToast('❌ '+err.message,true));
 }
 
-/* ── SIGNUP ── */
+/* ── SIGN UP ── */
 function signupUser(e){
   e.preventDefault();
   const pass=document.getElementById('signupPassword').value;
   const conf=document.getElementById('signupConfirm').value;
-  if(pass!==conf){showToast(currentLang==='en'?'❌ Passwords do not match.':'❌ Salasanat eivät täsmää.',true);return;}
-  if(pass.length<6){showToast(currentLang==='en'?'❌ Password must be at least 6 characters.':'❌ Salasanan on oltava vähintään 6 merkkiä.',true);return;}
-  auth.createUserWithEmailAndPassword(document.getElementById('signupEmail').value.trim(),pass)
-  .then(cred=>cred.user.updateProfile({displayName:document.getElementById('signupName').value.trim()}))
-  .then(()=>{closeAuthModal();showToast(currentLang==='en'?'🎉 Account created! Welcome.':'🎉 Tili luotu! Tervetuloa.');document.getElementById('signupSection').querySelector('form').reset();})
-  .catch(err=>showToast('❌ '+err.message,true));
+  if(pass!==conf){showToast('❌ Passwords do not match.',true);return;}
+  if(pass.length<6){showToast('❌ Password must be at least 6 characters.',true);return;}
+  auth.createUserWithEmailAndPassword(
+    document.getElementById('signupEmail').value.trim(),pass
+  ).then(cred=>cred.user.updateProfile({
+    displayName:document.getElementById('signupName').value.trim()
+  })).then(()=>{
+    closeAuthModal();
+    showToast('🎉 Account created! Welcome to Mughal.');
+    document.getElementById('signupSection').querySelector('form').reset();
+  }).catch(err=>showToast('❌ '+err.message,true));
 }
 
 /* ── LOGOUT ── */
-function logoutUser(){auth.signOut().then(()=>showToast(currentLang==='en'?'👋 Logged out.':'👋 Kirjauduttu ulos.'));}
+function logoutUser(){
+  auth.signOut().then(()=>showToast('👋 Logged out successfully.'));
+}
 
 /* ── AUTH STATE ── */
 auth.onAuthStateChanged(user=>{
   const nb=document.getElementById('navBtns');
   const nu=document.getElementById('navUser');
-  const da=document.getElementById('drawerAuth');
-  const du=document.getElementById('drawerUser');
+  const dab=document.getElementById('drawerAuthBtns');
+  const dui=document.getElementById('drawerUserInfo');
+  const dlb=document.getElementById('drawerLogoutBtn');
   if(user){
-    nb.style.display='none'; nu.classList.add('show');
+    nb.style.display='none';
+    nu.classList.add('show');
     document.getElementById('navUserEmail').textContent=user.displayName||user.email;
-    da.style.display='none'; du.style.display='block';
+    dab.style.display='none';
+    dui.style.display='block';
+    dlb.style.display='block';
     document.getElementById('drawerUserEmail').textContent=user.displayName||user.email;
   } else {
-    nb.style.display='flex'; nu.classList.remove('show');
-    da.style.display='flex'; du.style.display='none';
+    nb.style.display='flex';
+    nu.classList.remove('show');
+    dab.style.display='flex';
+    dui.style.display='none';
+    dlb.style.display='none';
   }
 });
 
@@ -1396,17 +1481,14 @@ function showToast(msg,isError=false){
   toastTimer=setTimeout(()=>t.classList.remove('show'),4500);
 }
 
-/* ── SMOOTH SCROLL ── */
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',function(e){
-    const t=document.querySelector(this.getAttribute('href'));
-    if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-70,behavior:'smooth'});}
-  });
-});
-
 /* ── ESCAPE KEY ── */
 document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){closeLightbox();closeOrderModal();closeAuthModal();closeDrawer();}
+  if(e.key==='Escape'){
+    closeLightbox();
+    closeAuthModal();
+    closeDrawer();
+    closeResConfirm();
+  }
 });
 </script>
 </body>
