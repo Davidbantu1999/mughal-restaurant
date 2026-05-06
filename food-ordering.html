@@ -15,7 +15,8 @@
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:hidden}
-body{font-family:'Poppins',sans-serif;color:var(--text);background:linear-gradient(135deg,var(--purple-deep),var(--purple),var(--purple-mid));min-height:100vh;overflow-x:hidden}
+body{font-family:'Poppins',sans-serif;color:var(--text);background:linear-gradient(135deg,var(--purple-deep),var(--purple),var(--purple-mid));min-height:100vh;overflow-x:hidden;padding-top:80px}
+@media(max-width:768px){body{padding-top:60px}}
 a{text-decoration:none;color:inherit}
 ul{list-style:none}
 img{display:block;width:100%;object-fit:cover}
@@ -104,7 +105,7 @@ img{display:block;width:100%;object-fit:cover}
 .m-img img{height:100%;transition:transform .55s ease}
 .m-card:hover .m-img img{transform:scale(1.09)}
 .m-spice{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);color:var(--gold);padding:3px 8px;border-radius:15px;font-size:.55rem;font-weight:700;backdrop-filter:blur(6px)}
-.m-popular{position:absolute;top:8px;left:8px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--purple-deep);padding:3px 8px;border-radius:15px;font-size:.55rem;font-weight:700}
+.m-popular{position:absolute;top:8px;left:8px;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;padding:3px 8px;border-radius:15px;font-size:.55rem;font-weight:700}
 .m-body{padding:16px}
 .m-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:7px;gap:8px}
 .m-head h3{font-size:.94rem;color:#fff;font-weight:600;line-height:1.3;flex:1}
@@ -334,8 +335,8 @@ img{display:block;width:100%;object-fit:cover}
 .submit-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
 
 /* ── TOAST ── */
-.toast{position:fixed;bottom:30px;right:30px;z-index:99999;display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--purple),var(--purple-mid));color:#fff;padding:13px 20px;border-radius:14px;font-size:.85rem;font-weight:600;box-shadow:0 12px 38px var(--shadow);opacity:0;transform:translateY(18px);transition:all .42s cubic-bezier(.4,0,.2,1);pointer-events:none;max-width:300px}
-.toast.show{opacity:1;transform:translateY(0);pointer-events:all}
+.toast{position:fixed;top:30px;right:30px;z-index:99999;display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--purple),var(--purple-mid));color:#fff;padding:13px 20px;border-radius:14px;font-size:.85rem;font-weight:600;box-shadow:0 12px 38px var(--shadow);opacity:0;transform:translateX(18px);transition:all .42s cubic-bezier(.4,0,.2,1);pointer-events:none;max-width:300px}
+.toast.show{opacity:1;transform:translateX(0);pointer-events:all}
 .toast i{color:var(--gold);font-size:1rem;flex-shrink:0}
 .toast.error{background:linear-gradient(135deg,#c0392b,#e74c3c)}
 .toast.error i{color:#fff}
@@ -1585,6 +1586,9 @@ function openCheckout(){
   toggleCart();
   document.getElementById('checkoutModal').classList.add('open');
   
+  // Load customer data from localStorage
+  loadCustomerData();
+  
   // Reset to step 1
   currentStep=1;
   updateStepDisplay();
@@ -1602,6 +1606,21 @@ function openCheckout(){
   document.querySelectorAll('.payment-card').forEach(card=>card.classList.remove('selected'));
   document.querySelector('input[name="payment"][value="cash"]').checked=true;
   document.querySelector('.payment-card:first-child').classList.add('selected');
+}
+
+function loadCustomerData(){
+  const userData=JSON.parse(localStorage.getItem('mughalUser'));
+  if(userData){
+    if(userData.displayName){
+      document.getElementById('customerName').value=userData.displayName;
+    }
+    if(userData.email){
+      document.getElementById('customerEmail').value=userData.email;
+    }
+    if(userData.phone){
+      document.getElementById('customerPhone').value=userData.phone;
+    }
+  }
 }
 
 function closeCheckout(){
