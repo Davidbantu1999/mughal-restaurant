@@ -1052,6 +1052,109 @@ firebase.initializeApp({
 const db=firebase.database();
 const auth=firebase.auth();
 
+/* ── LOAD DYNAMIC CONTENT FROM FIREBASE ── */
+function loadDynamicContent(){
+  db.ref('websiteContent').on('value',snapshot=>{
+    const data=snapshot.val();
+    if(data){
+      // Hero Section
+      if(data.hero?.logo) document.querySelector('.hero-logo-img').src=data.hero.logo;
+      if(data.hero?.labelEn) document.querySelector('.hero-restaurant-label[data-en]').setAttribute('data-en',data.hero.labelEn);
+      if(data.hero?.labelFi) document.querySelector('.hero-restaurant-label[data-fi]').setAttribute('data-fi',data.hero.labelFi);
+      if(data.hero?.welcomeEn) document.querySelector('.hero-sub[data-en]').setAttribute('data-en',data.hero.welcomeEn);
+      if(data.hero?.welcomeFi) document.querySelector('.hero-sub[data-fi]').setAttribute('data-fi',data.hero.welcomeFi);
+      if(data.hero?.images && data.hero.images.length>0){
+        const slides=document.querySelectorAll('.hero-slide');
+        slides.forEach((slide,i)=>{
+          if(data.hero.images[i]) slide.style.backgroundImage=`url(${data.hero.images[i]})`;
+        });
+      }
+
+      // About Section
+      if(data.about?.labelEn) document.querySelector('#about .sec-label[data-en]').setAttribute('data-en',data.about.labelEn);
+      if(data.about?.labelFi) document.querySelector('#about .sec-label[data-fi]').setAttribute('data-fi',data.about.labelFi);
+      if(data.about?.titleEn) document.querySelector('#about .sec-title[data-en]').setAttribute('data-en',data.about.titleEn);
+      if(data.about?.titleFi) document.querySelector('#about .sec-title[data-fi]').setAttribute('data-fi',data.about.titleFi);
+      if(data.about?.subEn) document.querySelector('#about .sec-sub[data-en]').setAttribute('data-en',data.about.subEn);
+      if(data.about?.subFi) document.querySelector('#about .sec-sub[data-fi]').setAttribute('data-fi',data.about.subFi);
+      if(data.about?.p1En) document.querySelector('#about .about-text p:first-child[data-en]').setAttribute('data-en',data.about.p1En);
+      if(data.about?.p1Fi) document.querySelector('#about .about-text p:first-child[data-fi]').setAttribute('data-fi',data.about.p1Fi);
+      if(data.about?.p2En) document.querySelector('#about .about-text p:nth-child(2)[data-en]').setAttribute('data-en',data.about.p2En);
+      if(data.about?.p2Fi) document.querySelector('#about .about-text p:nth-child(2)[data-fi]').setAttribute('data-fi',data.about.p2Fi);
+      if(data.about?.largeImg) document.querySelector('#about .about-img-large img').src=data.about.largeImg;
+      if(data.about?.smallImg) document.querySelector('#about .about-img-small img').src=data.about.smallImg;
+      if(data.about?.statYears) document.querySelector('#about .as-item:nth-child(1) .as-num').textContent=data.about.statYears;
+      if(data.about?.statYearsLabelEn) document.querySelector('#about .as-item:nth-child(1) .as-label[data-en]').setAttribute('data-en',data.about.statYearsLabelEn);
+      if(data.about?.statYearsLabelFi) document.querySelector('#about .as-item:nth-child(1) .as-label[data-fi]').setAttribute('data-fi',data.about.statYearsLabelFi);
+      if(data.about?.statDishes) document.querySelector('#about .as-item:nth-child(2) .as-num').textContent=data.about.statDishes;
+      if(data.about?.statDishesLabelEn) document.querySelector('#about .as-item:nth-child(2) .as-label[data-en]').setAttribute('data-en',data.about.statDishesLabelEn);
+      if(data.about?.statDishesLabelFi) document.querySelector('#about .as-item:nth-child(2) .as-label[data-fi]').setAttribute('data-fi',data.about.statDishesLabelFi);
+      if(data.about?.statGuests) document.querySelector('#about .as-item:nth-child(3) .as-num').textContent=data.about.statGuests;
+      if(data.about?.statGuestsLabelEn) document.querySelector('#about .as-item:nth-child(3) .as-label[data-en]').setAttribute('data-en',data.about.statGuestsLabelEn);
+      if(data.about?.statGuestsLabelFi) document.querySelector('#about .as-item:nth-child(3) .as-label[data-fi]').setAttribute('data-fi',data.about.statGuestsLabelFi);
+      if(data.about?.statRating) document.querySelector('#about .as-item:nth-child(4) .as-num').textContent=data.about.statRating;
+      if(data.about?.statRatingLabelEn) document.querySelector('#about .as-item:nth-child(4) .as-label[data-en]').setAttribute('data-en',data.about.statRatingLabelEn);
+      if(data.about?.statRatingLabelFi) document.querySelector('#about .as-item:nth-child(4) .as-label[data-fi]').setAttribute('data-fi',data.about.statRatingLabelFi);
+
+      // Specials Section
+      if(data.specials?.labelEn) document.querySelector('.specials .sec-label[data-en]').setAttribute('data-en',data.specials.labelEn);
+      if(data.specials?.labelFi) document.querySelector('.specials .sec-label[data-fi]').setAttribute('data-fi',data.specials.labelFi);
+      if(data.specials?.titleEn) document.querySelector('.specials .sec-title[data-en]').setAttribute('data-en',data.specials.titleEn);
+      if(data.specials?.titleFi) document.querySelector('.specials .sec-title[data-fi]').setAttribute('data-fi',data.specials.titleFi);
+
+      // Menu Section
+      if(data.menu?.labelEn) document.querySelector('#menu .sec-label[data-en]').setAttribute('data-en',data.menu.labelEn);
+      if(data.menu?.labelFi) document.querySelector('#menu .sec-label[data-fi]').setAttribute('data-fi',data.menu.labelFi);
+      if(data.menu?.titleEn) document.querySelector('#menu .sec-title[data-en]').setAttribute('data-en',data.menu.titleEn);
+      if(data.menu?.titleFi) document.querySelector('#menu .sec-title[data-fi]').setAttribute('data-fi',data.menu.titleFi);
+
+      // Gallery Section
+      if(data.gallery?.labelEn) document.querySelector('#gallery .sec-label[data-en]').setAttribute('data-en',data.gallery.labelEn);
+      if(data.gallery?.labelFi) document.querySelector('#gallery .sec-label[data-fi]').setAttribute('data-fi',data.gallery.labelFi);
+      if(data.gallery?.titleEn) document.querySelector('#gallery .sec-title[data-en]').setAttribute('data-en',data.gallery.titleEn);
+      if(data.gallery?.titleFi) document.querySelector('#gallery .sec-title[data-fi]').setAttribute('data-fi',data.gallery.titleFi);
+      if(data.gallery?.images && data.gallery.images.length>0){
+        const galleryImages=document.querySelectorAll('.g1 img, .g2 img, .g3 img, .g4 img, .g5 img, .g6 img, .g7 img, .g8 img');
+        galleryImages.forEach((img,i)=>{
+          if(data.gallery.images[i]) img.src=data.gallery.images[i];
+        });
+      }
+
+      // Reservation Section
+      if(data.reservation?.labelEn) document.querySelector('#reservation .sec-label[data-en]').setAttribute('data-en',data.reservation.labelEn);
+      if(data.reservation?.labelFi) document.querySelector('#reservation .sec-label[data-fi]').setAttribute('data-fi',data.reservation.labelFi);
+      if(data.reservation?.titleEn) document.querySelector('#reservation .sec-title[data-en]').setAttribute('data-en',data.reservation.titleEn);
+      if(data.reservation?.titleFi) document.querySelector('#reservation .sec-title[data-fi]').setAttribute('data-fi',data.reservation.titleFi);
+      if(data.reservation?.subEn) document.querySelector('#reservation .sec-sub[data-en]').setAttribute('data-en',data.reservation.subEn);
+      if(data.reservation?.subFi) document.querySelector('#reservation .sec-sub[data-fi]').setAttribute('data-fi',data.reservation.subFi);
+
+      // Contact Section
+      if(data.contact?.labelEn) document.querySelector('#contact .sec-label[data-en]').setAttribute('data-en',data.contact.labelEn);
+      if(data.contact?.labelFi) document.querySelector('#contact .sec-label[data-fi]').setAttribute('data-fi',data.contact.labelFi);
+      if(data.contact?.titleEn) document.querySelector('#contact .sec-title[data-en]').setAttribute('data-en',data.contact.titleEn);
+      if(data.contact?.titleFi) document.querySelector('#contact .sec-title[data-fi]').setAttribute('data-fi',data.contact.titleFi);
+      if(data.contact?.addressEn) document.querySelector('#contact .contact-address[data-en]').setAttribute('data-en',data.contact.addressEn);
+      if(data.contact?.addressFi) document.querySelector('#contact .contact-address[data-fi]').setAttribute('data-fi',data.contact.addressFi);
+      if(data.contact?.phone) document.querySelector('#contact .contact-phone').textContent=data.contact.phone;
+      if(data.contact?.email) document.querySelector('#contact .contact-email').textContent=data.contact.email;
+      if(data.contact?.hoursEn) document.querySelector('#contact .contact-hours[data-en]').setAttribute('data-en',data.contact.hoursEn);
+      if(data.contact?.hoursFi) document.querySelector('#contact .contact-hours[data-fi]').setAttribute('data-fi',data.contact.hoursFi);
+
+      // Footer Section
+      if(data.footer?.copyrightEn) document.querySelector('.footer-copyright[data-en]').setAttribute('data-en',data.footer.copyrightEn);
+      if(data.footer?.copyrightFi) document.querySelector('.footer-copyright[data-fi]').setAttribute('data-fi',data.footer.copyrightFi);
+      if(data.footer?.facebook) document.querySelector('.footer-social a[href*="facebook"]').href=data.footer.facebook;
+      if(data.footer?.instagram) document.querySelector('.footer-social a[href*="instagram"]').href=data.footer.instagram;
+
+      // Re-apply language after content update
+      setLang(currentLang);
+    }
+  });
+}
+
+// Load dynamic content on page load
+window.addEventListener('load',loadDynamicContent);
+
 /* ── SWIPER (reviews below arrows) ── */
 new Swiper('.reviewSwiper',{
   slidesPerView:1,
