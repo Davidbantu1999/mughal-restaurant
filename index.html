@@ -62,7 +62,7 @@ img{display:block;width:100%;object-fit:cover}
 .nav-user{display:none;align-items:center;gap:10px;color:rgba(255,255,255,.88);font-size:.82rem}
 .nav-user.show{display:flex}
 .nav-user span{max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.hamburger{display:none;color:#fff;font-size:1.4rem;cursor:pointer;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.25);border-radius:10px;width:42px;height:42px;align-items:center;justify-content:center;flex-shrink:0;transition:var(--t)}
+.hamburger{display:none;color:#fff;font-size:1.4rem;cursor:pointer;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.25);border-radius:10px;width:42px;height:42px;align-items:center;justify-content:center;flex-shrink:0;transition:var(--t);order:3}
 .hamburger:hover{background:var(--gold);color:var(--purple-deep);border-color:var(--gold)}
 
 /* ── DRAWER ── */
@@ -312,21 +312,6 @@ img{display:block;width:100%;object-fit:cover}
 .why-card:hover h3{color:rgba(255,255,255,.95)}
 .why-card:hover p{color:rgba(255,255,255,.7)}
 
-/* ── CHEFS ── */
-.chefs{background:linear-gradient(180deg,var(--purple-deep),#1a0050)}
-.chefs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-.chef-card{text-align:center;transition:var(--t)}
-.chef-card:hover{transform:translateY(-6px)}
-.chef-img-wrap{width:100%;height:295px;border-radius:20px;overflow:hidden;position:relative;margin-bottom:17px}
-.chef-img-wrap img{height:100%;transition:transform .55s}
-.chef-card:hover .chef-img-wrap img{transform:scale(1.07)}
-.chef-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(36,0,90,.78) 100%);border-radius:20px}
-.chef-badge{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--purple-deep);padding:5px 17px;border-radius:50px;font-size:.67rem;font-weight:700;white-space:nowrap;z-index:1}
-.chef-card h3{color:#fff;font-size:1.06rem;margin-bottom:4px}
-.chef-card p{color:rgba(255,255,255,.45);font-size:.8rem;margin-bottom:12px}
-.chef-socials{display:flex;justify-content:center;gap:9px}
-.chef-socials a{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);font-size:.78rem;transition:var(--t)}
-.chef-socials a:hover{background:var(--gold);color:var(--purple-deep);border-color:var(--gold)}
 
 /* ── CONTACT ── */
 .contact{background:#fff}
@@ -418,6 +403,8 @@ img{display:block;width:100%;object-fit:cover}
 @media(max-width:1024px){
   #navbar{padding:12px 18px}
   #navbar.scrolled{padding:9px 18px}
+  .nav-links,.nav-right #navBtns,.nav-right .nav-user{display:none!important}
+  .hamburger{display:flex!important}
   .about-grid{grid-template-columns:1fr}
   .about-mosaic{grid-template-rows:200px 200px}
   .specials-grid{grid-template-columns:1fr 1fr}
@@ -427,14 +414,13 @@ img{display:block;width:100%;object-fit:cover}
   .g2,.g3,.g5,.g6{height:210px}
   .order-cards{grid-template-columns:1fr 1fr}
   .o-card:last-child{grid-column:1/-1;max-width:360px;margin:0 auto;width:100%}
-  .chefs-grid{grid-template-columns:1fr 1fr}
   .why-grid{grid-template-columns:1fr 1fr}
   .contact-top-grid{grid-template-columns:1fr}
   .res-grid{grid-template-columns:1fr}
 }
 @media(max-width:768px){
   .section{padding:56px 0}
-  .nav-links,.nav-right{display:none!important}
+  .nav-links,.nav-right #navBtns,.nav-right .nav-user{display:none!important}
   .hamburger{display:flex!important}
   #navbar{grid-template-columns:auto 1fr auto;padding:10px 16px;gap:10px}
   #navbar.scrolled{padding:8px 16px}
@@ -445,7 +431,7 @@ img{display:block;width:100%;object-fit:cover}
   .menu-tabs{gap:5px}
   .tab-btn{padding:8px 12px;font-size:.78rem;min-height:40px}
   .menu-grid{grid-template-columns:1fr!important}
-  .chefs-grid,.why-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
   .order-cards{grid-template-columns:1fr}
   .o-card:last-child{grid-column:auto;max-width:100%}
   .specials-grid{grid-template-columns:1fr 1fr}
@@ -510,7 +496,6 @@ img{display:block;width:100%;object-fit:cover}
     <li><a href="#about" data-en="About" data-fi="Tietoa">About</a></li>
     <li><a href="#menu" data-en="Menu" data-fi="Ruokalista">Menu</a></li>
     <li><a href="#gallery" data-en="Gallery" data-fi="Galleria">Gallery</a></li>
-    <li><a href="#chefs" data-en="Our Chefs" data-fi="Kokkimme">Our Chefs</a></li>
     <li><a href="#contact" data-en="Contact" data-fi="Yhteystiedot">Contact</a></li>
   </ul>
   <div class="nav-right" id="navRight">
@@ -523,8 +508,8 @@ img{display:block;width:100%;object-fit:cover}
       <button class="btn btn-outline-white btn-sm" onclick="openAuthModal('login')"><i class="fas fa-user"></i> <span data-en="Login" data-fi="Kirjaudu">Login</span></button>
       <button class="btn btn-gold btn-sm" onclick="openAuthModal('signup')"><i class="fas fa-user-plus"></i> <span data-en="Sign Up" data-fi="Rekisteröidy">Sign Up</span></button>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><i class="fas fa-bars"></i></button>
   </div>
-  <button class="hamburger" id="hamburger" aria-label="Open menu"><i class="fas fa-bars"></i></button>
 </nav>
 
 <!-- ═══════════════════ DRAWER (slides from right) ═══════════════════ -->
@@ -532,14 +517,13 @@ img{display:block;width:100%;object-fit:cover}
 <div class="nav-drawer" id="navDrawer">
   <div class="drawer-header">
     <img src="https://davidbantu1999.github.io/mughal-restaurant/logo.png" alt="Mughal"/>
-    <button class="drawer-close" onclick="closeDrawer()"><i class="fas fa-times"></i></button>
+    <button class="drawer-close" onclick="closeDrawer()"><i class="fas fa-arrow-left"></i></button>
   </div>
   <div class="drawer-nav">
     <a href="#home" onclick="scrollToSection(event,'#home')"><i class="fas fa-home"></i><span data-en="Home" data-fi="Etusivu">Home</span></a>
     <a href="#about" onclick="scrollToSection(event,'#about')"><i class="fas fa-info-circle"></i><span data-en="About" data-fi="Tietoa">About</span></a>
     <a href="#menu" onclick="scrollToSection(event,'#menu')"><i class="fas fa-utensils"></i><span data-en="Menu" data-fi="Ruokalista">Menu</span></a>
     <a href="#gallery" onclick="scrollToSection(event,'#gallery')"><i class="fas fa-images"></i><span data-en="Gallery" data-fi="Galleria">Gallery</span></a>
-    <a href="#chefs" onclick="scrollToSection(event,'#chefs')"><i class="fas fa-user-tie"></i><span data-en="Our Chefs" data-fi="Kokkimme">Our Chefs</span></a>
     <a href="#reservation" onclick="scrollToSection(event,'#reservation')"><i class="fas fa-calendar-alt"></i><span data-en="Reservations" data-fi="Varaukset">Reservations</span></a>
     <a href="#contact" onclick="scrollToSection(event,'#contact')"><i class="fas fa-map-marker-alt"></i><span data-en="Contact" data-fi="Yhteystiedot">Contact</span></a>
   </div>
@@ -555,7 +539,7 @@ img{display:block;width:100%;object-fit:cover}
       <button class="btn btn-outline-white" style="width:100%;font-size:.82rem;padding:10px 16px" onclick="closeDrawer();logoutUser()"><i class="fas fa-sign-out-alt"></i> <span data-en="Logout" data-fi="Kirjaudu ulos">Logout</span></button>
     </div>
     <div class="drawer-cta-btns">
-      <a href="ordernow.html" class="btn btn-gold" onclick="closeDrawer()"><i class="fas fa-motorcycle"></i> <span data-en="Order Now" data-fi="Tilaa nyt">Order Now</span></a>
+      <a href="food-ordering.html" class="btn btn-gold" onclick="closeDrawer()"><i class="fas fa-motorcycle"></i> <span data-en="Order Now" data-fi="Tilaa nyt">Order Now</span></a>
       <a href="#reservation" class="btn btn-outline-white" onclick="scrollToSection(event,'#reservation')"><i class="fas fa-calendar-alt"></i> <span data-en="Table Reservation" data-fi="Pöytävaraus">Table Reservation</span></a>
     </div>
   </div>
@@ -576,7 +560,7 @@ img{display:block;width:100%;object-fit:cover}
     <h1 class="hero-title"><span class="gold" data-en="Mughal Indian Cuisine" data-fi="Mughal Intialainen Keittiö">Mughal Indian Cuisine</span></h1>
     <p class="hero-sub" data-en="Experience the grandeur of Mughal-era cooking — hand-crafted with centuries-old recipes, premium spices &amp; passionate artistry in Helsinki." data-fi="Koe Mughal-aikakauden ruoanlaiton loisto — käsityönä valmistettu satoja vuosia vanhoilla resepteillä Helsingissä.">Experience the grandeur of Mughal-era cooking — hand-crafted with centuries-old recipes, premium spices &amp; passionate artistry in Helsinki.</p>
     <div class="hero-btns">
-      <a href="ordernow.html" class="btn btn-gold"><i class="fas fa-motorcycle"></i> <span data-en="Order Now" data-fi="Tilaa nyt">Order Now</span></a>
+      <a href="food-ordering.html" class="btn btn-gold"><i class="fas fa-motorcycle"></i> <span data-en="Order Now" data-fi="Tilaa nyt">Order Now</span></a>
       <a href="#reservation" class="btn btn-outline-white" onclick="scrollToSection(event,'#reservation')"><i class="fas fa-calendar-alt"></i> <span data-en="Table Reservation" data-fi="Pöytävaraus">Table Reservation</span></a>
     </div>
   </div>
@@ -758,20 +742,20 @@ img{display:block;width:100%;object-fit:cover}
         <div class="o-icon"><i class="fas fa-motorcycle"></i></div>
         <h3>Home Delivery</h3>
         <p>Get your favourite dishes delivered hot and fresh to your door within 35–45 minutes, 7 days a week.</p>
-        <a href="ordernow.html" class="btn btn-outline-white"><i class="fas fa-motorcycle"></i> Order Delivery</a>
+        <a href="food-ordering.html" class="btn btn-outline-white"><i class="fas fa-motorcycle"></i> Order Delivery</a>
       </div>
       <div class="o-card popular reveal scale">
         <div class="o-pop">⭐ Most Popular</div>
         <div class="o-icon"><i class="fas fa-store"></i></div>
         <h3>Click &amp; Collect</h3>
         <p>Order online and collect your meal ready and piping hot at the restaurant — skip the queue completely.</p>
-        <a href="ordernow.html" class="btn btn-gold"><i class="fas fa-store"></i> Order &amp; Collect</a>
+        <a href="food-ordering.html" class="btn btn-gold"><i class="fas fa-store"></i> Order &amp; Collect</a>
       </div>
       <div class="o-card reveal right">
         <div class="o-icon"><i class="fas fa-concierge-bell"></i></div>
         <h3>Dine In Pre-Order</h3>
         <p>Reserve your table and pre-order your meal for a seamless, no-wait royal dining experience.</p>
-        <a href="ordernow.html" class="btn btn-outline-white"><i class="fas fa-calendar-alt"></i> Reserve &amp; Pre-Order</a>
+        <a href="food-ordering.html" class="btn btn-outline-white"><i class="fas fa-calendar-alt"></i> Reserve &amp; Pre-Order</a>
       </div>
     </div>
   </div>
@@ -887,56 +871,6 @@ img{display:block;width:100%;object-fit:cover}
   </div>
 </section>
 
-<!-- ═══════════════════ CHEFS ═══════════════════ -->
-<section id="chefs" class="chefs section">
-  <div class="container">
-    <div class="tc reveal">
-      <span class="sec-label">The Artists Behind Every Dish</span>
-      <h2 class="sec-title">Meet Our Master Chefs</h2>
-    </div>
-    <div class="chefs-grid">
-      <div class="chef-card reveal left">
-        <div class="chef-img-wrap">
-          <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=600&q=80" alt="Arjun Kapoor" loading="lazy"/>
-          <span class="chef-badge">Head Chef</span>
-        </div>
-        <h3>Arjun Kapoor</h3>
-        <p>28 years of royal Mughal cuisine mastery</p>
-        <div class="chef-socials">
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        </div>
-      </div>
-      <div class="chef-card reveal scale">
-        <div class="chef-img-wrap">
-          <img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=600&q=80" alt="Priya Sharma" loading="lazy"/>
-          <span class="chef-badge">Sous Chef</span>
-        </div>
-        <h3>Priya Sharma</h3>
-        <p>Specialist in vegetarian &amp; tandoor cuisine</p>
-        <div class="chef-socials">
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        </div>
-      </div>
-      <div class="chef-card reveal right">
-        <div class="chef-img-wrap">
-          <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&q=80" alt="Rohan Mehta" loading="lazy"/>
-          <span class="chef-badge">Dessert Chef</span>
-        </div>
-        <h3>Rohan Mehta</h3>
-        <p>Expert in traditional Indian sweets &amp; desserts</p>
-        <div class="chef-socials">
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ═══════════════════ CONTACT ═══════════════════ -->
 <section id="contact" class="contact section">
@@ -1019,7 +953,6 @@ img{display:block;width:100%;object-fit:cover}
         <li><a href="#about"><i class="fas fa-chevron-right"></i>About Us</a></li>
         <li><a href="#menu"><i class="fas fa-chevron-right"></i>Our Menu</a></li>
         <li><a href="#gallery"><i class="fas fa-chevron-right"></i>Gallery</a></li>
-        <li><a href="#chefs"><i class="fas fa-chevron-right"></i>Our Chefs</a></li>
         <li><a href="#reservation"><i class="fas fa-chevron-right"></i>Reservations</a></li>
         <li><a href="#contact"><i class="fas fa-chevron-right"></i>Contact</a></li>
       </ul>
@@ -1045,7 +978,7 @@ img{display:block;width:100%;object-fit:cover}
         <p><i class="fas fa-clock"></i>Open daily 10:30–22:30</p>
       </div>
       <div class="f-ctas">
-        <a href="ordernow.html" class="btn btn-gold btn-sm"><i class="fas fa-motorcycle"></i> Order Now</a>
+        <a href="food-ordering.html" class="btn btn-gold btn-sm"><i class="fas fa-motorcycle"></i> Order Now</a>
         <a href="#reservation" class="btn btn-outline-white btn-sm" style="border-color:rgba(255,255,255,.3)" onclick="scrollToSection(event,'#reservation')"><i class="fas fa-calendar-alt"></i> Reserve a Table</a>
       </div>
     </div>
