@@ -15,7 +15,8 @@
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:hidden}
-body{font-family:'Poppins',sans-serif;color:var(--text);background:#fff;overflow-x:hidden}
+body{font-family:'Poppins',sans-serif;color:var(--text);background:#fff;overflow-x:hidden;padding-top:80px}
+@media(max-width:768px){body{padding-top:60px}}
 a{text-decoration:none;color:inherit}
 ul{list-style:none}
 img{display:block;width:100%;object-fit:cover}
@@ -370,6 +371,8 @@ img{display:block;width:100%;object-fit:cover}
 .modal-section.active{display:block}
 .forgot-link{display:block;text-align:right;font-size:.78rem;color:var(--purple);font-weight:600;margin-top:-4px;margin-bottom:14px;cursor:pointer;background:none;border:none;font-family:'Poppins',sans-serif;width:100%}
 .forgot-link:hover{text-decoration:underline}
+.google-btn{width:100%;padding:12px;background:#fff;border:2px solid #ddd;border-radius:12px;font-size:.85rem;font-weight:600;color:#333;cursor:pointer;transition:var(--t);display:flex;align-items:center;justify-content:center;gap:10px;margin-top:14px;font-family:'Poppins',sans-serif}
+.google-btn:hover{background:#f8f9fa;border-color:#ccc;transform:translateY(-2px)}
 
 /* ── TOAST ── */
 .toast{position:fixed;bottom:84px;right:22px;z-index:99999;display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--purple),var(--purple-mid));color:#fff;padding:13px 20px;border-radius:14px;font-size:.85rem;font-weight:600;box-shadow:0 12px 38px var(--shadow);opacity:0;transform:translateY(18px);transition:all .42s cubic-bezier(.4,0,.2,1);pointer-events:none;max-width:300px}
@@ -481,6 +484,7 @@ img{display:block;width:100%;object-fit:cover}
   </a>
   <ul class="nav-links">
     <li><a href="#home" data-en="Home" data-fi="Etusivu">Home</a></li>
+    <li><a href="view-menu.html" data-en="View Menu" data-fi="Ruokalista">View Menu</a></li>
     <li><a href="#about" data-en="About" data-fi="Tietoa">About</a></li>
     <li><a href="#menu" data-en="Menu" data-fi="Ruokalista">Menu</a></li>
     <li><a href="#gallery" data-en="Gallery" data-fi="Galleria">Gallery</a></li>
@@ -508,6 +512,7 @@ img{display:block;width:100%;object-fit:cover}
   </div>
   <div class="drawer-nav">
     <a href="#home" onclick="scrollToSection(event,'#home')"><i class="fas fa-home"></i><span data-en="Home" data-fi="Etusivu">Home</span></a>
+    <a href="view-menu.html" onclick="closeDrawer()"><i class="fas fa-book-open"></i><span data-en="View Menu" data-fi="Ruokalista">View Menu</span></a>
     <a href="#about" onclick="scrollToSection(event,'#about')"><i class="fas fa-info-circle"></i><span data-en="About" data-fi="Tietoa">About</span></a>
     <a href="#menu" onclick="scrollToSection(event,'#menu')"><i class="fas fa-utensils"></i><span data-en="Menu" data-fi="Ruokalista">Menu</span></a>
     <a href="#gallery" onclick="scrollToSection(event,'#gallery')"><i class="fas fa-images"></i><span data-en="Gallery" data-fi="Galleria">Gallery</span></a>
@@ -523,6 +528,7 @@ img{display:block;width:100%;object-fit:cover}
       <button class="btn btn-gold btn-sm" onclick="closeDrawer();openAuthModal('signup')"><i class="fas fa-user-plus"></i> <span data-en="Sign Up" data-fi="Rekisteröidy">Sign Up</span></button>
     </div>
     <div id="drawerLogoutBtn" style="display:none">
+      <button class="btn btn-outline-white" style="width:100%;font-size:.82rem;padding:10px 16px;margin-bottom:8px" onclick="closeDrawer();openAuthModal('changePassword')"><i class="fas fa-key"></i> <span data-en="Change Password" data-fi="Vaihda salasana">Change Password</span></button>
       <button class="btn btn-outline-white" style="width:100%;font-size:.82rem;padding:10px 16px" onclick="closeDrawer();logoutUser()"><i class="fas fa-sign-out-alt"></i> <span data-en="Logout" data-fi="Kirjaudu ulos">Logout</span></button>
     </div>
     <div class="drawer-cta-btns">
@@ -1005,20 +1011,39 @@ img{display:block;width:100%;object-fit:cover}
       <form onsubmit="loginUser(event)">
         <div class="fg"><label>Email Address</label><input type="email" id="loginEmail" placeholder="your@email.com" required/></div>
         <div class="fg"><label>Password</label><input type="password" id="loginPassword" placeholder="••••••••" required/></div>
-        <button type="button" class="forgot-link" onclick="forgotPassword()">Forgot password?</button>
+        <button type="button" class="forgot-link" onclick="switchAuthTab('reset')">Forgot password?</button>
         <button type="submit" class="f-submit"><i class="fas fa-sign-in-alt"></i> Login</button>
       </form>
+      <button type="button" class="google-btn" onclick="handleGoogleLogin()"><i class="fab fa-google"></i> Sign in with Google</button>
       <p style="text-align:center;margin-top:14px;font-size:.82rem;color:var(--text-light)">Don't have an account? <a href="#" onclick="switchAuthTab('signup');return false;" style="color:var(--purple);font-weight:600">Sign Up</a></p>
     </div>
     <div class="modal-section" id="signupSection">
       <form onsubmit="signupUser(event)">
         <div class="fg"><label>Full Name</label><input type="text" id="signupName" placeholder="Matti Virtanen" required/></div>
         <div class="fg"><label>Email Address</label><input type="email" id="signupEmail" placeholder="your@email.com" required/></div>
+        <div class="fg"><label>Phone</label><input type="tel" id="signupPhone" placeholder="+358 40 123 4567" required/></div>
         <div class="fg"><label>Password</label><input type="password" id="signupPassword" placeholder="Min. 6 characters" required/></div>
         <div class="fg"><label>Confirm Password</label><input type="password" id="signupConfirm" placeholder="Repeat password" required/></div>
         <button type="submit" class="f-submit"><i class="fas fa-user-plus"></i> Create Account</button>
       </form>
+      <button type="button" class="google-btn" onclick="handleGoogleLogin()"><i class="fab fa-google"></i> Sign up with Google</button>
       <p style="text-align:center;margin-top:14px;font-size:.82rem;color:var(--text-light)">Already have an account? <a href="#" onclick="switchAuthTab('login');return false;" style="color:var(--purple);font-weight:600">Login</a></p>
+    </div>
+    <div class="modal-section" id="resetSection">
+      <form onsubmit="forgotPassword(event)">
+        <div class="fg"><label>Email Address</label><input type="email" id="resetEmail" placeholder="your@email.com" required/></div>
+        <button type="submit" class="f-submit"><i class="fas fa-paper-plane"></i> Send Reset Link</button>
+      </form>
+      <p style="text-align:center;margin-top:14px;font-size:.82rem;color:var(--text-light)"><a href="#" onclick="switchAuthTab('login');return false;" style="color:var(--purple);font-weight:600">Back to Login</a></p>
+    </div>
+    <div class="modal-section" id="changePasswordSection">
+      <form onsubmit="handleChangePassword(event)">
+        <div class="fg"><label>Current Password</label><input type="password" id="currentPassword" placeholder="••••••••" required/></div>
+        <div class="fg"><label>New Password</label><input type="password" id="newPassword" placeholder="Min. 6 characters" required/></div>
+        <div class="fg"><label>Confirm New Password</label><input type="password" id="confirmNewPassword" placeholder="Repeat password" required/></div>
+        <button type="submit" class="f-submit"><i class="fas fa-key"></i> Change Password</button>
+      </form>
+      <button type="button" class="f-submit" style="background:var(--text-light)" onclick="closeAuthModal()">Cancel</button>
     </div>
   </div>
 </div>
@@ -1028,10 +1053,10 @@ img{display:block;width:100%;object-fit:cover}
 <!-- BACK TO TOP -->
 <button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
 <!-- LANGUAGE SWITCHER -->
-<div class="lang-switcher">
-  <button class="lang-btn active" id="btnEN" onclick="setLang('en')">🇬🇧 EN</button>
-  <button class="lang-btn" id="btnFI" onclick="setLang('fi')">🇫🇮 FI</button>
-</div>
+  <div class="lang-switcher">
+    <button class="lang-btn active" id="btnEN" onclick="setLang('en')"> EN</button>
+    <button class="lang-btn" id="btnFI" onclick="setLang('fi')"> FI</button>
+  </div>
 
 <!-- ═══════════════════ SCRIPTS ═══════════════════ -->
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
@@ -1429,6 +1454,8 @@ function switchAuthTab(tab){
   document.getElementById('signupTab').classList.toggle('active',tab==='signup');
   document.getElementById('loginSection').classList.toggle('active',tab==='login');
   document.getElementById('signupSection').classList.toggle('active',tab==='signup');
+  document.getElementById('resetSection').classList.toggle('active',tab==='reset');
+  document.getElementById('changePasswordSection').classList.toggle('active',tab==='changePassword');
 }
 document.getElementById('authModal').addEventListener('click',function(e){
   if(e.target===this)closeAuthModal();
@@ -1440,20 +1467,69 @@ function loginUser(e){
   auth.signInWithEmailAndPassword(
     document.getElementById('loginEmail').value.trim(),
     document.getElementById('loginPassword').value
-  ).then(()=>{
+  ).then(cred=>{
+    saveUserDataToStorage(cred.user);
     closeAuthModal();
     showToast('👋 Welcome back!');
     e.target.reset();
   }).catch(err=>showToast('❌ '+err.message,true));
 }
 
+/* ── GOOGLE LOGIN ── */
+function handleGoogleLogin(){
+  const provider=new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(provider).then(cred=>{
+    saveUserDataToStorage(cred.user);
+    closeAuthModal();
+    showToast('🎉 Signed in with Google!');
+  }).catch(err=>showToast('❌ '+err.message,true));
+}
+
 /* ── FORGOT PASSWORD ── */
-function forgotPassword(){
-  const email=document.getElementById('loginEmail').value.trim();
-  if(!email){showToast('❌ Enter your email address first.',true);return;}
+function forgotPassword(e){
+  e.preventDefault();
+  const email=document.getElementById('resetEmail').value.trim();
+  if(!email){showToast('❌ Enter your email address.',true);return;}
   auth.sendPasswordResetEmail(email)
-    .then(()=>showToast('📧 Password reset email sent!'))
+    .then(()=>{
+      showToast('📧 Password reset email sent!');
+      switchAuthTab('login');
+    })
     .catch(err=>showToast('❌ '+err.message,true));
+}
+
+/* ── CHANGE PASSWORD ── */
+function handleChangePassword(e){
+  e.preventDefault();
+  const current=document.getElementById('currentPassword').value;
+  const newPass=document.getElementById('newPassword').value;
+  const confirm=document.getElementById('confirmNewPassword').value;
+  
+  if(newPass!==confirm){showToast('❌ Passwords do not match.',true);return;}
+  if(newPass.length<6){showToast('❌ Password must be at least 6 characters.',true);return;}
+  
+  const user=auth.currentUser;
+  if(!user){showToast('❌ No user logged in.',true);return;}
+  
+  const credential=firebase.auth.EmailAuthProvider.credential(user.email,current);
+  user.reauthenticateWithCredential(credential).then(()=>{
+    return user.updatePassword(newPass);
+  }).then(()=>{
+    showToast('✅ Password changed successfully!');
+    closeAuthModal();
+    e.target.reset();
+  }).catch(err=>showToast('❌ '+err.message,true));
+}
+
+/* ── SAVE USER DATA TO LOCALSTORAGE ── */
+function saveUserDataToStorage(user){
+  const userData={
+    uid:user.uid,
+    email:user.email,
+    displayName:user.displayName||'',
+    phone:user.phoneNumber||''
+  };
+  localStorage.setItem('mughalUser',JSON.stringify(userData));
 }
 
 /* ── SIGN UP ── */
@@ -1463,11 +1539,29 @@ function signupUser(e){
   const conf=document.getElementById('signupConfirm').value;
   if(pass!==conf){showToast('❌ Passwords do not match.',true);return;}
   if(pass.length<6){showToast('❌ Password must be at least 6 characters.',true);return;}
-  auth.createUserWithEmailAndPassword(
-    document.getElementById('signupEmail').value.trim(),pass
-  ).then(cred=>cred.user.updateProfile({
-    displayName:document.getElementById('signupName').value.trim()
-  })).then(()=>{
+  
+  const name=document.getElementById('signupName').value.trim();
+  const email=document.getElementById('signupEmail').value.trim();
+  const phone=document.getElementById('signupPhone').value.trim();
+  
+  auth.createUserWithEmailAndPassword(email,pass).then(cred=>{
+    return cred.user.updateProfile({displayName:name});
+  }).then(()=>{
+    const userData={
+      uid:auth.currentUser.uid,
+      email:email,
+      displayName:name,
+      phone:phone
+    };
+    localStorage.setItem('mughalUser',JSON.stringify(userData));
+    
+    db.ref(`users/${auth.currentUser.uid}`).set({
+      name:name,
+      email:email,
+      phone:phone,
+      createdAt:Date.now()
+    });
+    
     closeAuthModal();
     showToast('🎉 Account created! Welcome to Mughal.');
     document.getElementById('signupSection').querySelector('form').reset();
@@ -1476,6 +1570,7 @@ function signupUser(e){
 
 /* ── LOGOUT ── */
 function logoutUser(){
+  localStorage.removeItem('mughalUser');
   auth.signOut().then(()=>showToast('👋 Logged out successfully.'));
 }
 
@@ -1487,6 +1582,7 @@ auth.onAuthStateChanged(user=>{
   const dui=document.getElementById('drawerUserInfo');
   const dlb=document.getElementById('drawerLogoutBtn');
   if(user){
+    saveUserDataToStorage(user);
     nb.style.display='none';
     nu.classList.add('show');
     document.getElementById('navUserEmail').textContent=user.displayName||user.email;
@@ -1495,6 +1591,7 @@ auth.onAuthStateChanged(user=>{
     dlb.style.display='block';
     document.getElementById('drawerUserEmail').textContent=user.displayName||user.email;
   } else {
+    localStorage.removeItem('mughalUser');
     nb.style.display='flex';
     nu.classList.remove('show');
     dab.style.display='flex';
